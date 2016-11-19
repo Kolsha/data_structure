@@ -1,3 +1,4 @@
+package exam.review.datastructure;
 /**
  * Created by shanwu on 16-10-26.
  */
