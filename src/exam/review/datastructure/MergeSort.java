@@ -120,7 +120,6 @@ public class MergeSort<E> {
     }
 
     public static void main(String[] args) {
-        // write your code here
         Integer[] test = new Integer[]{22, 7, 1, 2, 9, 3, 4, 5};
         Comparator<Integer> comp = new Comparator<Integer>() {
             @Override
