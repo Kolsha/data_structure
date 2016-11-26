@@ -70,6 +70,34 @@ public class SortingPractice {
 
     }
 
+    /**
+     * Given a matrix in which each row and each column is sorted, write a method to find an element in it.
+     *
+     * @param matrix
+     * @param target
+     * @param comp
+     * @param <E>
+     * @return
+     */
+    public static <E> boolean findElement(E[][] matrix, E target, Comparator<E> comp) {
+        final int col = matrix[0].length;
+        final int row = matrix.length;
+        int colIndex = col - 1;
+        int rowIndex = 0;
+        while (rowIndex < row && colIndex >= 0) {
+            E temp = matrix[rowIndex][colIndex];
+            if (target.equals(temp)) {
+                return true;
+            } else if (comp.compare(temp, target) > 0) {
+                colIndex--;
+            } else {
+                rowIndex++;
+            }
+        }
+
+        return false;
+    }
+
 
     public static void main(String[] args) {
         // Question 1 test case
@@ -96,7 +124,24 @@ public class SortingPractice {
         sortStringWithAnagrams(testStringArray);
         System.out.println(Arrays.toString(testStringArray));
 
+        Integer[][] test2DArray = new Integer[][]{
+                {2, 4, 6},
+                {3, 6, 9},
+                {5, 10, 15},
+        };
 
+        Comparator<Integer> comp = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        };
 
+        Integer target = 9;
+        System.out.println("hasfound target( " + target + " ) = " + findElement(test2DArray, target, comp));
+        target = 11;
+        System.out.println("hasfound target( " + target + " ) = " + findElement(test2DArray, target, comp));
+        target = 15;
+        System.out.println("hasfound target( " + target + " ) = " + findElement(test2DArray, target, comp));
     }
 }
