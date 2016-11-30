@@ -1,5 +1,6 @@
 package exam.review.datastructure;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -34,6 +35,26 @@ public class Recursive {
         }
     }
 
+    public static <E> ArrayList<ArrayList<E>> getAllSubSet(ArrayList<E> set, int index) {
+        ArrayList<ArrayList<E>> allSubSet;
+        if (set.size() == index) {
+            allSubSet = new ArrayList<>();
+            allSubSet.add(new ArrayList<E>()); // 空集合为任何集合的子集合
+        } else {
+            allSubSet = getAllSubSet(set, index + 1);
+            E item = set.get(index);
+            ArrayList<ArrayList<E>> moreSubSet = new ArrayList<>(); // try to avoid concurrentMod exception
+            for (ArrayList<E> subset : allSubSet) {
+                ArrayList<E> newSubset = new ArrayList<E>();
+                newSubset.addAll(subset);
+                newSubset.add(item);
+                moreSubSet.add(newSubset);
+            }
+            allSubSet.addAll(moreSubSet);
+        }
+        return allSubSet;
+    }
+
     public static void main(String[] args) {
         int target = 5;
         System.out.println("factorial: " + target + "! = " + getFactorial(target));
@@ -42,7 +63,15 @@ public class Recursive {
         System.out.println("Fibonacci: " + target + "th number = " + getNthFibnacci(target));
 
         Integer[] array = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        reverseArray(array, 0, array.length-1);
+        reverseArray(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
+
+        ArrayList<Integer> intArrayList = new ArrayList<>();
+        intArrayList.add(1);
+        intArrayList.add(2);
+
+        System.out.println("all subset: " + getAllSubSet(intArrayList, 0));
+
+
     }
 }
