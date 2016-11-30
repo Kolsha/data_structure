@@ -55,6 +55,36 @@ public class Recursive {
         return allSubSet;
     }
 
+    public static ArrayList<String> getAllPermutation(String text) {
+        if (text == null) {
+            return null;
+        }
+
+        ArrayList<String> permutations = new ArrayList<>();
+        if (text.isEmpty()) {
+            permutations.add("");
+            return permutations;
+        }
+
+        final char first = text.charAt(0);
+        String substring = text.substring(1);
+        ArrayList<String> subPermStrings = getAllPermutation(substring);
+        for (String perm : subPermStrings) {
+            final int size = perm.length();
+            for (int i = 0; i <= size; i++) {
+                permutations.add(addCharToStringAt(perm, i, first));
+            }
+        }
+
+        return permutations;
+    }
+
+    private static String addCharToStringAt(String perm, int i, char first) {
+        String start = perm.substring(0, i);
+        String end = perm.substring(i);
+        return start + first + end;
+    }
+
     public static void main(String[] args) {
         int target = 5;
         System.out.println("factorial: " + target + "! = " + getFactorial(target));
@@ -72,6 +102,11 @@ public class Recursive {
 
         System.out.println("all subset: " + getAllSubSet(intArrayList, 0));
 
+
+        String permTest = "ab";
+        System.out.println("all " + permTest + " permutations: " + getAllPermutation(permTest));
+        permTest = "abc";
+        System.out.println("all " + permTest + " permutations: " + getAllPermutation(permTest));
 
     }
 }
