@@ -91,10 +91,10 @@ public class Recursive {
     }
 
     /**
-     *  Implement an algorithm to print all valid (e.g., properly opened and closed) combinations of n-pairs of parentheses.
-     *  EXAMPLE:
-     *  input: 3 (e.g., 3 pairs of parentheses)
-     *  output: ()()(), ()(()), (())(), ((()))
+     * Implement an algorithm to print all valid (e.g., properly opened and closed) combinations of n-pairs of parentheses.
+     * EXAMPLE:
+     * input: 3 (e.g., 3 pairs of parentheses)
+     * output: ()()(), ()(()), (())(), ((()))
      *
      * @param left
      * @param right
@@ -121,6 +121,31 @@ public class Recursive {
         }
     }
 
+    /**
+     * Implement the “paint fill” function that one might see on many image editing programs.
+     * That is, given a screen (represented by a 2-dimensional array of Colors), a point, and
+     * a new color, fill in the surrounding area until you hit a border of that color.
+     *
+     * @param screen
+     * @param x
+     * @param y
+     * @param originColor
+     * @param newColor
+     */
+    public void paintFill(int[][] screen, int x, int y, int originColor, int newColor) {
+        if (screen.length < y || screen[0].length < x || x < 0 || y < 0) {
+            return;
+        }
+
+        if (screen[y][x] == originColor) {
+            screen[y][x] = newColor;
+            paintFill(screen, x, y - 1, originColor, newColor); // up
+            paintFill(screen, x, y + 1, originColor, newColor); // down
+            paintFill(screen, x - 1, y, originColor, newColor); // left
+            paintFill(screen, x + 1, y, originColor, newColor); // right
+
+        }
+    }
 
     public static void main(String[] args) {
         int target = 5;
