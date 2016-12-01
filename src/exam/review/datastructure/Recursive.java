@@ -85,6 +85,43 @@ public class Recursive {
         return start + first + end;
     }
 
+    private static void getAllParentheses(int count) {
+        char[] parArray = new char[count * 2];
+        getCharArray(count, count, parArray, 0);
+    }
+
+    /**
+     *  Implement an algorithm to print all valid (e.g., properly opened and closed) combinations of n-pairs of parentheses.
+     *  EXAMPLE:
+     *  input: 3 (e.g., 3 pairs of parentheses)
+     *  output: ()()(), ()(()), (())(), ((()))
+     *
+     * @param left
+     * @param right
+     * @param str
+     * @param strIndex
+     */
+    public static void getCharArray(int left, int right, char[] str, int strIndex) {
+        if (left < 0 || right < left) {
+            return;
+        }
+
+        if (left == 0 && right == 0) {
+            System.out.println(str);
+        } else {
+            if (left > 0) {
+                str[strIndex] = '(';
+                getCharArray(left - 1, right, str, strIndex + 1);
+            }
+
+            if (right > left) {
+                str[strIndex] = ')';
+                getCharArray(left, right - 1, str, strIndex + 1);
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         int target = 5;
         System.out.println("factorial: " + target + "! = " + getFactorial(target));
@@ -108,5 +145,10 @@ public class Recursive {
         permTest = "abc";
         System.out.println("all " + permTest + " permutations: " + getAllPermutation(permTest));
 
+        target = 2;
+        System.out.println("print combinations of " + target + " pairs parenthese(s): ");
+        getAllParentheses(target);
     }
+
+
 }
