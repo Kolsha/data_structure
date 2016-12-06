@@ -105,6 +105,21 @@ public class Tree<T> implements TreeADT<T> {
         }
     }
 
+    private static <T> void preorderTraversal(TreeNode<T> root) {
+        System.out.print(root.getElement() + " ");
+
+        for (TreeNode<T> childNodes : root.getChildren()) {
+            preorderTraversal(childNodes);
+        }
+    }
+
+    private static <T> void postorderTraversal(TreeNode<T> root) {
+        for (TreeNode<T> childNodes : root.getChildren()) {
+            postorderTraversal(childNodes);
+        }
+
+        System.out.print(root.getElement() + " ");
+    }
 
     public static void main(String[] args) {
         Tree<String> tree = new Tree<>();
@@ -125,5 +140,15 @@ public class Tree<T> implements TreeADT<T> {
 
         System.out.println("Tree height: " + getTreeHeight(tree));
 
+        System.out.print("Tree preorder trasversal: ");
+        preorderTraversal(tree.getRoot());
+        System.out.println();
+
+        System.out.print("Tree postorder trasversal: ");
+        postorderTraversal(tree.getRoot());
+        System.out.println();
+
     }
+
+
 }

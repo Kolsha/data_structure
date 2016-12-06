@@ -15,7 +15,11 @@ public interface TreeNode<T> {
 
     void setParent(TreeNode<T> parent);
 
-    Iterator<TreeNode<T>> getChildren();
+    Iterable<TreeNode<T>> getChildren();
 
     void setChild(TreeNode<T> child);
+
+    boolean isInternal();
+
+    boolean isExternal();
 }

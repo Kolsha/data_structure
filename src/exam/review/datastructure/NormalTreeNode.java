@@ -38,8 +38,8 @@ public class NormalTreeNode<T> implements TreeNode {
     }
 
     @Override
-    public Iterator<TreeNode<T>> getChildren() {
-        return mChildNodeList.iterator();
+    public Iterable<TreeNode<T>> getChildren() {
+        return mChildNodeList;
     }
 
     @Override
