@@ -104,13 +104,13 @@ public class NormalTree<T> implements TreeADT<T> {
         return node.getParent() == null;
     }
 
-    public static <T> void prettyPrint(TreeADT<T> tree) { // // FIXME: 16-12-9 bug
-        HashMap<Integer, ArrayList<T>> levelMap = new HashMap<>();
-        Iterator<T> treeIterator = tree.iterator();
+    public static <T> void prettyPrint(TreeADT<T> tree) {
+        HashMap<Integer, ArrayList<TreeNode<T>>> levelMap = new HashMap<>();
+        Iterator<TreeNode<T>> treeIterator = tree.iterator();
         while (treeIterator.hasNext()) {
-            T treeNode = treeIterator.next();
-            final int levelNum = getNodeDepth(new NormalTreeNode(treeNode));
-            ArrayList<T> nodesList = levelMap.get(levelNum);
+            TreeNode treeNode = treeIterator.next();
+            final int levelNum = getNodeDepth(treeNode);
+            ArrayList<TreeNode<T>> nodesList = levelMap.get(levelNum);
             if (nodesList == null) {
                 nodesList = new ArrayList<>();
             }
@@ -120,10 +120,10 @@ public class NormalTree<T> implements TreeADT<T> {
 
         final int size = tree.size();
         for (int i = 0; i < size; i++) {
-            ArrayList<T> levelContent = levelMap.get(i);
+            ArrayList<TreeNode<T>> levelContent = levelMap.get(i);
             if (levelContent == null) break;
-            for (T value : levelContent) {
-                System.out.print(value + " ");
+            for (TreeNode<T> value : levelContent) {
+                System.out.print(value.getElement() + " ");
             }
             System.out.println();
         }

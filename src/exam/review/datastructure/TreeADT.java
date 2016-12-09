@@ -10,7 +10,7 @@ public interface TreeADT<T> {
 
     boolean isEmpty();
 
-    Iterator<T> iterator();
+    Iterator<TreeNode<T>> iterator();
 
     void replace(TreeNode<T> oldOne, T newValue);
 
