@@ -141,8 +141,8 @@ public class Recursive {
             screen[y][x] = newColor;
             paintFill(screen, x, y - 1, originColor, newColor); // up
             paintFill(screen, x, y + 1, originColor, newColor); // down
-            paintFill(screen, x - 1, y, originColor, newColor); // left
-            paintFill(screen, x + 1, y, originColor, newColor); // right
+            paintFill(screen, x - 1, y, originColor, newColor); // getLeft
+            paintFill(screen, x + 1, y, originColor, newColor); // getRight
 
         }
     }

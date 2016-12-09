@@ -9,7 +9,7 @@ import java.util.Iterator;
 public interface TreeNode<T> {
     T getElement();
 
-    <T> void setElement(T element);
+    void setElement(T element);
 
     TreeNode<T> getParent();
 

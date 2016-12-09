@@ -12,11 +12,21 @@ public interface TreeADT<T> {
 
     Iterator<T> iterator();
 
-    void replace(TreeNode<T> oldOne, TreeNode<T> newOne);
+    void replace(TreeNode<T> oldOne, T newValue);
 
     void addNewNode(TreeNode<T> parent, TreeNode<T> child);
 
-    TreeNode<T> getRoot();
+    TreeNode<T> root();
 
     TreeNode<T> findNode(T target);
+
+    TreeNode<T> parent(TreeNode<T> v);
+
+    Iterable<TreeNode<T>> children(TreeNode<T> v);
+
+    boolean isInternal(TreeNode<T> v);
+
+    boolean isExternal(TreeNode<T> v);
+
+    boolean isRoot(TreeNode<T> v);
 }

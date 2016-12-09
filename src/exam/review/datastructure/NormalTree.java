@@ -3,12 +3,11 @@ package exam.review.datastructure;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Created by shanwu on 16-12-5.
  */
-public class Tree<T> implements TreeADT<T> {
+public class NormalTree<T> implements TreeADT<T> {
     private TreeNode<T> mRoot;
     private ArrayList<TreeNode<T>> mAllNodes = new ArrayList<>();
 
@@ -28,9 +27,9 @@ public class Tree<T> implements TreeADT<T> {
     }
 
     @Override
-    public void replace(TreeNode oldOne, TreeNode newOne) {
+    public void replace(TreeNode<T> oldOne, T newOne) {
         TreeNode target = findNode((T) oldOne.getElement());
-        target.setElement(newOne.getElement());
+        target.setElement(newOne);
     }
 
     @Override
@@ -45,7 +44,7 @@ public class Tree<T> implements TreeADT<T> {
     }
 
     @Override
-    public TreeNode getRoot() {
+    public TreeNode root() {
         return mRoot;
     }
 
@@ -59,15 +58,40 @@ public class Tree<T> implements TreeADT<T> {
         return null;
     }
 
+    @Override
+    public TreeNode<T> parent(TreeNode<T> v) {
+        return v.getParent();
+    }
+
+    @Override
+    public Iterable<TreeNode<T>> children(TreeNode<T> v) {
+        return v.getChildren();
+    }
+
+    @Override
+    public boolean isInternal(TreeNode<T> v) {
+        return v.isInternal();
+    }
+
+    @Override
+    public boolean isExternal(TreeNode<T> v) {
+        return v.isExternal();
+    }
+
+    @Override
+    public boolean isRoot(TreeNode<T> v) {
+        return v.getParent() == null;
+    }
+
     public static <T> int getNodeDepth(TreeNode<T> node) {
-        if (isRoot(node)) {
+        if (isNodeRoot(node)) {
             return 0;
         } else {
             return 1 + getNodeDepth(node.getParent());
         }
     }
 
-    public static <T> int getTreeHeight(Tree<T> tree) {
+    public static <T> int getTreeHeight(NormalTree<T> tree) {
         ArrayList<TreeNode<T>> treeNodes = tree.mAllNodes;
         int h = 0;
         for (TreeNode<T> node : treeNodes) {
@@ -76,17 +100,17 @@ public class Tree<T> implements TreeADT<T> {
         return h;
     }
 
-    public static <T> boolean isRoot(TreeNode<T> node) {
+    public static <T> boolean isNodeRoot(TreeNode<T> node) {
         return node.getParent() == null;
     }
 
-    public static <T> void prettyPrint(Tree<T> tree) {
-        HashMap<Integer, ArrayList<TreeNode<T>>> levelMap = new HashMap<>();
-        Iterator<TreeNode<T>> treeIterator = tree.iterator();
+    public static <T> void prettyPrint(TreeADT<T> tree) { // // FIXME: 16-12-9 bug
+        HashMap<Integer, ArrayList<T>> levelMap = new HashMap<>();
+        Iterator<T> treeIterator = tree.iterator();
         while (treeIterator.hasNext()) {
-            TreeNode treeNode = treeIterator.next();
-            final int levelNum = getNodeDepth(treeNode);
-            ArrayList<TreeNode<T>> nodesList = levelMap.get(levelNum);
+            T treeNode = treeIterator.next();
+            final int levelNum = getNodeDepth(new NormalTreeNode(treeNode));
+            ArrayList<T> nodesList = levelMap.get(levelNum);
             if (nodesList == null) {
                 nodesList = new ArrayList<>();
             }
@@ -96,10 +120,10 @@ public class Tree<T> implements TreeADT<T> {
 
         final int size = tree.size();
         for (int i = 0; i < size; i++) {
-            ArrayList<TreeNode<T>> levelContent = levelMap.get(i);
+            ArrayList<T> levelContent = levelMap.get(i);
             if (levelContent == null) break;
-            for (TreeNode<T> value : levelContent) {
-                System.out.print(value.getElement() + " ");
+            for (T value : levelContent) {
+                System.out.print(value + " ");
             }
             System.out.println();
         }
@@ -122,7 +146,7 @@ public class Tree<T> implements TreeADT<T> {
     }
 
     public static void main(String[] args) {
-        Tree<String> tree = new Tree<>();
+        NormalTree<String> tree = new NormalTree<>();
         NormalTreeNode<String> a = new NormalTreeNode<>("a");
         tree.addNewNode(null, a);
         NormalTreeNode<String> b = new NormalTreeNode<>("b");
@@ -141,12 +165,13 @@ public class Tree<T> implements TreeADT<T> {
         System.out.println("Tree height: " + getTreeHeight(tree));
 
         System.out.print("Tree preorder trasversal: ");
-        preorderTraversal(tree.getRoot());
+        preorderTraversal(tree.root());
         System.out.println();
 
         System.out.print("Tree postorder trasversal: ");
-        postorderTraversal(tree.getRoot());
+        postorderTraversal(tree.root());
         System.out.println();
+
 
     }
 
