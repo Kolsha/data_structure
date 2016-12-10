@@ -68,13 +68,13 @@ public class LinkedBTreeNode<T> implements BTNodeADT<T> {
     }
 
     @Override
-    public BTNodeADT<T> getLeft(BTNodeADT<T> v) {
-        return mLeftNode = (LinkedBTreeNode<T>) v;
+    public BTNodeADT<T> getLeft() {
+        return mLeftNode;
     }
 
     @Override
-    public BTNodeADT<T> getRight(BTNodeADT<T> v) {
-        return mRightNode = (LinkedBTreeNode<T>) v;
+    public BTNodeADT<T> getRight() {
+        return mRightNode;
     }
 
     @Override

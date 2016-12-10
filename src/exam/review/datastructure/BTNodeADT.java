@@ -4,9 +4,9 @@ package exam.review.datastructure;
  * Created by shanwu on 16-12-7.
  */
 public interface BTNodeADT<T> extends TreeNode<T> {
-    BTNodeADT<T> getLeft(BTNodeADT<T> v);
+    BTNodeADT<T> getLeft();
 
-    BTNodeADT<T> getRight(BTNodeADT<T> v);
+    BTNodeADT<T> getRight();
 
     boolean hasLeft();
 
