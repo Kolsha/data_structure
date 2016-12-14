@@ -79,12 +79,12 @@ public class LinkedBTreeNode<T> implements BTNodeADT<T> {
 
     @Override
     public boolean hasLeft() {
-        return mLeftNode == null;
+        return mLeftNode != null;
     }
 
     @Override
     public boolean hasRight() {
-        return mRightNode == null;
+        return mRightNode != null;
     }
 
     @Override

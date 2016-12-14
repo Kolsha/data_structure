@@ -261,6 +261,17 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         return v.getParent() == null;
     }
 
+    public static <T> void inorderTraversal(BTNodeADT<T> root) {
+        if (root.hasLeft()) {
+            inorderTraversal(root.getLeft());
+        }
+
+        System.out.print(root.getElement()+" ");
+
+        if (root.hasRight()) {
+            inorderTraversal(root.getRight());
+        }
+    }
 
     /**
      * Implement a function to check if a tree is balanced.
@@ -304,6 +315,10 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         tree.addNewNode(c, f);
         LinkedBTreeNode<String> g = new LinkedBTreeNode<>("g");
         tree.addNewNode(f, g);
+
+        System.out.println("In-order traversal: ");
+        inorderTraversal(tree.getRoot());
+        System.out.println("\n" + "======================");
 
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
         NormalTree.prettyPrint(tree);
