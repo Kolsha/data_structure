@@ -261,6 +261,34 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         return v.getParent() == null;
     }
 
+
+    /**
+     * Implement a function to check if a tree is balanced.
+     * For the purposes of this question, a balanced tree is defined to be a tree such that
+     * no two leaf nodes differ in distance from the root by more than one.
+     *
+     * @param treeRoot
+     * @return true if it's balanced
+     */
+    public static <T> boolean isTreeBalanced(BTNodeADT<T> treeRoot) {
+        return (maxDepth(treeRoot) - minDepth(treeRoot)) <= 1;
+    }
+
+    private static <T> int minDepth(BTNodeADT<T> root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.min(minDepth(root.getLeft()), minDepth(root.getRight()));
+    }
+
+    private static <T> int maxDepth(BTNodeADT<T> root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight()));
+    }
+
+
     public static void main(String[] args) {
         LinkedBTree<String> tree = new LinkedBTree<>();
         LinkedBTreeNode<String> a = new LinkedBTreeNode<>("a");
@@ -274,19 +302,20 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         LinkedBTreeNode<String> f = new LinkedBTreeNode<>("f");
         tree.addNewNode(c, e);
         tree.addNewNode(c, f);
+        LinkedBTreeNode<String> g = new LinkedBTreeNode<>("g");
+        tree.addNewNode(f, g);
 
+        System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
         NormalTree.prettyPrint(tree);
-
         System.out.println("======================");
         tree.remove(e);
         NormalTree.prettyPrint(tree);
-
-        System.out.println("======================");
-        tree.remove(e);
-        NormalTree.prettyPrint(tree);
-
+        System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot())); // // FIXME: 16-12-14 it doesn't look right here
         System.out.println("======================");
         tree.remove(c);
         NormalTree.prettyPrint(tree);
+        System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
+
+
     }
 }
