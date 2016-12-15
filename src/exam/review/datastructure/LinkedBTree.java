@@ -266,7 +266,7 @@ public class LinkedBTree<T> implements BTreeADT<T> {
             inorderTraversal(root.getLeft());
         }
 
-        System.out.print(root.getElement()+" ");
+        System.out.print(root.getElement() + " ");
 
         if (root.hasRight()) {
             inorderTraversal(root.getRight());
@@ -299,6 +299,25 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         return 1 + Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight()));
     }
 
+    /**  Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.
+     *
+     * @param numArray
+     * @param start
+     * @param end
+     * @return minimum binary search tree
+     */
+    private static LinkedBTreeNode<Integer> createBSTfromSortedArray(int[] numArray, int start, int end) {
+        if (numArray == null || numArray.length == 0 || start > end) {
+            return null;
+        }
+
+        int mid = (start + end) / 2;
+        LinkedBTreeNode root = new LinkedBTreeNode(numArray[mid]);
+        root.setLeft(createBSTfromSortedArray(numArray, start, mid - 1));
+        root.setRight(createBSTfromSortedArray(numArray, mid + 1, end));
+
+        return root;
+    }
 
     public static void main(String[] args) {
         LinkedBTree<String> tree = new LinkedBTree<>();
@@ -332,5 +351,11 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
 
 
+        int[] numArray = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        LinkedBTreeNode<Integer> bst = createBSTfromSortedArray(numArray, 0, numArray.length - 1);
+        inorderTraversal(bst);
+
     }
+
+
 }
