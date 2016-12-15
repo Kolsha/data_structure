@@ -2,6 +2,8 @@ package exam.review.datastructure;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by shanwu on 16-12-9.
@@ -299,7 +301,8 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         return 1 + Math.max(maxDepth(root.getLeft()), maxDepth(root.getRight()));
     }
 
-    /**  Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.
+    /**
+     * Given a sorted (increasing order) array, write an algorithm to create a binary tree with minimal height.
      *
      * @param numArray
      * @param start
@@ -319,6 +322,18 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         return root;
     }
 
+    public static <T> void prettyPrint(BTreeADT<T> tree) {
+        System.out.println("//////////////////////////////////////////");
+        ArrayList<List<BTNodeADT<T>>> list = getLevelNodes(tree.getRoot());
+        for (List<BTNodeADT<T>> l1 : list) {
+            for(BTNodeADT<T> node: l1) {
+                System.out.print(node.getElement());
+            }
+            System.out.print('\n');
+        }
+        System.out.println("//////////////////////////////////////////");
+    }
+
     public static void main(String[] args) {
         LinkedBTree<String> tree = new LinkedBTree<>();
         LinkedBTreeNode<String> a = new LinkedBTreeNode<>("a");
@@ -335,17 +350,18 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         LinkedBTreeNode<String> g = new LinkedBTreeNode<>("g");
         tree.addNewNode(f, g);
 
+        prettyPrint(tree);
+
+        //////////////////////////////////////////////////////////////
         System.out.println("In-order traversal: ");
         inorderTraversal(tree.getRoot());
         System.out.println("\n" + "======================");
 
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
         NormalTree.prettyPrint(tree);
-        System.out.println("======================");
         tree.remove(e);
         NormalTree.prettyPrint(tree);
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot())); // // FIXME: 16-12-14 it doesn't look right here
-        System.out.println("======================");
         tree.remove(c);
         NormalTree.prettyPrint(tree);
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
@@ -355,6 +371,46 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         LinkedBTreeNode<Integer> bst = createBSTfromSortedArray(numArray, 0, numArray.length - 1);
         inorderTraversal(bst);
 
+
+    }
+
+    /**
+     * Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth
+     * (eg, if you have a tree with depth D, you’ll have D linked lists).
+     *
+     * @param root
+     * @return
+     */
+    public static <T> ArrayList<List<BTNodeADT<T>>> getLevelNodes(BTNodeADT<T> root) {
+        int level = 0;
+        BTNodeADT temp = root;
+        ArrayList<List<BTNodeADT<T>>> result = new ArrayList<>();
+        LinkedList<BTNodeADT<T>> levelList = new LinkedList<>();
+        levelList.add(temp);
+        result.add(level, levelList);
+        while (true) {
+            levelList = new LinkedList<>();
+            for (int i = 0; i < result.get(level).size(); i++) {
+                temp = result.get(level).get(i);
+                BTNodeADT left = temp.getLeft();
+                BTNodeADT right = temp.getRight();
+                if (left != null) {
+                    levelList.add(left);
+                }
+
+                if (right != null) {
+                    levelList.add(right);
+                }
+            }
+
+            if (!levelList.isEmpty()) {
+                level++;
+                result.add(level, levelList);
+            } else {
+                break;
+            }
+        }
+        return result;
     }
 
 

@@ -105,6 +105,7 @@ public class NormalTree<T> implements TreeADT<T> {
     }
 
     public static <T> void prettyPrint(TreeADT<T> tree) {
+        System.out.println("================================================");
         HashMap<Integer, ArrayList<TreeNode<T>>> levelMap = new HashMap<>();
         Iterator<TreeNode<T>> treeIterator = tree.iterator();
         while (treeIterator.hasNext()) {
@@ -127,6 +128,7 @@ public class NormalTree<T> implements TreeADT<T> {
             }
             System.out.println();
         }
+        System.out.println("================================================");
     }
 
     private static <T> void preorderTraversal(TreeNode<T> root) {
