@@ -15,5 +15,6 @@ public class SingleNum {
     public static void main(String[] args) {
         int[] array = new int[] {1,1,2,2,3};
         System.out.println(singleNumber(array));
+        String a = "abc";
     }
 }
