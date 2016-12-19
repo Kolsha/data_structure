@@ -1,4 +1,4 @@
-package trees;
+package leetcode.trees;
 
 /**
  * Created by shanwu on 16-12-18.
