@@ -1,4 +1,4 @@
-package leetcode.singly_linked_list;
+package leetcode.doubly_linked_list;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -66,5 +66,12 @@ public class LRUCache {
             this.key = key;
             this.value = value;
         }
+    }
+
+    public static void main(String[] args) {
+        LRUCache cache = new LRUCache(10);
+        cache.set(1,10);
+        cache.set(2,9);
+        cache.get(1);
     }
 }
