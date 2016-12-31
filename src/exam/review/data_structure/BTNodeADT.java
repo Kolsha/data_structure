@@ -1,4 +1,4 @@
-package exam.review.datastructure;
+package exam.review.data_structure;
 
 /**
  * Created by shanwu on 16-12-7.

@@ -1,7 +1,6 @@
-package exam.review.datastructure;
+package exam.review.data_structure;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by shanwu on 16-12-5.

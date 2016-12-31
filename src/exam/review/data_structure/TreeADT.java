@@ -1,4 +1,4 @@
-package exam.review.datastructure;
+package exam.review.data_structure;
 
 import java.util.Iterator;
 
