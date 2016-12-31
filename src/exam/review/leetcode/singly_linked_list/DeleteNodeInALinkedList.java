@@ -1,7 +1,6 @@
-package exam.review.leetcode;
+package exam.review.leetcode.singly_linked_list;
 
 
-import exam.review.leetcode.singly_linked_list.ReverseLinkedList;
 
 /**
  * Created by shanwu on 16-12-31.
