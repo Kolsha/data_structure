@@ -1,4 +1,4 @@
-package exam.review.leetcode.easy;
+package exam.review.leetcode.power_of_x;
 
 /**
  * Created by shanwu on 17-1-2.
