@@ -1,4 +1,4 @@
-package exam.review.leetcode.easy;
+package exam.review.leetcode.hashset;
 
 import java.util.HashMap;
 import java.util.HashSet;
