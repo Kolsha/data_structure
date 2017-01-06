@@ -1,4 +1,4 @@
-package exam.review.leetcode.arrays;
+package exam.review.leetcode.arrays.permutation;
 
 import java.util.Arrays;
 
