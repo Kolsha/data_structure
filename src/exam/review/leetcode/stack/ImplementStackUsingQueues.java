@@ -11,6 +11,7 @@ public class ImplementStackUsingQueues {
     // Push element x onto stack.
     public void push(int x) {
         a.add(x);
+        // reverse the queue order
         for(int i = 1; i<a.size();i++) { // we don't need to remove the last element
             a.add(a.remove());
         }
