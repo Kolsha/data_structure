@@ -4,13 +4,24 @@ package exam.review.leetcode.trees;
  * Created by shanwu on 16-12-18.
  */
 public class MinimumDepthofBinaryTree {
-    // FIXME: 16-12-18
-    public int minDepth(BinaryTreePreorderTraversal.TreeNode root) {
-        if(root == null) {
+    public int minDepth(TreeNode root) {
+        if (root == null) {
             return 0;
-        } else {
-            return 1+ Math.min(minDepth(root.left), minDepth(root.right));
         }
 
+        int left = minDepth(root.left);
+        int right = minDepth(root.right);
+
+        return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }
