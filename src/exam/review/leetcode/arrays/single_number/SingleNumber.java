@@ -1,9 +1,9 @@
-package exam.review.leetcode.arrays;
+package exam.review.leetcode.arrays.single_number;
 
 /**
  * Created by shanwu on 16-12-17.
  */
-public class SingleNum {
+public class SingleNumber {
     public static int singleNumber(int[] nums) {
         int x = 0;
         for(int i:nums) {
