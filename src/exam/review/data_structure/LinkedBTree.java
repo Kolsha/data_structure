@@ -1,5 +1,7 @@
 package exam.review.data_structure;
 
+import exam.review.data_structure.tool.MiscUtils;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -358,12 +360,12 @@ public class LinkedBTree<T> implements BTreeADT<T> {
         System.out.println("\n" + "======================");
 
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
-        NormalTree.prettyPrint(tree);
+        MiscUtils.prettyPrint(tree);
         tree.remove(e);
-        NormalTree.prettyPrint(tree);
+        MiscUtils.prettyPrint(tree);
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot())); // // FIXME: 16-12-14 it doesn't look right here
         tree.remove(c);
-        NormalTree.prettyPrint(tree);
+        MiscUtils.prettyPrint(tree);
         System.out.println("is balanced now: " + isTreeBalanced(tree.getRoot()));
 
 

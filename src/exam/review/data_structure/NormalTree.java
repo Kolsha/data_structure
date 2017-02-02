@@ -1,7 +1,8 @@
 package exam.review.data_structure;
 
+import exam.review.data_structure.tool.MiscUtils;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -83,68 +84,13 @@ public class NormalTree<T> implements TreeADT<T> {
         return v.getParent() == null;
     }
 
-    public static <T> int getNodeDepth(TreeNode<T> node) {
-        if (isNodeRoot(node)) {
-            return 0;
-        } else {
-            return 1 + getNodeDepth(node.getParent());
-        }
-    }
-
     public static <T> int getTreeHeight(NormalTree<T> tree) {
         ArrayList<TreeNode<T>> treeNodes = tree.mAllNodes;
         int h = 0;
         for (TreeNode<T> node : treeNodes) {
-            h = Math.max(getNodeDepth(node), h);
+            h = Math.max(MiscUtils.getNodeDepth(node), h);
         }
         return h;
-    }
-
-    public static <T> boolean isNodeRoot(TreeNode<T> node) {
-        return node.getParent() == null;
-    }
-
-    public static <T> void prettyPrint(TreeADT<T> tree) {
-        System.out.println("================================================");
-        HashMap<Integer, ArrayList<TreeNode<T>>> levelMap = new HashMap<>();
-        Iterator<TreeNode<T>> treeIterator = tree.iterator();
-        while (treeIterator.hasNext()) {
-            TreeNode treeNode = treeIterator.next();
-            final int levelNum = getNodeDepth(treeNode);
-            ArrayList<TreeNode<T>> nodesList = levelMap.get(levelNum);
-            if (nodesList == null) {
-                nodesList = new ArrayList<>();
-            }
-            nodesList.add(treeNode);
-            levelMap.put(levelNum, nodesList);
-        }
-
-        final int size = tree.size();
-        for (int i = 0; i < size; i++) {
-            ArrayList<TreeNode<T>> levelContent = levelMap.get(i);
-            if (levelContent == null) break;
-            for (TreeNode<T> value : levelContent) {
-                System.out.print(value.getElement() + " ");
-            }
-            System.out.println();
-        }
-        System.out.println("================================================");
-    }
-
-    private static <T> void preorderTraversal(TreeNode<T> root) {
-        System.out.print(root.getElement() + " ");
-
-        for (TreeNode<T> childNodes : root.getChildren()) {
-            preorderTraversal(childNodes);
-        }
-    }
-
-    private static <T> void postorderTraversal(TreeNode<T> root) {
-        for (TreeNode<T> childNodes : root.getChildren()) {
-            postorderTraversal(childNodes);
-        }
-
-        System.out.print(root.getElement() + " ");
     }
 
     public static void main(String[] args) {
@@ -162,16 +108,16 @@ public class NormalTree<T> implements TreeADT<T> {
         tree.addNewNode(c, e);
         tree.addNewNode(c, f);
 
-        prettyPrint(tree);
+        MiscUtils.prettyPrint(tree);
 
         System.out.println("Tree height: " + getTreeHeight(tree));
 
         System.out.print("Tree preorder trasversal: ");
-        preorderTraversal(tree.root());
+        MiscUtils.preorderTraversal(tree.root());
         System.out.println();
 
         System.out.print("Tree postorder trasversal: ");
-        postorderTraversal(tree.root());
+        MiscUtils.postorderTraversal(tree.root());
         System.out.println();
 
 
