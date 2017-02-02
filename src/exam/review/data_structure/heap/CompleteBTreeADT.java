@@ -10,5 +10,9 @@ import exam.review.data_structure.BTreeADT;
 public interface CompleteBTreeADT<T> extends BTreeADT<T> {
     BTNodeADT<T> add(T element);
 
+    /**
+     * remove the last node in complete binary tree
+     * @return element in the last node
+     */
     T remove();
 }

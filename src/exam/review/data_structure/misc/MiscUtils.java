@@ -1,4 +1,4 @@
-package exam.review.data_structure.tool;
+package exam.review.data_structure.misc;
 
 import exam.review.data_structure.TreeADT;
 import exam.review.data_structure.TreeNode;
@@ -12,7 +12,7 @@ import java.util.Iterator;
  */
 public class MiscUtils {
     private MiscUtils() {
-        // tool class, do not implement the constructor
+        // misc class, do not implement the constructor
     }
 
     public static <T> void prettyPrint(TreeADT<T> tree) {

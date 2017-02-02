@@ -1,6 +1,6 @@
 package exam.review.data_structure;
 
-import exam.review.data_structure.tool.MiscUtils;
+import exam.review.data_structure.misc.MiscUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;

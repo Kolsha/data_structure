@@ -3,7 +3,7 @@ package exam.review.data_structure.heap;
 import exam.review.data_structure.BTNodeADT;
 import exam.review.data_structure.BTreeADT;
 import exam.review.data_structure.TreeNode;
-import exam.review.data_structure.tool.MiscUtils;
+import exam.review.data_structure.misc.MiscUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
