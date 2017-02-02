@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * todo: finish this
  * Created by shanwu on 17-1-29.
  * ArrayList implementation of complete binary tree
  */
