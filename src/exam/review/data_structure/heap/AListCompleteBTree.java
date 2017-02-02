@@ -23,7 +23,7 @@ public class AListCompleteBTree<T> implements CompleteBTreeADT<T> {
 
     @Override
     public boolean isEmpty() {
-        return mHolding.size() == 1;
+        return mHolding.isEmpty();
     }
 
     @Override
