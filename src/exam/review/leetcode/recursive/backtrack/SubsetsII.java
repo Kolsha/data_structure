@@ -19,7 +19,7 @@ public class SubsetsII {
         result.add(new ArrayList(temp));
         final int size = nums.length;
         for(int i = start; i < size; i++) {
-            if(i > start && nums[i] == nums[i-1]) continue;
+            if(i > start && nums[i] == nums[i-1]) continue; // todo why?
             temp.add(nums[i]);
             backtrack(result, temp,nums,i+1);
             temp.remove(temp.size()-1);
