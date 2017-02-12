@@ -1,77 +1,85 @@
 package exam.review.leetcode.doubly_linked_list;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 
-/**
- * https://leetcode.com/problems/lru-cache/
- * Created by shanwu on 16-12-19.
- */
-// FIXME: 16-12-20 understand it and solve this problem!
 public class LRUCache {
-    private int mCacheSize;
-    private LinkedList<CacheNode> mList = new LinkedList();
-    private HashMap<Integer, CacheNode> mMap = new HashMap<>();
+    private int mCapacity;
+    private int mCurrSize;
 
-    public LRUCache(int capacity) {
-        mCacheSize = capacity;
+    private HashMap<Integer, Node> mMap = null;
+    private Node mHead = null;
+    private Node mTail = null;
 
+    public LRUCache(int cap) {
+        mCapacity = cap;
+        mCurrSize = 0;
+        mMap = new HashMap<>();
+        mHead = new Node(0, 0);
+        mTail = new Node(0, 0);
+        mHead.next = mTail;
+        mTail.next = null;
+        mTail.pre = mHead;
+    }
+
+    public void addToFront(Node node) {
+        mHead.next.pre = node;
+        node.next = mHead.next;
+        node.pre = mHead;
+        mHead.pre = null;
+        mHead.next = node;
+    }
+
+    public void remove(Node node) {
+        Node preNode = node.pre;
+        Node nxtNode = node.next;
+        if (preNode != null) preNode.next = nxtNode;
+        if (nxtNode != null) nxtNode.pre = preNode;
     }
 
     public int get(int key) {
-        if (key > mCacheSize) {
+        Node node = mMap.get(key);
+        if (node == null) {
             return -1;
         }
 
-        // swap linked list position
-        CacheNode node = mMap.get(key);
-        CacheNode oldFirst = mList.getFirst();
-        mList.set(key, oldFirst);
-        mList.set(0, node);
-
-        // update map
-        mMap.put(key, oldFirst);
-        mMap.put(oldFirst.key, node);
-
+        remove(node);
+        addToFront(node);
         return node.value;
     }
 
-    public void set(int key, int value) {
-        // update
-        if (mMap.containsKey(key)) {
-            CacheNode last =  mMap.replace(key, new CacheNode(key, value));
-            for(CacheNode node: mList) {
-                if(node.equals(last)) {
-                    mList.set(node.key,mMap.get(key));
-                }
-            }
+    public void put(int key, int value) {
+        if (mMap.get(key) != null) {
+            Node node = mMap.get(key);
+            node.value = value;
+            remove(node);
+            addToFront(node);
         } else {
-            // insert
-            CacheNode node = new CacheNode(key, value);
-            mList.add(0, node);
+            Node node = new Node(key, value);
             mMap.put(key, node);
+
+            if (mCurrSize < mCapacity) {
+                mCurrSize++;
+            } else {
+                Node lastNode = mTail.pre;
+                remove(lastNode);
+                mMap.remove(lastNode.key);
+            }
+            addToFront(node);
+
         }
 
-        if (mList.size() == mCacheSize) {
-            CacheNode last = mList.removeLast();
-            mMap.remove(last.key);
-        }
     }
 
-    public static class CacheNode {
+    public class Node {
         int key;
         int value;
 
-        public CacheNode(int key, int value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
+        Node next;
+        Node pre;
 
-    public static void main(String[] args) {
-        LRUCache cache = new LRUCache(10);
-        cache.set(1,10);
-        cache.set(2,9);
-        cache.get(1);
+        public Node(int k, int v) {
+            key = k;
+            value = v;
+        }
     }
 }
