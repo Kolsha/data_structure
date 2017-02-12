@@ -2,6 +2,7 @@ package exam.review.leetcode.recursive;
 
 /**
  * Created by shanwu on 17-2-10.
+ * PC: 1
  */
 public class Pow {
     public double myPow(double x, int n) {
