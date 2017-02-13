@@ -2,6 +2,7 @@ package exam.review.leetcode.trees;
 
 /**
  * Created by shanwu on 16-12-18.
+ * PC: 1
  */
 public class MinimumDepthofBinaryTree {
     public int minDepth(TreeNode root) {
