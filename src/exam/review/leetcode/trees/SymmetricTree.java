@@ -2,6 +2,7 @@ package exam.review.leetcode.trees;
 
 /**
  * Created by shanwu on 17-1-13.
+ * PC: 1
  */
 public class SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
