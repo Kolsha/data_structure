@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by shanwu on 16-12-18.
+ * PC: 1
  */
 public class BinaryTreePostOrderTraversal {
     public List<Integer> postorderTraversal(BinaryTreePreorderTraversal.TreeNode root) {
