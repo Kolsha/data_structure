@@ -29,6 +29,41 @@ public class PathSum {
         if(root.right!=null) hasPathSum(root.right, sum+root.val,record);
     }
 
+    /**
+     *  my 2nd approach
+     * @param root
+     * @param sum
+     * @return
+     */
+    public boolean hasPathSumII(TreeNode root, int sum) {
+        return findPathSum(root,sum,0);
+    }
+
+    private boolean findPathSum(TreeNode root, int sum, int curr) {
+        if(root == null) {
+            return false;
+        }
+
+        if(isExternal(root)) {
+            return (curr+root.val) == sum;
+        }
+
+        boolean findLeft = false, findRight = false;
+        if(root.left!=null) {
+            findLeft = findPathSum(root.left, sum, curr+root.val);
+        }
+
+        if(root.right!=null) {
+            findRight = findPathSum(root.right, sum, curr+root.val);
+        }
+
+        return findLeft || findRight;
+    }
+
+    private boolean isExternal(TreeNode root) {
+        return root.left == null && root.right == null;
+    }
+
     public class TreeNode {
         int val;
         TreeNode left;
@@ -38,4 +73,5 @@ public class PathSum {
             val = x;
         }
     }
+
 }
