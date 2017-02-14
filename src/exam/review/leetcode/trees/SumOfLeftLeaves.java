@@ -1,9 +1,10 @@
-package exam.review.leetcode.recursive;
+package exam.review.leetcode.trees;
 
 import exam.review.leetcode.trees.BinaryTreePreorderTraversal;
 
 /**
  * Created by shanwu on 16-12-24.
+ * PC: 1
  */
 public class SumOfLeftLeaves {
     public int sumOfLeftLeaves(BinaryTreePreorderTraversal.TreeNode root) {
