@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by shanwu on 17-1-14.
+ * PC: 1
  */
 public class PathSum {
     public boolean hasPathSum(TreeNode root, int sum) {

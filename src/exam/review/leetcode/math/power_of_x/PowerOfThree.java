@@ -2,6 +2,7 @@ package exam.review.leetcode.math.power_of_x;
 
 /**
  * Created by shanwu on 16-12-30.
+ * PC: 1
  */
 public class PowerOfThree {
     public boolean isPowerOfThree(int n) {

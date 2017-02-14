@@ -2,6 +2,7 @@ package exam.review.leetcode.math.power_of_x;
 
 /**
  * Created by shanwu on 17-1-2.
+ * PC: 1
  */
 public class PowerOfFour {
     public boolean isPowerOfFour(int n) {
