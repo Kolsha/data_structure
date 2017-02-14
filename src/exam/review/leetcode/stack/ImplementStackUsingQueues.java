@@ -5,13 +5,14 @@ import java.util.Queue;
 
 /**
  * Created by shanwu on 17-1-11.
+ * PC: 1
  */
 public class ImplementStackUsingQueues {
     LinkedList<Integer> a = new LinkedList();
     // Push element x onto stack.
     public void push(int x) {
         a.add(x);
-        // reverse the queue order
+        // reverse the queue order, e.g. 1-2-[3] you need to call remove() 2 times(size - 1)
         for(int i = 1; i<a.size();i++) { // we don't need to remove the last element
             a.add(a.remove());
         }
