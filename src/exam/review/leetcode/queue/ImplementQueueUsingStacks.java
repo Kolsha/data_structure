@@ -4,6 +4,7 @@ import java.util.Stack;
 
 /**
  * Created by shanwu on 17-1-15.
+ * PC: 1
  */
 public class ImplementQueueUsingStacks {
     private Stack<Integer> mStack = new Stack();

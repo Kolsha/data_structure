@@ -1,6 +1,5 @@
 package exam.review.leetcode.dynamic_programming;
 
-import java.util.HashMap;
 public class UniquePaths {
     /**
      *  Dynamic Programming approach.
