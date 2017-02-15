@@ -2,6 +2,7 @@ package exam.review.leetcode.singly_linked_list;
 
 /**
  * Created by shanwu on 16-12-30.
+ * PC: 1
  */
 public class RMDuplicatesFromSortedList {
     public ReverseLinkedList.ListNode deleteDuplicates(ReverseLinkedList.ListNode head) {
