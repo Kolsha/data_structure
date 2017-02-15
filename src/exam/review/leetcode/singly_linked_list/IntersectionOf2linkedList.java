@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 /**
  * Created by shanwu on 17-1-8.
+ * PC: 1
  */
 public class IntersectionOf2linkedList {
 
@@ -52,6 +53,41 @@ public class IntersectionOf2linkedList {
 
         return result;
 
+    }
+
+    public ListNode getIntersectionNodeII(ListNode headA, ListNode headB) {
+        int lenA = getListLength(headA), lenB = getListLength(headB);
+
+        ListNode tempA = headA;
+        ListNode tempB = headB;
+
+        while (lenA > lenB) {
+            tempA = tempA.next;
+            lenA--;
+        }
+
+        while (lenA < lenB) {
+            tempB = tempB.next;
+            lenB--;
+        }
+
+
+        while (tempA != tempB) {
+            tempA = tempA.next;
+            tempB = tempB.next;
+        }
+
+        return tempA;
+    }
+
+    private int getListLength(ListNode a) {
+        ListNode temp = a;
+        int count = 0;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
     }
 
     public static class ListNode {
