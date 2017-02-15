@@ -2,6 +2,7 @@ package exam.review.leetcode.singly_linked_list;
 
 /**
  * Created by shanwu on 17-1-3.
+ * PC: 1
  */
 public class MergeTwoSortedLists {
 
@@ -14,10 +15,43 @@ public class MergeTwoSortedLists {
         }
     }
 
+    public ListNode mergeTwoListsII(ListNode l1, ListNode l2) {
+
+        ListNode temp1 = l1;
+        ListNode temp2 = l2;
+
+        ListNode result = new ListNode(0);
+        ListNode mod = result;
+
+        while (temp1 != null || temp2 != null) {
+            ListNode newNode = null;
+            if (temp1 != null && temp2 != null) {
+                if (temp1.val <= temp2.val) {
+                    newNode = new ListNode(temp1.val);
+                    temp1 = temp1.next;
+                } else {
+                    newNode = new ListNode(temp2.val);
+                    temp2 = temp2.next;
+                }
+            } else if (temp1 != null) {
+                newNode = new ListNode(temp1.val);
+                temp1 = temp1.next;
+            } else {
+                newNode = new ListNode(temp2.val);
+                temp2 = temp2.next;
+            }
+
+            mod.next = newNode;
+            mod = newNode;
+        }
+
+        return result.next;
+    }
+
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode temp1 = l1;
         ListNode temp2 = l2;
-        if(temp1 == null && temp2 == null) {
+        if (temp1 == null && temp2 == null) {
             return null;
         } else if (temp1 == null) {
             return temp2;
@@ -65,7 +99,7 @@ public class MergeTwoSortedLists {
 
         // inverse the list
         ListNode preNode = null;
-        while(result!=null) {
+        while (result != null) {
             temp1Next = result.next;
             result.next = preNode;
             preNode = result;
@@ -85,7 +119,7 @@ public class MergeTwoSortedLists {
         three.next = four;
 
         ListNode result = mergeTwoLists(one, zero);
-        while(result!=null) {
+        while (result != null) {
             System.out.println(result.val);
             result = result.next;
         }
