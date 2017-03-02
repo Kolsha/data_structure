@@ -35,10 +35,7 @@ public class DivideTwoIntegers {
         if (num > Integer.MAX_VALUE) {
             return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
         }
-
-
         return (int) (sign * num);
-
     }
 
     // use recursive to prevent time limit exceeded
