@@ -2,6 +2,7 @@ package exam.review.leetcode.arrays.single_number;
 
 /**
  * Created by shanwu on 16-12-17.
+ * PC: 1
  */
 public class SingleNumber {
     public static int singleNumber(int[] nums) {
