@@ -2,15 +2,19 @@ package exam.review.leetcode.arrays.permutation;
 
 import java.util.Arrays;
 
-/** read this https://en.wikipedia.org/wiki/Permutation if you don't have any clue
- * Created by shanwu on 17-1-6.
+/** read the following links
+ * {@see <a href = "https://en.wikipedia.org/wiki/Permutation">wiki</a>}
+ * {@see <a href="https://www.quora.com/How-would-you-explain-an-algorithm-that-generates-permutations-using-lexicographic-ordering">quroa</a>}
+ * if you don't have any clue
  */
 public class NextPermutation {
     public static void nextPermutation(int[] nums) {
+        // check boundary case
         if (nums == null || nums.length < 2) {
             return;
         }
 
+        // 1. Find the largest x from the beginning of the array, such that P[k]<P[k+1].
         int k = -1;
         final int size = nums.length;
         for (int i = 1; i < size; i++) {
@@ -19,11 +23,13 @@ public class NextPermutation {
             }
         }
 
+        // If there is no such x, P is the last permutation.
         if (k == -1) {
             Arrays.sort(nums);
             return;
         }
 
+        // Find the first int P[l] from the end of the array, such that P[k]<P[l].
         int l = -1;
         for (int j = size - 1; j > k; j--) {
             if (nums[k] < nums[j]) {

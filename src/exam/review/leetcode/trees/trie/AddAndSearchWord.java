@@ -27,7 +27,10 @@ public class AddAndSearchWord {
     }
 
     private boolean match(char[] chs, int k, TrieNode node) {
-        if (k == chs.length) return !node.item.equals("");
+        if (k == chs.length) {
+            return !node.item.equals("");
+        }
+
         if (chs[k] != '.') {
             return node.children[chs[k] - 'a'] != null && match(chs, k + 1, node.children[chs[k] - 'a']);
         } else {
