@@ -5,9 +5,12 @@ import java.util.Arrays;
 
 /**
  * Created by shanwu on 17-1-6.
+ * check {@link NextPermutation}
+ * PC: 1
  */
 public class PermutationSequence {
     public static String getPermutation(int n, int k) {
+        // check edge case
         if(n == 0) {
             return null;
         } else if (n == 1) {
