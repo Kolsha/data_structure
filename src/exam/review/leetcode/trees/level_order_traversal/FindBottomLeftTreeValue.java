@@ -1,4 +1,4 @@
-package exam.review.leetcode.trees;
+package exam.review.leetcode.trees.level_order_traversal;
 
 import java.util.LinkedList;
 import java.util.Queue;
