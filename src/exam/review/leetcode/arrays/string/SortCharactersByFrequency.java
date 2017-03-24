@@ -44,7 +44,7 @@ public class SortCharactersByFrequency {
 
     }
 
-    public static class Value implements Comparable {
+    public static class Value implements Comparable<Value> {
         public char value;
         public int count;
 
@@ -54,13 +54,13 @@ public class SortCharactersByFrequency {
         }
 
         @Override
-        public int compareTo(Object o) {
-            return count - ((Value) o).count;
+        public String toString() {
+            return value + ":" + count;
         }
 
         @Override
-        public String toString() {
-            return value + ":" + count;
+        public int compareTo(Value o) {
+            return count - o.count;
         }
     }
 
