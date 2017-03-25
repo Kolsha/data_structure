@@ -1,4 +1,4 @@
-package exam.review.leetcode.arrays;
+package exam.review.leetcode.arrays.string.string_math_ops;
 
 /**
  * Created by shanwu on 17-1-8.

@@ -27,7 +27,7 @@ public class LFUCache {
     }
 
     public void set(int key, int value) {
-        if ( cap == 0 ) return;
+        if (cap == 0) return;
         if (valueHash.containsKey(key)) {
             valueHash.put(key, value);
         } else {
@@ -63,13 +63,13 @@ public class LFUCache {
         node.keys.remove(key);
 
         if (node.next == null) {
-            node.next = new Node(node.count+1);
+            node.next = new Node(node.count + 1);
             node.next.prev = node;
             node.next.keys.add(key);
-        } else if (node.next.count == node.count+1) {
+        } else if (node.next.count == node.count + 1) {
             node.next.keys.add(key);
         } else {
-            Node tmp = new Node(node.count+1);
+            Node tmp = new Node(node.count + 1);
             tmp.keys.add(key);
             tmp.prev = node;
             tmp.next = node.next;
@@ -84,7 +84,7 @@ public class LFUCache {
     private void removeOld() {
         if (head == null) return;
         int old = 0;
-        for (int n: head.keys) {
+        for (int n : head.keys) {
             old = n;
             break;
         }
