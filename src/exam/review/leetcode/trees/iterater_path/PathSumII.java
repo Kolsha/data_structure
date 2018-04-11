@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by shanwu on 17-2-15. do it after practicing BinaryTreePath
+ * Question description:
+ * https://leetcode.com/problems/path-sum-ii/description/
  */
 public class PathSumII {
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
