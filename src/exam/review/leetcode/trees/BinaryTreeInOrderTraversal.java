@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Question description:
  * https://leetcode.com/problems/binary-tree-inorder-traversal/description/
- * PC: 1
+ * PC: 2
  */
 public class BinaryTreeInOrderTraversal {
     public List<Integer> inorderTraversal(BinaryTreePreorderTraversal.TreeNode root) {
