@@ -4,32 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by shanwu on 16-12-18.
- * PC: 1
+ * Question description:
+ * https://leetcode.com/problems/binary-tree-preorder-traversal/description/
+ * PC: 2
  */
 public class BinaryTreePreorderTraversal {
     /**
      * Given a binary tree, return the preorder traversal of its nodes' values.
+     *
      * @param root
      * @return
      */
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList();
-
+        ArrayList<Integer> result = new ArrayList<>();
         if (root == null) {
-            return list;
+            return result;
         }
 
+        result.add(root.val);
 
-        list.add(root.val);
         if (root.left != null) {
-            list.addAll(preorderTraversal(root.left));
+            result.addAll(preorderTraversal(root.left));
         }
 
         if (root.right != null) {
-            list.addAll(preorderTraversal(root.right));
+            result.addAll(preorderTraversal(root.right));
         }
-        return list;
+
+        return result;
     }
 
     // TODO: 16-12-18 Note: Recursive solution is trivial, could you do it iteratively?
