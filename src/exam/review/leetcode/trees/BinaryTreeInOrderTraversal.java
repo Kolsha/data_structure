@@ -4,25 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by shanwu on 16-12-18.
+ * Question description:
+ * https://leetcode.com/problems/binary-tree-inorder-traversal/description/
  * PC: 1
  */
 public class BinaryTreeInOrderTraversal {
     public List<Integer> inorderTraversal(BinaryTreePreorderTraversal.TreeNode root) {
-        List<Integer> list = new ArrayList();
+        ArrayList<Integer> result = new ArrayList<>();
         if(root == null) {
-            return list;
+            return result;
         }
 
-        if(root.left!=null)
-            list.addAll(inorderTraversal(root.left));
 
-        list.add(root.val);
+        if(root.left!=null) {
+            result.addAll(inorderTraversal(root.left));
+        }
 
-        if(root.right!=null)
-            list.addAll(inorderTraversal(root.right));
+        result.add(root.val);
 
-        return list;
+        if(root.right!=null) {
+            result.addAll(inorderTraversal(root.right));
+        }
+
+        return result;
     }
 
     // TODO: 16-12-18 Note: Recursive solution is trivial, could you do it iteratively?
