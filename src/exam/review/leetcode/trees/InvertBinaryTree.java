@@ -3,12 +3,13 @@ package exam.review.leetcode.trees;
 import exam.review.leetcode.trees.BinaryTreePreorderTraversal;
 
 /**
- * Created by shanwu on 16-12-24.
- * PC: 1
+ * Question description:
+ * https://leetcode.com/problems/invert-binary-tree/description/
+ * PC: 2
  */
 public class InvertBinaryTree {
     public BinaryTreePreorderTraversal.TreeNode invertTree(BinaryTreePreorderTraversal.TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return null;
         }
 
