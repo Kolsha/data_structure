@@ -3,17 +3,18 @@ package exam.review.leetcode.trees;
 import exam.review.leetcode.trees.BinaryTreePreorderTraversal;
 
 /**
- * Created by shanwu on 16-12-24.
- * PC: 1
+ * Question description:
+ * https://leetcode.com/problems/sum-of-left-leaves/description/
+ * PC: 2
  */
 public class SumOfLeftLeaves {
     public int sumOfLeftLeaves(BinaryTreePreorderTraversal.TreeNode root) {
-        if(root == null) {
+        if (root == null) {
             return 0;
         }
 
-        int result =0;
-        if(root.left!=null && isExternal(root.left)) {
+        int result = 0;
+        if (root.left != null && isExternal(root.left)) {
             result = root.left.val;
         }
 
@@ -21,6 +22,6 @@ public class SumOfLeftLeaves {
     }
 
     public boolean isExternal(BinaryTreePreorderTraversal.TreeNode node) {
-        return node.left == null && node.right ==null;
+        return node.left == null && node.right == null;
     }
 }
