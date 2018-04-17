@@ -1,8 +1,10 @@
 package exam.review.leetcode.trees;
 
 /**
- * Created by shanwu on 16-12-18.
- * PC: 1
+ * Question description:
+ * https://leetcode.com/problems/minimum-depth-of-binary-tree/description/
+ * <p>
+ * PC: 2
  */
 public class MinimumDepthofBinaryTree {
     public int minDepth(TreeNode root) {
