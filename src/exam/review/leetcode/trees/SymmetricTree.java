@@ -1,8 +1,10 @@
 package exam.review.leetcode.trees;
 
 /**
- * Created by shanwu on 17-1-13.
- * PC: 1
+ * Question description:
+ * https://leetcode.com/problems/symmetric-tree/description/
+ * <p>
+ * PC: 2
  */
 public class SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
