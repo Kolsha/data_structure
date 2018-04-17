@@ -2,8 +2,9 @@ package exam.review.leetcode.trees;
 
 
 /**
- * Created by shanwu on 16-12-23.
- * PC: 1
+ * Question description:
+ * https://leetcode.com/problems/same-tree/description/
+ * PC: 2
  */
 public class SameTree {
     public boolean isSameTree(TreeNode p, TreeNode q) {
@@ -20,7 +21,6 @@ public class SameTree {
         } else {
             return false;
         }
-
     }
 
     public boolean isSameTreeII(TreeNode p, TreeNode q) {
