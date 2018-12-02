@@ -39,7 +39,7 @@ public class PathSumII {
             matchPathSum(result, root.right, temp, currSum, target);
         }
 
-        temp.remove(temp.size() - 1);
+        temp.remove(temp.size() - 1); // todo: explain more detail on why do we need to remove the last one ?
 
     }
 

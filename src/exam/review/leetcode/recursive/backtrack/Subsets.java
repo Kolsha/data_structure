@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by shanwu on 17-1-19.
+ * https://leetcode.com/problems/subsets/description/
  */
 public class Subsets {
     public List<List<Integer>> subsets(int[] nums) {

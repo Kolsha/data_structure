@@ -5,7 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by shanwu on 17-2-12.
+ * Given a collection of numbers that might contain duplicates, return all
+ * possible unique permutations.
+ * https://leetcode.com/problems/permutations-ii/description/ solutions:
+ * https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
+ * 
  */
 public class PermutationII {
     // todo try to understand it...Orz
@@ -21,7 +25,9 @@ public class PermutationII {
             list.add(new ArrayList<>(tempList));
         } else {
             for (int i = 0; i < nums.length; i++) {
-                if (used[i] || i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue;
+                if (used[i] || i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+                    continue;
+                }
                 used[i] = true;
                 tempList.add(nums[i]);
                 backtrack(list, tempList, nums, used);
