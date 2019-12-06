@@ -31,6 +31,10 @@ Note:
 
 **Solution:**
 ```java
+// todo we still need non-recursive solution here
+
+// recursive solution
+// time complexity O(logN)
 class Solution {
     public double myPow(double x, int n) {
         if(n == 0) {
