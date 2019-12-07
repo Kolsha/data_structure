@@ -30,7 +30,7 @@ Algebra
 <h4 id="sum_of_powers">Sum of Powers</h4>
 
 1. $\sum_{k=1}^{n} {k} = (1 + n)*n*\frac{1} {2}$
-
+- [Leecode problem: Consecutive Numbers Sum](./consecutive_num_sum.md)
 2. $\sum_{k=1}^n {k^2} = \frac{1}{6}*(n+1)(2n+1)$
 
 3. $\sum_{k=1}^{n} {k^3} = (\sum_{k=1}^{n} {k})^2$
