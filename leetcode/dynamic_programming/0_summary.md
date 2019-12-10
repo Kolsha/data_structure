@@ -139,7 +139,7 @@ class Solution {
 	}
 }
 ```
-
+**Similar problem:** [Domino and tromino tiling](./domino_and_tromino_tiling.md) 
 <h4 id="2_dimen_dp">2-dimensional DP</h4>
 <h4 id="interval_dp">Interval DP</h4>
 <h4 id="tree_dp">Tree DP</h4>
