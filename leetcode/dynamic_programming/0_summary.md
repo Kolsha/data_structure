@@ -29,8 +29,7 @@ by breaking them down into simpler subproblems”
 
 <h4 id="1_dimen_dp">1-dimensional DP Example</h4>
 
-Problem:<br/> given n, find the number of different ways to write
-n as the sum of 1, 3, 4
+**Problem 1:**<br/> given n, find the number of different ways to write n as the sum of 1, 3, 4.<br/>
 
 Example: 
 ```
@@ -42,7 +41,7 @@ for n = 5, the answer is 6
   = 1 + 4
   = 4 + 1
 ```
-Define subproblems
+Let's solve this problem ~ Define subproblems
 - Let D<sub>n</sub> be the number of ways to write n as the sum of 1, 3, 4
 
 Find the recurrence
@@ -54,8 +53,7 @@ Find the recurrence
 <br/>Thus, the number of sums that end with 1 is equal to D<sub>n-1</sub>
 <br/>Same thing applies to 3s and 4s cases.
 
-Recurrence is then
-
+- Recurrence is then
 D<sub>n</sub> = D<sub>n−1</sub> + D<sub>n−3</sub> + D<sub>n−4</sub>
 
 Solve the base cases
@@ -66,17 +64,9 @@ Solve the base cases
 
 Implementation from : https://www.geeksforgeeks.org/count-ofdifferent-ways-express-n-sum-1-3-4/
 ```java
-// Java program to illustrate 
-// the number of ways to represent 
-// N as sum of 1, 3 and 4. 
+class Solution { 
 
-class GFG { 
-
-	// Function to count the 
-	// number of ways to represent 
-	// n as sum of 1, 3 and 4 
-	static int countWays(int n) 
-	{ 
+	static int countWays(int n) { 
 		int DP[] = new int[n + 1]; 
 
 		// base cases 
@@ -84,20 +74,70 @@ class GFG {
 		DP[3] = 2; 
 
 		// iterate for all values from 4 to n 
-		for (int i = 4; i <= n; i++) 
+		for (int i = 4; i <= n; i++) {
 			DP[i] = DP[i - 1] + DP[i - 3] 
 					+ DP[i - 4]; 
-
+        }
 		return DP[n]; 
 	} 
-
-	// driver code 
-	public static void main(String[] args) 
-	{ 
-		int n = 10; 
-		System.out.println(countWays(n)); 
-	} 
 } 
+```
+Similar problem: [Climbing Stairs](./climbing_stairs.md)<br/>
+
+**Problem 2:** [Tiling with Dominoes ( aka "Tri Tiling" )](https://www.geeksforgeeks.org/tiling-with-dominoes/)
+<br/>Given a 3 x n board, find the number of ways to fill it with 2 x 1 dominoes.
+<br/>**Example 1**<br/> Following are all the 3 possible ways to fill up a 3 x 2 board.
+<br/>![](https://media.geeksforgeeks.org/wp-content/uploads/example1-3-300x113.png)<br/>
+<br/>**Example 2**
+Here is one possible way of filling a 3 x 8 board. You have to find all the possible ways to do so.<br/>
+![](https://media.geeksforgeeks.org/wp-content/uploads/example_3x8-300x113.jpg)
+
+Let's solve this problem ~ Define subproblems
+<br/>At any point while filling the board, there are three possible states that the last column can be in:<br/>
+
+- An =  No. of ways to completely fill a 3 x n board. (We need to find this)
+- Bn =  No. of ways to fill a 3 x n board with top corner in last column not filled.
+- Cn =  No. of ways to fill a 3 x n board with bottom corner in last column not filled.
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/possibleStates-1-1024x327.jpg)
+![](https://media.geeksforgeeks.org/wp-content/uploads/impossibleStates-300x127.jpg)
+
+Finding Reccurences<br/>
+Note: Even though B<sub>n</sub> and C<sub>n</sub> are different states, they will be equal for same ‘n’. i.e B<sub>n</sub> = C<sub>n</sub>
+Hence, we only need to calculate one of them.
+
+Calculating A<sub>n</sub>:<br/>
+A<sub>n</sub> = A<sub>n - 2</sub> + B<sub>n - 1</sub> + C<sub>n - 1</sub><br/>
+= A<sub>n - 2</sub> + 2 * (B<sub>n - 1</sub>)
+
+![](https://media.geeksforgeeks.org/wp-content/uploads/An-1024x186.jpg)
+
+Calculating B<sub>n</sub> :<br/>
+B<sub>n</sub> = A<sub>n - 1</sub> + B<sub>n - 2</sub>
+![](https://media.geeksforgeeks.org/wp-content/uploads/Bn-1024x186.jpg)
+
+Final Recursive Relations:
+1. A<sub>n</sub> = A<sub>n - 2</sub> + 2 * (B<sub>n - 1</sub>)
+2. B<sub>n</sub> = A<sub>n - 1</sub> + B<sub>n - 2</sub>
+
+Implementation:
+```java
+class Solution {
+
+	static int countWays(int n) {
+		int[] A = new int[n+1];
+		int[] B = new int[n+1];
+		A[0] = 1;
+        A[1] = 0;
+		B[0] = 0;
+        B[1] = 1;
+		for (int i = 2; i <= n; i++) { 
+			A[i] = A[i - 2] + 2 * B[i - 1]; 
+			B[i] = A[i - 1] + B[i - 2]; 
+		}
+		return A[n]; 
+	}
+}
 ```
 
 <h4 id="2_dimen_dp">2-dimensional DP</h4>
