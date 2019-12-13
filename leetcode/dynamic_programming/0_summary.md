@@ -141,6 +141,51 @@ class Solution {
 ```
 **Similar problem:** [Domino and tromino tiling](./domino_and_tromino_tiling.md) 
 <h4 id="2_dimen_dp">2-dimensional DP</h4>
+2-dimensional DP Example<br/>
+Problem: given two strings x and y, find the longest common subsequence (LCS) and print its length. <br/>
+
+Example:
+```
+– x: ABCBDAB
+– y: BDCABC
+– “BCAB” is the longest subsequence found in both sequences, so
+the answer is 4
+```
+Solving the LCS Problem<br/>
+
+Define subproblems<br/>
+- Let D<sub>ij</sub> be the length of the LCS of x<sub>1</sub>...x<sub>i</sub> and y<sub>1</sub>...y<sub>j</sub>
+- Find the recurrence
+   - If x<sub>i</sub> = y<sub>j</sub> , they both contribute to the LCS<br/> &rarr; D<sub>ij</sub> = D<sub>i−1,j−1</sub> + 1
+– Otherwise, either x<sub>i</sub> or y<sub>j</sub> does not contribute to the LCS, so one can be dropped<br/>
+&rarr; D<sub>ij</sub> = max { D<sub>i−1, j</sub> ,    D<sub>i, j−1</sub> }
+– Find and solve the base cases: D<sub>i0</sub> = D<sub>0j</sub> = 0
+
+Implementation
+```java
+class Solution {
+    public int longestCommonSubsequence(String text1, String text2) {
+        int[][] lcs = new int[text1.length() + 1][text2.length() + 1];
+        int result = 0;
+        for (int i = 0; i <= text1.length(); i++) {
+            for (int j = 0; j <= text2.length(); j++) {
+                if (i == 0 || j == 0) {
+                    lcs[i][j] = 0;
+                } else if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
+                    lcs[i][j] = lcs[i - 1][j - 1] + 1;
+                    result = Math.max(lcs[i][j], result);
+                } else {
+                    lcs[i][j] = Math.max(lcs[i - 1][j], lcs[i][j - 1]);
+                }
+            }
+        }
+        return result;
+    }
+}
+```
+Similar problem:<br/> 
+[Leetcode:  Longest Common Subsequence](./longest_common_subsequence.md),<br/>
+[GeeksForGeeks: Longest common substring](https://www.geeksforgeeks.org/longest-common-substring-dp-29/)
 <h4 id="interval_dp">Interval DP</h4>
 <h4 id="tree_dp">Tree DP</h4>
 <h4 id="subset_dp">Subset DP</h4>
