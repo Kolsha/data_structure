@@ -1,4 +1,5 @@
-from:<br/>https://web.stanford.edu/class/cs97si/04-dynamic-programming.pdf
+from:<br/>https://web.stanford.edu/class/cs97si/04-dynamic-programming.pdf<br/>
+also useful info:<br/>https://www.geeksforgeeks.org/dynamic-programming/<br/>
 
 Dynamic Programming
 ===
@@ -187,5 +188,58 @@ Similar problem:<br/>
 [Leetcode:  Longest Common Subsequence](./longest_common_subsequence.md),<br/>
 [GeeksForGeeks: Longest common substring](https://www.geeksforgeeks.org/longest-common-substring-dp-29/)
 <h4 id="interval_dp">Interval DP</h4>
+Interval DP Example<br/>
+
+Problem: given a string x = x<sub>1...n</sub>, find the minimum number of characters that need to be inserted to make it a palindrome.
+
+Example:
+```
+– x: Ab3bd
+– Can get “dAb3bAd” or “Adb3bdA” by inserting 2 characters
+(one ‘d’, one ‘A’)
+```
+Solution:<br/>
+Define subproblems<br/>
+- Let D<sub>ij</sub> be the minimum number of characters that need to be inserted to make x<sub>i...j</sub> into a palindrome.
+
+Find the recurrence<br/>
+- Consider a shortest palindrome y<sub>1...k</sub> containing x<sub>i...j</sub>
+- Either y<sub>1</sub> = x<sub>i</sub> or y<sub>k</sub> = x<sub>j</sub> (why?)
+- y<sub>2...k−1</sub> is then an optimal solution for x<sub>i+1...j</sub> or x<sub>i...j−1</sub> or
+x<sub>i+1...j−1</sub> &rarr; Last case possible only if y<sub>1</sub> = y<sub>k</sub> = x<sub>i</sub> = x<sub>j</sub>
+- D<sub>ij</sub> = 1 + min { D<sub>i+1 j</sub> , D<sub>i j-1</sub> }, when x<sub>i</sub> != x<sub>j</sub>;<br/>
+D<sub>ij</sub> = D<sub>i+1 j-1</sub>, when x<sub>i</sub> == x<sub>j</sub>
+
+- Find and solve the **base cases**: D<sub>ii</sub> = 0 = D<sub>i i-1</sub> for all i
+
+Implementation
+```java
+class Solution {
+    static int findMinInsertionsDP(char str[], int n) {
+        // Create a table of size n*n. table[i][j]
+        // will store minumum number of insertions
+        // needed to convert str[i..j] to a palindrome.
+        int table[][] = new int[n][n];
+        int i, j, gap;
+
+        // todo: 看不懂…再想想吧…
+        // Fill the table…
+        for (gap = 1; gap < n; ++gap) {
+            for (i = 0, j = gap; j < n; ++i, ++j) {
+                table[i][j] = (str[i] == str[j]) ? table[i + 1][j - 1]
+                        : (Integer.min(table[i][j - 1], table[i + 1][j]) + 1);
+
+            }
+        }
+        // Return minimum number of insertions
+        // for str[0..n-1]
+        return table[0][n - 1];
+    }
+}
+
+```
+
+
+
 <h4 id="tree_dp">Tree DP</h4>
 <h4 id="subset_dp">Subset DP</h4>
