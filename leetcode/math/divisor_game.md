@@ -30,7 +30,7 @@ Note:
 
 1 <= N <= 1000
 
-**Solution**
+**Solution 1:**
 
 from:
 
@@ -85,6 +85,34 @@ If N is odd, will lose.
 class Solution {
     public boolean divisorGame(int N) {
         return N % 2 == 0;
+    }
+}
+```
+
+**Solution 2:**<br/>
+
+from: https://leetcode.com/problems/divisor-game/discuss/335194/Java-DP-solution-with-comments-and-explanation-~-10-lines
+
+Dynamic Programming:<br/>
+to determine whether N is a winning or losing position, ask the following question:
+Is there at least one value of x, where 1 < x < N, so that N - x is a losing position. If so, N is a winning position; otherwise, it is a losing position. A DP solution is used here to construct solutions up to N. Note the DP res array takes advantage of booleans defaulting to false, so we only need to update res[i] to true. The if condition follows naturally from the problem description.
+```java
+class Solution {
+    public boolean divisorGame(int N) {
+        boolean[] dp = new boolean[N + 1];
+        dp[0] = false;
+        dp[1] = false;
+        for (int i = 2; i <= N; i++) {
+            for (int j = 1; j < i; j++) {
+                if (i % j == 0) {
+                    if (dp[i - j] == false) {
+                        dp[i] = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return dp[N];
     }
 }
 ```
