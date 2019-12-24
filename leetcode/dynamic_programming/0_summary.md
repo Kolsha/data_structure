@@ -242,4 +242,71 @@ class Solution {
 
 
 <h4 id="tree_dp">Tree DP</h4>
+ref: https://www.geeksforgeeks.org/graph-coloring-applications/
+
+Problem: Given a tree, color nodes black as many as possible without coloring two adjacent nodes.<br/>
+
+Subproblems:
+- First, we arbitrarily decide the root node r
+- Bv: the optimal solution for a subtree having v as the root,
+where we color v black
+- Wv: the optimal solution for a subtree having v as the root,
+where we don’t color v
+- Answer is max{Br, Wr}
+
+Find the recurrence<br/>
+- Crucial observation: once v’s color is determined, subtrees can be solved independently.
+<br/>
+- If v is colored, its children must not be colored. 
+Bv = 1 + $\sum_{u ∈ children(v)}$Wu
+<br/>
+- If v is not colored, its children can have any color
+Wv = 1 + $\sum_{u ∈ children(v)}$ max{Bu, Wu}
+
+Base cases: leaf nodes
+
+Similar problems:<br/>
+[Ways to color a skewed tree such that parent and child have different colors](https://www.geeksforgeeks.org/ways-to-color-a-skewed-tree-such-that-parent-and-child-have-different-colors/)<br/>
+
+[Color tree with minimum colors such that colors of edges incident to a vertex are different](https://www.geeksforgeeks.org/color-tree-with-minimum-colors-such-that-colors-of-edges-incident-to-a-vertex-are-different/)
 <h4 id="subset_dp">Subset DP</h4>
+
+Problem:<br/>
+Given a weighted graph with `n` nodes, find the shortest path that visits every node exactly once (Traveling Salesman Problem) <br/>
+
+Define subproblems
+- D<sub>S,v</sub>: the length of the optimal path that visits every node in
+the set S exactly once and ends at v
+- There are approximately n * 2<sup>n</sup> subproblems. (todo: explain why? )
+- Answer is min<sub>v∈V</sub> D<sub>V,v</sub>, where V is the given set of nodes.
+  
+Let’s solve the base cases first
+- For each node v, D<sub>{v},v</sub> = 0
+
+ Find the recurrence
+- Consider a path that visits all nodes in S exactly once and ends at v
+- Right before arriving v, the path comes from some u in
+S − {v}
+- And that subpath has to be the optimal one that covers
+S − {v}, ending at u
+- We just try all possible candidates for u:<br/>
+D<sub>S,v</sub> = $\min$<sub>u∈S−{v}</sub>(D<sub>S - {v}, u</sub> + cost(u, v))
+
+When working with subsets, it’s good to have a nice
+representation of sets
+
+Idea: Use an integer to represent a set
+- Concise representation of subsets of small integers {0, 1, . . .}
+- If the ith (least significant) digit is 1, i is in the set
+- If the ith digit is 0, i is not in the set
+- e.g., 19 = 010011<sub>(2)</sub> in binary represent a set {0, 1, 4} (// todo what???)
+
+Using Bitmasks (//todo give more examples)
+- Union of two sets x and y: x | y
+- Intersection: x & y
+- Symmetric difference: x ˆ y
+- Singleton set {i}: 1 << i
+- Membership test: x & (1 << i) != 0
+
+[Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/)<br/>
+[Travelling Salesman Problem](https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/)
