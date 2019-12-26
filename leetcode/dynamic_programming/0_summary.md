@@ -308,5 +308,5 @@ Using Bitmasks (//todo give more examples)
 - Singleton set {i}: 1 << i
 - Membership test: x & (1 << i) != 0
 
-[Shortest Path Visiting All Nodes](https://leetcode.com/problems/shortest-path-visiting-all-nodes/)<br/>
+[Shortest Path Visiting All Nodes](./shortest_path_visiting_all_nodes.md)<br/>
 [Travelling Salesman Problem](https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/)
