@@ -3,7 +3,6 @@ also useful info:<br/>https://www.geeksforgeeks.org/dynamic-programming/<br/>
 
 Dynamic Programming
 ===
-#### Dynamic Programming
 1. <a class="nav-link" href="#dp">Dynamic Programming</a>
 2. <a class="nav-link" href="#1_dimen_dp">1-dimensional DP</a>
 3. <a class="nav-link" href="#2_dimen_dp">2-dimensional DP</a>

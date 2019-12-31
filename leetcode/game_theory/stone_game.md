@@ -31,7 +31,7 @@ Note:
 3. 1 <= piles[i] <= 500
 4. sum(piles) is odd.
 
-**Solution:**
+**Game Theory Solution:**
 <br/>from:<br/>
 https://leetcode.com/problems/stone-game/discuss/154610/DP-or-Just-return-true <br/>
 Approach 1: Just return true
@@ -50,3 +50,5 @@ If `sum(piles[even]) < sum(piles[odd])`, Alex just picks all odds and wins.
 
 So, Alex always defeats Lee in this game.
 因为 Alex 是第一个玩，并且是最优化地玩，他只要知道哪一堆的总和最大，一开始选那个指数就行了，比如说想选奇数 Index，就从最后一堆开始 piles[n - 1] (因为 n 为偶数， n - 1 必为奇数)；想选偶数 Index，就从第一堆 piles[0] 开始。所以不管怎麽玩，先开始的 Alex 是不会输地。
+
+**Dynamic Programming Solution:**

@@ -84,7 +84,7 @@ If N is odd, will lose.
 ```java
 class Solution {
     public boolean divisorGame(int N) {
-        return N % 2 == 0;
+        return (N & 1) == 0;
     }
 }
 ```
@@ -105,6 +105,7 @@ class Solution {
         for (int i = 2; i <= N; i++) {
             for (int j = 1; j < i; j++) {
                 if (i % j == 0) {
+                    // if dp[i-j] -> the move for next round the opponent is going to make.
                     if (dp[i - j] == false) {
                         dp[i] = true;
                         break;
