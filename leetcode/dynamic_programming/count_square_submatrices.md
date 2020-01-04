@@ -60,3 +60,5 @@ class Solution {
     }
 }
 ```
+Similar Problem:
+[Maximal Square](./maximal_square.md)
