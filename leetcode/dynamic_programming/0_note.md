@@ -268,6 +268,8 @@ Similar problems:<br/>
 [Ways to color a skewed tree such that parent and child have different colors](https://www.geeksforgeeks.org/ways-to-color-a-skewed-tree-such-that-parent-and-child-have-different-colors/)<br/>
 
 [Color tree with minimum colors such that colors of edges incident to a vertex are different](https://www.geeksforgeeks.org/color-tree-with-minimum-colors-such-that-colors-of-edges-incident-to-a-vertex-are-different/)
+
+[Unique Binary Search Trees](./unique_binary_search_trees.md)
 <h4 id="subset_dp">Subset DP</h4>
 
 Problem:<br/>
