@@ -9,6 +9,7 @@ Dynamic Programming
 4. <a class="nav-link" href="#interval_dp">Interval DP</a>
 5. <a class="nav-link" href="#tree_dp">Tree DP</a>
 6. <a class="nav-link" href="#subset_dp">Subset DP</a>
+7. <a class="nav-link" href="#kadane">Kadane’s Algorithm</a>
 
 <h4 id="dp">Dynamic Programming</h4>
 
@@ -311,3 +312,43 @@ Using Bitmasks (//todo give more examples)
 
 [Shortest Path Visiting All Nodes](./shortest_path_visiting_all_nodes.md)<br/>
 [Travelling Salesman Problem](https://www.geeksforgeeks.org/travelling-salesman-problem-set-1/)
+
+
+<a href="https://medium.com/@rsinghal757/kadanes-algorithm-dynamic-programming-how-and-why-does-it-work-3fd8849ed73d"><h4 id="kadane">Kadane’s Algorithm</h4></a>
+// todo
+
+from:
+https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E5%88%97%E9%97%AE%E9%A2%98
+
+Kadane算法掃描一次整個數列的所有數值，在每一個掃描點計算以該點數值為結束點的子數列的最大和（正數和）。該子數列由兩部分組成：以前一個位置為結束點的最大子數列、該位置的數值。因為該算法用到了「最佳子結構」（以每個位置為終點的最大子數列都是基於其前一位置的最大子數列計算得出），該算法可看成動態規劃的一個例子。
+
+算法可用如下Python代碼實現：
+```python
+def max_subarray(A):
+    max_ending_here = max_so_far = A[0]
+    for x in A[1:]:
+        max_ending_here = max(x, max_ending_here + x)
+        max_so_far = max(max_so_far, max_ending_here)
+    return max_so_far
+```
+該問題的一個變種是：如果數列中含有負數元素，允許返回長度為零的子數列。該問題可用如下代碼解決：
+```python
+def max_subarray(A):
+    max_ending_here = max_so_far = 0
+    for x in A:
+        max_ending_here = max(0, max_ending_here + x)
+        max_so_far = max(max_so_far, max_ending_here)
+    return max_so_far
+```
+ref:
+
+[Kadane’s Algorithm Explained](https://hackernoon.com/kadanes-algorithm-explained-50316f4fd8a6)
+
+[Why Kadane's algorithm works?](https://afshinm.name/2018/06/24/why-kadane-algorithm-works/)
+[Kadane’s Algorithm — (Dynamic Programming) — How and Why does it Work?](https://medium.com/@rsinghal757/kadanes-algorithm-dynamic-programming-how-and-why-does-it-work-3fd8849ed73d)
+
+Similar Problem:
+
+[Maximum Subarray](./../divide_and_conquer/max_subarray.md)
+
+[Best Time to Buy and Sell Stock](./best_time_to_buy_and_sell_stock.md)
