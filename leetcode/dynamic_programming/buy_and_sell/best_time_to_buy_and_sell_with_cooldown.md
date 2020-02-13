@@ -46,7 +46,15 @@ class Solution {
         return Math.max(s2[prices.length - 1], s0[prices.length - 1]);
     }
 }
+
 ```
+// todo 
 Can be optimized to:
 ```java
 ```
+
+// todo
+[Method 2: Also works for '123. Best Time to Buy and Sell Stock III'](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution)
+
+
+
