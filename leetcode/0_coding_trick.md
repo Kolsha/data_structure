@@ -9,4 +9,5 @@ public boolean canWinNim(int n) {
 2. In-order traversal in BST => sorted list with ascending value
 
 3. edge case: overflow issue
+4. substring usage
 
