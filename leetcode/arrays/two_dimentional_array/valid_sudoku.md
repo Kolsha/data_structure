@@ -73,6 +73,7 @@ class Solution {
                 if (board[j][i] != '.' && !colSet.add(board[j][i])) {
                     return false;
                 }
+                // todo why?
                 int cubRow = 3 * (i / 3);
                 int cubCol = 3 * (i % 3);
                 char cubChar = board[cubRow + j / 3][cubCol + j % 3];

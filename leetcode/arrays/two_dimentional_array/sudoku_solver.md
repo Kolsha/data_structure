@@ -67,6 +67,7 @@ class Solution {
             if (colMov != '.' && colMov == num) {
                 return false;
             }
+            // todo why?
             // region start row
             int rowIndex = 3 * (row / 3);
             // region start col
