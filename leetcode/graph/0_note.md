@@ -254,7 +254,8 @@ node v
 - Time complexity: Θ(n + m)
 
 #### Related Problem
-[Course Schedule](./topological_sort/course_schedule.md)
+[Course Schedule](./topological_sort/course_schedule.md),
+[Course Schedule](./topological_sort/course_schedule_ii.md)
 
 
 <h4 id="eulerian_circuit">Eulerian Circuit</h4>
