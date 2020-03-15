@@ -15,6 +15,12 @@ input: "cbbd"
 Output: "bb"
 ```
 Solution
+
+Method 1: Dynamic Programming
+
+Time complexity: O(n<sup>2</sup>)
+
+Space complexity: O(n<sup>2</sup>)
 ```java
 class Solution {
     public String longestPalindrome(String s) {
@@ -40,3 +46,6 @@ class Solution {
     }
 }
 ```
+
+Method 2: Optimized Expand Around Center
+// todo https://leetcode.com/problems/longest-palindromic-substring/solution/

@@ -255,8 +255,10 @@ node v
 
 #### Related Problem
 [Course Schedule](./topological_sort/course_schedule.md),
-[Course Schedule](./topological_sort/course_schedule_ii.md)
 
+[Course Schedule](./topological_sort/course_schedule_ii.md),
+
+[Alien Dictionary](./topological_sort/alien_dictionary.md)
 
 <h4 id="eulerian_circuit">Eulerian Circuit</h4>
 

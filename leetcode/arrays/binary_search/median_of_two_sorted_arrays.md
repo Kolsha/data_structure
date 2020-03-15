@@ -24,8 +24,11 @@ The median is (2 + 3)/2 = 2.5
 ```
 
 Solution
+
 Method 1: Since Median = (Median_Left + Median_Right) / 2.0, We will recursively find median left and median right from nums1 and nums2 array
 
+Time Complexity: O(log(m + n))
+Space Complexity: O(log(m + n))
 ```java
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
