@@ -1,7 +1,7 @@
 Sorting - Outline
 ===
-1. <a class="nav-link" href="#graphs">Graphs</a>
+1. <a class="nav-link" href="#quick_sort">Quick sort</a>
 
 
 
-<h4 id="graphs">Graphs</h4>
+<h4 id="quick_sort">Quick sort</h4>
