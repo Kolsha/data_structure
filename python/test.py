@@ -1,24 +1,19 @@
 class Solution(object):
-    def sortColors(self, nums):
+    def findLengthOfLCIS(self, nums):
         """
         :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
+        :rtype: int
         """
-        zero_count = 0
-        one_count = 0
-        two_count = 0
-        for num in nums:
-            if num == 0:
-                zero_count+= 1
-            elif num == 1:
-                one_count+=1
-            else:
-                two_count+=1
+        if nums == None or len(nums) == 0:
+            return 0
         
-        for i in range(len(nums)):
-            if i < zero_count:
-                nums[i] = 0
-            elif i < zero_count + one_count:
-                nums[i] = 1
+        dp, res = 1, 1
+        prev = nums[0]
+        for num in nums[1:]:
+            if num > prev:
+                dp += 1
+                res = max(res, dp)
             else:
-                nums[i] = 2
+                dp = 1
+            prev = num
+        return res
