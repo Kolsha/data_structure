@@ -26,9 +26,13 @@ Solution
 
 Method 1: BFS
 
-Time complexity:
+Time complexity: O(n * 2 ^ n)
 
-Space complexity:
+Regarding the time complexity, I think one way we can think about the search space is as a power subset of the original string. So it includes all possible substrings from 0 character to N(number of chars in the input string) characters. So the possibilities are 2^n. (we either pick a character or don't pick it) For each subset we check if it is a valid string so it becomes n*(2^n)
+
+
+Space complexity: O(2 ^ n)
+Worst case, going throu all substrings
 
 In Java
 ```java
@@ -153,3 +157,7 @@ class Solution(object):
                     visited.add(nextStr)
         return res
 ```
+// todo
+https://leetcode.com/problems/remove-invalid-parentheses/discuss/75027/Easy-Short-Concise-and-Fast-Java-DFS-3-ms-solution
+
+Method 2: DFS
