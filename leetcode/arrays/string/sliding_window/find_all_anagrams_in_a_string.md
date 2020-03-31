@@ -36,5 +36,50 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 
 Solution
 
-todo: https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
+Method 1: Sliding window with HashMap
 
+```java
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        ArrayList<Integer> res = new ArrayList<>();
+        if (s.length() < p.length()) {
+            return res;
+        }
+
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char c : p.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        int count = map.size();
+        int begin = 0, end = 0, len = Integer.MAX_VALUE;
+
+        while (end < s.length()) {
+            char temp = s.charAt(end);
+            if (map.containsKey(temp)) {
+                map.put(temp, map.get(temp) - 1);
+                if (map.get(temp) == 0) {
+                    count--;
+                }
+            }
+            end++;
+
+            while (count == 0) {
+                temp = s.charAt(begin);
+                if (map.containsKey(temp)) {
+                    map.put(temp, map.get(temp) + 1);
+                    if (map.get(temp) > 0) {
+                        count++;
+                    }
+                }
+                if (end - begin == p.length()) {
+                    res.add(begin);
+                }
+                begin++;
+            }
+
+        }
+        return res;
+    }
+}
+```

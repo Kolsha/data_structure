@@ -44,7 +44,7 @@ Constraints:
 - All values of Node.val are unique.
 - 0 <= Number of Nodes <= 2000
 
-Solution
+[Solution](https://leetcode.com/articles/convert-binary-search-tree-to-sorted-doubly-linked/)
 
 
 // todo figure this out
