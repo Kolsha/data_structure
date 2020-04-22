@@ -25,6 +25,13 @@ Output: 3
 ```
 
 Solution
+
+Method 1: DFS-Marking
+
+Time complexity: O(mn) where m is number of rows and n is number of columns.
+
+Space complexity: O(mn) where m is number of rows and n is number of columns.
+
 ```java
 class Solution {
 
