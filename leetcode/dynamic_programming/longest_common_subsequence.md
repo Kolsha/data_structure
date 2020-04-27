@@ -38,7 +38,7 @@ The input strings consist of lowercase English characters only.
 ```
 
 **Solution:**<br/>
-[This is a problem from Dynamic Programming Notes](./0_summary.md)
+[This is a problem from Dynamic Programming Notes](./0_note.md)
 ```java
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
