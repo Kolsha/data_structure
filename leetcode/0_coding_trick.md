@@ -1,11 +1,21 @@
 
-1. Replace `%` operator with bit manipulation
+1. Instead of using `%` mod operator, try to use bit manipulation to improve performance.
 
-```java
-public boolean canWinNim(int n) {
-    return (n & 3) != 0; // equals to n % 4 != 0
-}
-```
+   ```java
+   public boolean canWinNim(int n) {
+       return (n & 3) != 0; // equals to n % 4 != 0
+   }
+   ```
+   
+   There is only a simple way to find modulo of `2^i` numbers using bitwise.
+
+   There is an ingenious way to solve [Mersenne number](https://mathworld.wolfram.com/MersenneNumber.html) cases as per [the link](http://homepage.cs.uiowa.edu/~jones/bcd/mod.shtml) such as n % 3, n % 7... There are special cases for n % 5, n % 255, and composite cases such as n % 6.
+
+   For cases 2^i, ( 2, 4, 8, 16 ...):
+
+   `n % 2^i = n & (2^i - 1)`
+   
+
 2. In-order traversal in BST => sorted list with ascending value
 
 3. edge case: overflow issue
