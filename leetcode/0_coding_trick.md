@@ -3,7 +3,7 @@
 
    ```java
    public boolean canWinNim(int n) {
-       return (n & 3) != 0; // equals to n % 4 != 0
+       return (n & 3) != 0; // n & 3 equals to n % 4
    }
    ```
    
@@ -35,3 +35,5 @@ Comparator<int[]> comp = new Comparator<>() {
 7. ArrayList to Array
 8. StringBuilder implementation, append, insert, complexity https://stackoverflow.com/questions/26170180/complexity-of-insert0-c-operation-on-stringbuffer-is-it-o1
 9. Recursive & non-recursive approach
+10. [binary search](https://leetcode.com/problems/first-bad-version/discuss/71296/O(lgN)-simple-Java-solution/73485) 
+11. https://leetcode.com/problems/first-bad-version/discuss/71296/O(lgN)-simple-Java-solution/218530

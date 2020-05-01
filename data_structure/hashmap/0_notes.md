@@ -40,3 +40,4 @@ From:
 1. https://zhuanlan.zhihu.com/p/96426441
 2. https://zhuanlan.zhihu.com/p/79219960
 3. https://www.java67.com/2017/08/top-10-java-hashmap-interview-questions.html
+4. https://javarevisited.blogspot.com/2013/08/10-equals-and-hashcode-interview.html#axzz6LC0hscPJ
