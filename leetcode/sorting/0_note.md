@@ -23,7 +23,6 @@ Sorting - Outline
 #### Heap
 In place sorting algorithm, applying heap data structure.
 
-yh7u
 <h4 id="quick_sort">Quick sort</h4>
 
 <h4 id="count_sort">Counting sort</h4>
