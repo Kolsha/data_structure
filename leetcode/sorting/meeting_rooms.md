@@ -1,4 +1,4 @@
-### 252. Meeting Rooms :star:
+### 252. Meeting Rooms <sup>:star:</sup>
 
 https://leetcode.com/problems/meeting-rooms/
 
