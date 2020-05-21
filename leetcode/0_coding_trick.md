@@ -37,3 +37,4 @@ Comparator<int[]> comp = new Comparator<>() {
 9. Recursive & non-recursive approach
 10. [binary search](https://leetcode.com/problems/first-bad-version/discuss/71296/O(lgN)-simple-Java-solution/73485) 
 11. https://leetcode.com/problems/first-bad-version/discuss/71296/O(lgN)-simple-Java-solution/218530
+12. Most common 75 questions: https://leetcode.com/list?selectedList=x4smwolg

@@ -1,6 +1,8 @@
 from:<br/>https://web.stanford.edu/class/cs97si/04-dynamic-programming.pdf<br/>
 also useful info:<br/>https://www.geeksforgeeks.org/dynamic-programming/<br/>
 
+https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/m2G1pAq0OO0
+
 Dynamic Programming
 ===
 1. <a class="nav-link" href="#dp">Dynamic Programming</a>
