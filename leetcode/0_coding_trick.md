@@ -38,3 +38,6 @@ Comparator<int[]> comp = new Comparator<>() {
 10. [binary search](https://leetcode.com/problems/first-bad-version/discuss/71296/O(lgN)-simple-Java-solution/73485) 
 11. https://leetcode.com/problems/first-bad-version/discuss/71296/O(lgN)-simple-Java-solution/218530
 12. Most common 75 questions: https://leetcode.com/list?selectedList=x4smwolg
+
+
+ref: https://leetcode.com/discuss/interview-experience/680549/google-amazon-l3l4-sde2-june-2020-pending-offer
