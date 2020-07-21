@@ -12,6 +12,11 @@ Output: 1->1->2->3->4->4
 
 Solution
 
+Approach 1:
+
+Complexity Analysis
+Time Complexity: O(m + n)
+Space Complexity: O(1)
 ```java
 /**
  * Definition for singly-linked list.
@@ -25,25 +30,55 @@ Solution
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode head = new ListNode(0);
-        ListNode tmp = head;
-        while(l1!=null || l2!=null) {
-            int l1Value = (l1 == null)? Integer.MAX_VALUE : l1.val;
-            int l2Value = (l2 == null)? Integer.MAX_VALUE: l2.val;
-            int minValue = 0;
-            if(l1Value <= l2Value) {
-                minValue = l1Value;
+        ListNode dummy = new ListNode(0);
+        ListNode res = dummy;
+        while(l1!=null && l2!=null) {
+            if(l1.val <= l2.val) {
+                dummy.next = l1;
                 l1 = l1.next;
             } else {
-                minValue = l2Value;
+                dummy.next = l2;
                 l2 = l2.next;
             }
-            tmp.next = new ListNode(minValue);
-            tmp = tmp.next;
+            dummy = dummy.next;
         }
-        return head.next;
+        dummy.next = (l1 == null)? l2 : l1;
+        return res.next;
+    }
+
+}
+```
+Approach 2: Recursive
+
+Complexity Analysis
+- Time complexity: O(m+n)
+- Space complexity: O(m+n)
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if(l1 == null) {
+            return l2;
+        } else if(l2 == null) {
+            return l1;
+        } else if(l1.val < l2.val) {
+            l1.next = mergeTwoLists(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeTwoLists(l1, l2.next);
+            return l2;
+        }
     }
 }
 ```
-
-#facebook
+Company Tag: #facebook
