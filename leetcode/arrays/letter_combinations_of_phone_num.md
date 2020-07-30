@@ -13,7 +13,7 @@ Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 ```
 
 Solution
-Method 1: Not optimized Approach
+Approach 1: Not optimized Approach
 ```java
 class Solution {
     public List<String> letterCombinations(String digits) {
@@ -56,4 +56,46 @@ class Solution {
 }
 ```
 
+Approach 2:
+
+```java
+class Solution {
+    private final static char[][] mapping = new char[][] {
+        {}, // 0
+        {}, // 1
+        {'a', 'b', 'c'}, // 2
+        {'d', 'e', 'f'}, // 3
+        {'g', 'h', 'i'}, // 4
+        {'j', 'k', 'l'}, // 5
+        {'m', 'n', 'o'}, // 6
+        {'p', 'q', 'r', 's'}, // 7
+        {'t', 'u', 'v'}, // 8
+        {'w', 'x', 'y', 'z'} // 9
+    };
+    
+    public List<String> letterCombinations(String digits) {
+        ArrayList<String> res = new ArrayList<>();
+        if(digits == null || digits.length() == 0) {
+            return res;
+        }
+        recursiveHelper(digits, 0, new StringBuilder(), res);
+        return res;
+    }
+    
+    private void recursiveHelper(String digits, int index, StringBuilder sb, ArrayList<String> res) {
+        if(sb.length() == digits.length()) {
+            res.add(sb.toString());
+            return;
+        }
+        
+        int num = digits.charAt(index) - '0';
+        char[] charArray = mapping[num];
+        for(int i = 0; i < charArray.length; i++) {
+            sb.append(charArray[i]);
+            recursiveHelper(digits, index+1, sb, res);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+}
+```
 // todo optimized one
