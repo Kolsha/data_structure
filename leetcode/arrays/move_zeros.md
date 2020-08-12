@@ -17,11 +17,11 @@ Note:
 
 Solution
 
-Method 1: 2-pass Counting Sort approach
+Approach 1: 2-pass Counting Sort approach
 
-Time complexity: O(n)
-
-Space complexity: O(1)
+Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(1)
 
 In Java
 ```java
