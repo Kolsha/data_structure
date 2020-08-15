@@ -34,6 +34,12 @@ Explanation: For n = 3 the term was "21" in which we have two groups "2" and "1"
 ```
 
 Solution
+
+Approach 1: 
+Complexity analysis:
+- Time complexity:
+- Space complexity:
+
 ```java
 class Solution {
     public String countAndSay(int n) {

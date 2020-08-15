@@ -20,6 +20,9 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
              Total amount you can rob = 2 + 9 + 1 = 12.
 ```
 Solution:
+
+Approach 1: Dynamic programming
+
 1. Define subproblems<br/>
    Suppose DP<sub>n</sub> will have the maximum money robbed from `n` houses. Since we need to avoid robbing adjacent houses, we will have 2 conditions:
    firstly, if robbed house contains the last house:<br/>
@@ -36,7 +39,9 @@ Solution:
    DP[2] = $\max$ (nums[0], nums[1])
 
    
-3. Recognize and solve the base cases
+Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(n)
 
 ```java
 class Solution {
@@ -64,29 +69,26 @@ class Solution {
     }
 }
 ```
-Since we only need to track the maximum value, we can optimize it to Space(1) complexity:
+After Optimization
+
+Since we only need to track the maximum value, we can optimize it to O(1) space complexity:
+
+Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(1)
+
 ```java
 class Solution {
     public int rob(int[] nums) {
-        if(nums == null || nums.length == 0) {
-            return 0;
-        } else if(nums.length == 1) {
-            return nums[0];
-        } else if (nums.length == 2) {
-            return Math.max(nums[0], nums[1]);
+        int curMax = 0;
+        int preMax = 0;
+        for(int num: nums) {
+            int temp = curMax;
+            curMax = Math.max(num+preMax, curMax);
+            preMax = temp;
         }
 
-        int[] dp = new int[nums.length+1];
-        int first = nums[0];
-        int second = Math.max(nums[0], nums[1]);
-        
-        
-        for(int i = 3; i < nums.length+1; i++) {
-            dp[i] = Math.max(nums[i-1] + first, second);
-            first = second;
-            second = dp[i];
-        }
-        return dp[nums.length];
+        return curMax;
     }
 }
 ```

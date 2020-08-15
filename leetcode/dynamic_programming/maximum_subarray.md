@@ -17,14 +17,18 @@ Solution
 
 Method 1: Dynamic Programming
 
-Time complexity: O(n)
-
-Space complexity: O(n)
-
-Find Subproblem
+1. Find Subproblem
 Assume <b>dp<sub>i</sub></b> which is the subarray ending with the index `i` has the greatest value:
+<b>dp<sub>i</sub> = max {dp<sub>i-1</sub> + nums[i], nums[i]}</b>
 
-dp<sub>i</sub> = max {dp<sub>i-1</sub> + nums[i], nums[i]}
+2. Base cases
+   dp<sub>0</sub> = nums[0]
+
+
+Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(n)
+
 
 In Java
 ```java

@@ -21,7 +21,11 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 ```
 Solution:
-Kadane's algorithm
+Approach 1: Kadane's algorithm
+Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(1)
+
 ```java
 class Solution {
     public int maxProfit(int[] prices) {
@@ -31,6 +35,28 @@ class Solution {
             maxSoFar = Math.max(maxSoFar, maxEnd);
         }
         return maxSoFar;
+    }
+}
+```
+
+Approach 2: One-pass
+
+Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(1)
+
+```java
+public class Solution {
+    public int maxProfit(int prices[]) {
+        int minprice = Integer.MAX_VALUE;
+        int maxprofit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (prices[i] < minprice)
+                minprice = prices[i];
+            else if (prices[i] - minprice > maxprofit)
+                maxprofit = prices[i] - minprice;
+        }
+        return maxprofit;
     }
 }
 ```

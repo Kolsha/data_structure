@@ -26,6 +26,8 @@ Explanation: There are three ways to climb to the top.
 ```
 
 **Solution:**<br/>
+Approach 1: Dynamic programming
+
 - Define subproblems<br/>
 Let D<sub>n</sub> be the number of ways to climb the stairs.
 - Find the recurrence<br/>
@@ -36,6 +38,9 @@ Since we can climb 1 stair or 2 stairs at a time, in the final phase, we will on
 - Solve the base cases
   1. D<sub>1</sub> = 1, D<sub>2</sub> = 2
 
+Complexity analysis
+- Time complexity: O(n)
+- Space complexity: O(1)
 
 ```java
 class Solution {

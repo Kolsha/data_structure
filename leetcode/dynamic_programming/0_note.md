@@ -1,5 +1,5 @@
-from:<br/>https://web.stanford.edu/class/cs97si/04-dynamic-programming.pdf<br/>
-also useful info:<br/>https://www.geeksforgeeks.org/dynamic-programming/<br/>
+From:<br/>https://web.stanford.edu/class/cs97si/04-dynamic-programming.pdf<br/>
+Useful info:<br/>https://www.geeksforgeeks.org/dynamic-programming/<br/>
 
 https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/m2G1pAq0OO0
 
@@ -69,7 +69,7 @@ Implementation from : https://www.geeksforgeeks.org/count-ofdifferent-ways-expre
 ```java
 class Solution { 
 
-	static int countWays(int n) { 
+	static int countWays(int n) {
 		int DP[] = new int[n + 1]; 
 
 		// base cases 
@@ -78,14 +78,15 @@ class Solution {
 
 		// iterate for all values from 4 to n 
 		for (int i = 4; i <= n; i++) {
-			DP[i] = DP[i - 1] + DP[i - 3] 
-					+ DP[i - 4]; 
-        }
+			DP[i] = DP[i - 1] + DP[i - 3] + DP[i - 4];
+                }
 		return DP[n]; 
-	} 
+	}
 } 
 ```
-Similar problem: [Climbing Stairs](./climbing_stairs.md)<br/>
+Similar problem: 
+1. [Climbing Stairs](./climbing_stairs.md)
+2. [Maximum Subarray](./maximum_subarray.md)
 
 **Problem 2:** [Tiling with Dominoes ( aka "Tri Tiling" )](https://www.geeksforgeeks.org/tiling-with-dominoes/)
 <br/>Given a 3 x n board, find the number of ways to fill it with 2 x 1 dominoes.
