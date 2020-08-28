@@ -26,48 +26,47 @@ Solution
 
 Method 1: Stack w/ minimum info on each node
 
-Time complexity:
+- Time complexity: O(1)
 
-Space complexity:
+- Space complexity: O(n)
 
 In Java
 ```java
 class MinStack {
-    private Stack<Node> mStack = null;
-    /** initialize your data structure here. */
-    public MinStack() {
-        mStack = new Stack<>();
-    }
+    
+    private Stack<int[]> stack = new Stack<>();
+    
+    public MinStack() { }
+    
     
     public void push(int x) {
-        int min = x;
-        if(!mStack.isEmpty()) {
-            min = Math.min(mStack.peek().min, x);   
+        
+        /* If the stack is empty, then the min value
+         * must just be the first value we add. */
+        if (stack.isEmpty()) {
+            stack.push(new int[]{x, x});
+            return;
         }
-        mStack.push(new Node(x, min));
+        
+        int currentMin = stack.peek()[1];
+        stack.push(new int[]{x, Math.min(x, currentMin)});
     }
+    
     
     public void pop() {
-        mStack.pop();
+        stack.pop();
     }
+    
     
     public int top() {
-        return mStack.peek().value;
+        return stack.peek()[0];
     }
     
+    
     public int getMin() {
-        return mStack.peek().min;
-    }
-    private static class Node {
-        int value;
-        int min;
-        Node(int val, int mini) {
-            value = val;
-            min = mini;
-        }
+        return stack.peek()[1];
     }
 }
-
 
 /**
  * Your MinStack object will be instantiated and called as such:
