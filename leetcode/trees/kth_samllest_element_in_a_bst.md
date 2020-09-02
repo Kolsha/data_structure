@@ -33,45 +33,43 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 
 Solution:
 
-In-Order Traverse approach:
+Approach 1: In-Order Traverse
+In-order traversal in BST => sorted list with ascending value
+
+Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(n)
 ```java
 /**
- * Definition for a binary tree node. public class TreeNode { int val; TreeNode
- * left; TreeNode right; TreeNode(int x) { val = x; } }
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
  */
 class Solution {
-    private int curr = 0;
-
     public int kthSmallest(TreeNode root, int k) {
-        if (root == null) {
-            return -1;
-        }
-
-        TreeNode result = new TreeNode(-1);
-        getIndexedNodeFromBST(root, k, result);
-        return result.val;
+        TreeNode res = new TreeNode(-1);
+        int[] curr = new int[1];
+        curr[0] = 0;
+        bstInorderTraversal(root, res, k, curr);
+        return res.val;
     }
-
-    private void getIndexedNodeFromBST(TreeNode root, int k, TreeNode result) {
-        if (root == null) {
+    
+    private void bstInorderTraversal(TreeNode root, TreeNode res, int k, int[] curr) {
+        if(root == null) {
             return;
         }
-
-        if (root.left != null) {
-            getIndexedNodeFromBST(root.left, k, result);
+        
+        bstInorderTraversal(root.left, res, k, curr);
+        curr[0]++;
+        if(curr[0] == k) {
+            res.val = root.val;
+            return;
         }
-
-        curr++;
-        if (curr == k) {
-            result.val = root.val;
-            result.left = root.left;
-            result.right = root.right;
-        }
-
-        if (root.right != null) {
-            getIndexedNodeFromBST(root.right, k, result);
-        }
-
+        bstInorderTraversal(root.right, res, k, curr);
     }
 }
 ```
