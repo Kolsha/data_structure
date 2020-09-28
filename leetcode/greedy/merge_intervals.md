@@ -40,6 +40,7 @@ class Solution {
         int[] newInterval = intervals[0];
         res.add(newInterval);
         for (int[] interval : intervals) {
+            // interval start time is eariler than the newInterval end time
             if (interval[0] <= newInterval[1]) {
                 newInterval[1] = Math.max(newInterval[1], interval[1]);
             } else {
