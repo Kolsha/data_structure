@@ -25,7 +25,7 @@ Constraints:
 
 Solution
 
-[Method 1: Greedy algo](https://leetcode.com/problems/task-scheduler/discuss/104500/Java-O(n)-time-O(1)-space-1-pass-no-sorting-solution-with-detailed-explanation)
+[Approach 1: Greedy algo](https://leetcode.com/problems/task-scheduler/discuss/104500/Java-O(n)-time-O(1)-space-1-pass-no-sorting-solution-with-detailed-explanation)
 
 The key is to find out how many idles do we need.
 Let's first look at how to arrange them. it's not hard to figure out that we can do a "greedy arrangement": always arrange task with most frequency first.
@@ -137,4 +137,76 @@ class Solution {
 }
 ```
 
-// Priority Queue solution https://leetcode.com/problems/task-scheduler/discuss/104501/Java-PriorityQueue-solution-Similar-problem-Rearrange-string-K-distance-apart
+##### Approach 2: Math
+##### Intuition
+
+Let's use some math to compute the answer. There are two possible situations:
+
+- The most frequent task is not frequent enough to force the presence of idle slots.
+  ![](./res/all2.png)
+
+- The most frequent task is frequent enough to force some idle slots. ![](./res/frequent2.png)
+
+~~~
+The answer is the maximum between these two.
+~~~
+
+The first situation is straightforward because the total number of slots is defined by the number of tasks: `len(tasks)`.
+
+The second situation is a bit more tricky and requires to know the number `n_max` and the frequency `f_max` of the most frequent tasks.
+
+![](./res/f_max.png)
+
+Now it's easy to compute:
+
+![](./res/compute.png)
+
+##### Algorithm
+
+- The maximum number of tasks is 26. Let's allocate an array frequencies of 26 elements to keep the frequency of each task.
+
+- Iterate over the input array and store the frequency of task A at index 0, the frequency of task B at index 1, etc.
+
+- Find the maximum frequency: f_max = max(frequencies).
+
+- Find the number of tasks which have the max frequency: n_max = frequencies.count(f_max).
+
+- If the number of slots to use is defined by the most frequent task, it's equal to (f_max - 1) * (n + 1) + n_max.
+
+- Otherwise, the number of slots to use is defined by the overall number of tasks: len(tasks).
+
+- Return the maximum of these two: max(len(tasks), (f_max - 1) * (n + 1) + n_max).
+
+
+##### Complexity Analysis
+
+- Time Complexity: O(N<sub>total</sub>), where O(N<sub>total</sub>)​	
+  is a number of tasks to execute. This time is needed to iterate over the input array tasks and to compute the array frequencies. Array frequencies contains 26 elements, and hence all operations with it takes constant time.
+
+- Space Complexity: O(1), to keep the array frequencies of 26 elements.
+
+```java
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        // frequencies of the tasks
+        int[] frequencies = new int[26];
+        for (int t : tasks) {
+            frequencies[t - 'A']++;
+        }
+
+        // max frequency
+        int f_max = 0;
+        for (int f : frequencies) {
+            f_max = Math.max(f_max, f);
+        }
+        
+        // count the most frequent tasks
+        int n_max = 0;
+        for (int f : frequencies) {
+            if (f == f_max) n_max++;
+        }
+        
+        return Math.max(tasks.length, (f_max - 1) * (n + 1) + n_max);
+    }
+}
+```

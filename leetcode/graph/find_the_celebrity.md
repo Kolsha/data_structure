@@ -41,7 +41,7 @@ Note:
 
 Solution
 
-Method 1: DAG
+Approach 1: DAG
 ```java
 public class Solution extends Relation {
     public int findCelebrity(int n) {
@@ -64,6 +64,54 @@ public class Solution extends Relation {
             }
         }
         return -1;
+    }
+}
+```
+
+Approach 2: Brute force
+##### Intuition
+As per the problem statement, for a given person i, we can check whether or not i is a celebrity by using the knows(...) API to see if everybody knows i, and that i know nobody.
+
+Therefore, the simplest way of solving this problem is to go through each of the people in turn, and check whether or not they are a celebrity.
+
+##### Complexity Analysis
+
+We don't know what time and space the knows(...) API uses. Because it's not our concern, we'll assume it's O(1) for the purpose of analysing our algorithm.
+
+- Time Complexity : O(n^2) 
+  For each of the n people, we need to check whether or not they are a celebrity.
+  
+  Checking whether or not somebody is a celebrity requires making 22 API calls for each of the n - 1 other people, for a total of 2 * (n - 1) = = 2 ⋅ n − 2 calls. In big-oh notation, we drop the constants, leaving O(n).
+  
+  So each of the nn celebrity checks will cost O(n)O(n), giving a total of O(n^2).
+
+- Space Complexity : O(1).
+  Our code only uses constant extra space. The results of the API calls are not saved.
+
+
+```java
+public class Solution extends Relation {
+    
+    private int numberOfPeople;
+    
+    public int findCelebrity(int n) {
+        numberOfPeople = n;
+        for (int i = 0; i < n; i++) {
+            if (isCelebrity(i)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    private boolean isCelebrity(int i) {
+        for (int j = 0; j < numberOfPeople; j++) {
+            if (i == j) continue; // Don't ask if they know themselves.
+            if (knows(i, j) || !knows(j, i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 ```
