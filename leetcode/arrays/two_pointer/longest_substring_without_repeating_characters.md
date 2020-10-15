@@ -26,9 +26,86 @@ Explanation: The answer is "wke", with the length of 3.
 
 Solution
 
-[Method 1](https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1729/11-line-simple-Java-solution-O(n)-with-explanation)
+##### Approach 1: Brutal force
+##### Intuition
+
+Check all the substring one by one to see if it has no duplicate character.
+
+##### Algorithm
+
+Suppose we have a function boolean allUnique(String substring) which will return true if the characters in the substring are all unique, otherwise false. We can iterate through all the possible substrings of the given string s and call the function allUnique. If it turns out to be true, then we update our answer of the maximum length of substring without duplicate characters.
+
+##### Complexity Analysis
+- Time complexity: O(n^3)
+- Space complexity: O(min(n,m)). We need O(k) space for checking a substring has no duplicate characters, where k is the size of the Set. The size of the Set is upper bounded by the size of the string n and the size of the charset/alphabet m.
+
+```java
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        int ans = 0;
+        for (int i = 0; i < n; i++)
+            for (int j = i + 1; j <= n; j++)
+                if (allUnique(s, i, j)) ans = Math.max(ans, j - i);
+        return ans;
+    }
+
+    public boolean allUnique(String s, int start, int end) {
+        Set<Character> set = new HashSet<>();
+        for (int i = start; i < end; i++) {
+            Character ch = s.charAt(i);
+            if (set.contains(ch)) return false;
+            set.add(ch);
+        }
+        return true;
+    }
+}
+```
+[Approach 2: Sliding Window]()
+##### Algorithm
+
+The naive approach is very straightforward. But it is too slow. So how can we optimize it?
+
+In the naive approaches, we repeatedly check a substring to see if it has duplicate character. But it is unnecessary. If a substring s<sub>ij</sub> from index `i` to `j − 1` is already checked to have no duplicate characters. We only need to check if s[j] is already in the substring s<sub>ij</sub>​.
+
+To check if a character is already in the substring, we can scan the substring, which leads to an O(n^2) algorithm. But we can do better.
+
+By using HashSet as a sliding window, checking if a character in the current can be done in O(1).
+
+A sliding window is an abstract concept commonly used in array/string problems. A window is a range of elements in the array/string which usually defined by the start and end indices, i.e. [i, j) (left-closed, right-open). A sliding window is a window "slides" its two boundaries to the certain direction. For example, if we slide [i, j) to the right by 1 element, then it becomes [i+1, j+1) (left-closed, right-open).
+
+Back to our problem. We use HashSet to store the characters in current window [i, j) (j = i initially). Then we slide the index j to the right. If it is not in the HashSet, we slide j further. Doing so until s[j] is already in the HashSet. At this point, we found the maximum size of substrings without duplicate characters start with index i. If we do this for all i, we get our answer.
+
+```java
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        Set<Character> set = new HashSet<>();
+        int ans = 0, i = 0, j = 0;
+        while (i < n && j < n) {
+            // try to extend the range [i, j]
+            if (!set.contains(s.charAt(j))){
+                set.add(s.charAt(j++));
+                ans = Math.max(ans, j - i);
+            }
+            else {
+                set.remove(s.charAt(i++));
+            }
+        }
+        return ans;
+    }
+}
+```
+
+[Approach 3: Sliding Window Optimized](https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1729/11-line-simple-Java-solution-O(n)-with-explanation)
 
 the basic idea is, keep a hashmap which stores the characters in string as keys and their positions as values, and keep two pointers which define the max substring. move the right pointer to scan through the string , and meanwhile update the hashmap. If the character is already in the hashmap, then move the left pointer to the right of the same character last found. Note that the two pointers can only move forward.
+
+##### Complexity Analysis
+
+- Time complexity : O(n). Index j will iterate n times.
+
+- Space complexity (HashMap) : O(n)
 
 ```java
 class Solution {
