@@ -22,7 +22,12 @@ Clarification: The above format is the same as how LeetCode serializes a binary 
 
 Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
 
-Solution
+##### Approach 1: Recursive + Preorder traversal
+
+##### Complexity analysis
+- Time complexity:
+- Space complexity:
+
 
 ```java
 /**

@@ -37,9 +37,13 @@ randomSet.getRandom();
 
 Follow-up question: How do you modify your code to allow duplicated number?
 
-Solution
+##### Solution
 
-Method 1: HashMap
+##### Approach 1: HashMap + ArrayList
+##### Complexity analysis
+- Time complexity: $O(1)$
+- Space complexity: $O(N)$
+
 ```java
 public class RandomizedSet {
     private ArrayList<Integer> nums;
@@ -54,7 +58,9 @@ public class RandomizedSet {
     /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
     public boolean insert(int val) {
         boolean contain = locs.containsKey(val);
-        if ( contain ) return false;
+        if ( contain ) {
+            return false;
+        }
         locs.put( val, nums.size());
         nums.add(val);
         return true;
@@ -63,7 +69,9 @@ public class RandomizedSet {
     /** Removes a value from the set. Returns true if the set contained the specified element. */
     public boolean remove(int val) {
         boolean contain = locs.containsKey(val);
-        if ( ! contain ) return false;
+        if ( ! contain ) {
+            return false;
+        }
         int loc = locs.get(val);
         if (loc < nums.size() - 1 ) { // not the last one than swap the last one with this val
             int lastone = nums.get(nums.size() - 1 );

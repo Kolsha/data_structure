@@ -29,10 +29,14 @@ Note:
 - n is a 32-bit signed integer, within the range [−2<sup>31</sup>, 2<sup>31</sup> − 1]
 
 
-**Solution:**
-```java
-// todo we still need non-recursive solution here
 
+**Solution:**
+##### Approach 1: Recursive
+##### Complexity analysis:
+- Time complexity: O(logn)
+- Space complexity: O(logn)
+
+```java
 // recursive solution
 // time complexity O(logN)
 class Solution {
@@ -53,4 +57,30 @@ class Solution {
         return t * t * myPow(x, n%2);
     }
 }
+```
+
+##### Approach 2: Iterative
+##### Complexity analysis
+- Time complexity: O(logn)
+- Space complexity: O(1)
+
+```java
+class Solution {
+    public double myPow(double x, int n) {
+        long N = n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+        double ans = 1;
+        double current_product = x;
+        for (long i = N; i > 0; i /= 2) {
+            if ((i % 2) == 1) {
+                ans = ans * current_product;
+            }
+            current_product = current_product * current_product;
+        }
+        return ans;
+    }
+};
 ```
