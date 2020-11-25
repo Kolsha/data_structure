@@ -29,13 +29,14 @@ Input: [-10,9,20,null,null,15,7]
 Output: 42
 ```
 
-Solution
+#### Solution
 
-Method 1: Recursive
+##### Approach 1: Recursive
 
-Time complexity : O(n) where N is number of nodes, since we visit each node not more than 2 times.
+##### Complexity analysis
+- Time complexity : O(n) where N is number of nodes, since we visit each node not more than 2 times.
 
-Space complexity : O(nlogn). We have to keep a recursion stack of the size of the tree height, which is O(nlogn) for the binary tree.
+- Space complexity : O(nlogn). We have to keep a recursion stack of the size of the tree height, which is O(nlogn) for the binary tree.
 ```java
 class Solution {
     int maxSum = Integer.MIN_VALUE;

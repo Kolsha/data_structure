@@ -29,7 +29,13 @@ String S consists only of alphanumerical characters (a-z and/or A-Z and/or 0-9) 
 String S is non-empty.
 ```
 
-Solution
+
+##### Approach 1
+
+##### Complexity analysis
+- Time complexity:
+- Space complexity:
+
 ```java
 class Solution {
     public String licenseKeyFormatting(String S, int k) {
