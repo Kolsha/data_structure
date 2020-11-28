@@ -74,6 +74,12 @@ However, there are two edge cases:
 ![](./res/missing_range2.png)
 - Case 2: Similarly, if we don't end with `upper` as the last element of the array, we will need to consider `[nums[n-1] + 1, upper]` missing range as well. Note n here is the length of the input array `nums`.
 
+##### Complexity Analysis
+
+- Time complexity : $O(N)$, where $N$ is the length of the input array. This is because we are only iterating over the array once.
+
+- Space complexity : $O(N)$, where $N$ is the length of the input array. This is because we could have a missing range between each of the consecutive element of the input array. Hence, our output list that we need to return will be of size $N$.
+
 ```java
 class Solution {
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {

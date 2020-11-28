@@ -11,6 +11,7 @@ Note:
 You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
 
 Example 1:
+![](https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg)
 ```
 Given input matrix = 
 [
@@ -27,6 +28,7 @@ rotate the input matrix in-place such that it becomes:
 ]
 ```
 Example 2:
+![](https://assets.leetcode.com/uploads/2020/08/28/mat2.jpg)
 ```
 Given input matrix =
 [
@@ -45,7 +47,7 @@ rotate the input matrix in-place such that it becomes:
 ]
 ```
 
-Solution
+##### Solution
 
 O(n^2) time and O(1) space algorithm ( without any workarounds and hanky-panky stuff! )
 
@@ -74,8 +76,7 @@ Method 2: Reverse each column and then reverse each row
 
 Method 3: Rotate by +180 as they are same
 
-=== 
-Approach 1: Transpose and then reverse
+##### Approach 1: Transpose and then reverse
 
 ex:
 ```

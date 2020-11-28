@@ -35,11 +35,12 @@ Note:
 
 Solution
 
-Method 1: Simple Sorting
+##### Approach 1: Simple Sorting
 
-Time Complexity: O(nlogn)
+##### Complexity analysis
+- Time Complexity: O(nlogn)
 
-Space Complexity: O(1)
+- Space Complexity: O(1)
 
 In Java
 ```java
@@ -57,7 +58,7 @@ class Solution {
 }
 ```
 
-Method 2: Priority Queue
+##### Approach 2: Priority Queue
 ```java
 class Solution {
     public int[][] kClosest(int[][] points, int K) {
@@ -81,6 +82,84 @@ class Solution {
             res[--K] = queue.poll();
         }
         return res;
+    }
+}
+```
+
+##### Approach 3: Divide and Conquer [Time limit exceed]
+###### Intuition
+
+We want an algorithm faster than N \log NNlogN. Clearly, the only way to do this is to use the fact that the K elements returned can be in any order -- otherwise we would be sorting which is at least N \log NNlogN.
+
+Say we choose some random element x = A[i] and split the array into two buckets: one bucket of all the elements less than x, and another bucket of all the elements greater than or equal to x. This is known as "quickselecting by a pivot x".
+
+The idea is that if we quickselect by some pivot, on average in linear time we'll reduce the problem to a problem of half the size.
+
+###### Algorithm
+
+Let's do the work(i, j, K) of partially sorting the subarray (points[i], points[i+1], ..., points[j]) so that the smallest K elements of this subarray occur in the first K positions (i, i+1, ..., i+K-1).
+
+First, we quickselect by a random pivot element from the subarray. To do this in place, we have two pointers i and j, and move these pointers to the elements that are in the wrong bucket -- then, we swap these elements.
+
+After, we have two buckets [oi, i] and [i+1, oj], where (oi, oj) are the original (i, j) values when calling work(i, j, K). Say the first bucket has 10 items and the second bucket has 15 items. If we were trying to partially sort say, K = 5 items, then we only need to partially sort the first bucket: work(oi, i, 5). Otherwise, if we were trying to partially sort say, K = 17 items, then the first 10 items are already partially sorted, and we only need to partially sort the next 7 items: work(i+1, oj, 7).
+
+##### Complexity Analysis
+
+- Time Complexity: $O(N)$ in average case and $O(N^2)$ in the worst case, where NN is the length of points.
+
+- Space Complexity: $O(N)$.
+
+```java
+import java.util.concurrent.ThreadLocalRandom;
+
+class Solution {
+    int[][] points;
+    public int[][] kClosest(int[][] points, int K) {
+        this.points = points;
+        sort(0, points.length - 1, K);
+        return Arrays.copyOfRange(points, 0, K);
+    }
+
+    public void sort(int i, int j, int K) {
+        if (i >= j) return;
+        int k = ThreadLocalRandom.current().nextInt(i, j);
+        swap(i, k);
+
+        int mid = partition(i, j);
+        int leftLength = mid - i + 1;
+        if (K < leftLength)
+            sort(i, mid - 1, K);
+        else if (K > leftLength)
+            sort(mid + 1, j, K - leftLength);
+    }
+
+    public int partition(int i, int j) {
+        int oi = i;
+        int pivot = dist(i);
+        i++;
+
+        while (true) {
+            while (i < j && dist(i) < pivot)
+                i++;
+            while (i <= j && dist(j) > pivot)
+                j--;
+            if (i >= j) break;
+            swap(i, j);
+        }
+        swap(oi, j);
+        return j;
+    }
+
+    public int dist(int i) {
+        return points[i][0] * points[i][0] + points[i][1] * points[i][1];
+    }
+
+    public void swap(int i, int j) {
+        int t0 = points[i][0], t1 = points[i][1];
+        points[i][0] = points[j][0];
+        points[i][1] = points[j][1];
+        points[j][0] = t0;
+        points[j][1] = t1;
     }
 }
 ```
