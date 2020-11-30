@@ -145,3 +145,175 @@ public class Solution {
     }
 }
 ```
+
+Approach 1: Divide and Conquer
+Intuition
+
+The problem is a classical example of divide and conquer approach, and can be solved with the algorithm similar with the merge sort.
+
+Let's follow here a solution template for the divide and conquer problems :
+
+Define the base case(s).
+
+Split the problem into subproblems and solve them recursively.
+
+Merge the solutions for the subproblems to obtain the solution for the original problem.
+
+Algorithm
+
+maxSubArray for array with n numbers:
+
+If n == 1 : return this single element.
+
+left_sum = maxSubArray for the left subarray, i.e. for the first n/2 numbers (middle element at index (left + right) / 2 always belongs to the left subarray).
+
+right_sum = maxSubArray for the right subarray, i.e. for the last n/2 numbers.
+
+cross_sum = maximum sum of the subarray containing elements from both left and right subarrays and hence crossing the middle element at index (left + right) / 2.
+
+Merge the subproblems solutions, i.e. return max(left_sum, right_sum, cross_sum).
+
+![](https://leetcode.com/problems/maximum-subarray/Figures/53/dc.png)
+
+```java
+class Solution {
+  public int crossSum(int[] nums, int left, int right, int p) {
+    if (left == right) return nums[left];
+
+    int leftSubsum = Integer.MIN_VALUE;
+    int currSum = 0;
+    for(int i = p; i > left - 1; --i) {
+      currSum += nums[i];
+      leftSubsum = Math.max(leftSubsum, currSum);
+    }
+
+    int rightSubsum = Integer.MIN_VALUE;
+    currSum = 0;
+    for(int i = p + 1; i < right + 1; ++i) {
+      currSum += nums[i];
+      rightSubsum = Math.max(rightSubsum, currSum);
+    }
+
+    return leftSubsum + rightSubsum;
+  }
+
+  public int helper(int[] nums, int left, int right) {
+    if (left == right) return nums[left];
+
+    int p = (left + right) / 2;
+
+    int leftSum = helper(nums, left, p);
+    int rightSum = helper(nums, p + 1, right);
+    int crossSum = crossSum(nums, left, right, p);
+
+    return Math.max(Math.max(leftSum, rightSum), crossSum);
+  }
+
+  public int maxSubArray(int[] nums) {
+    return helper(nums, 0, nums.length - 1);
+  }
+}
+```
+
+Complexity Analysis
+
+Time complexity : \mathcal{O}(N \log N)O(NlogN). Let's compute the solution with the help of master theorem T(N) = aT\left(\frac{b}{N}\right) + \Theta(N^d)T(N)=aT( 
+N
+b
+​	
+ )+Θ(N 
+d
+ ). The equation represents dividing the problem up into aa subproblems of size \frac{N}{b} 
+b
+N
+​	
+  in \Theta(N^d)Θ(N 
+d
+ ) time. Here one divides the problem in two subproblemes a = 2, the size of each subproblem (to compute left and right subtree) is a half of initial problem b = 2, and all this happens in a \mathcal{O}(N)O(N) time d = 1. That means that \log_b(a) = dlog 
+b
+​	
+ (a)=d and hence we're dealing with case 2 that means \mathcal{O}(N^{\log_b(a)} \log N) = \mathcal{O}(N \log N)O(N 
+log 
+b
+​	
+ (a)
+ logN)=O(NlogN) time complexity.
+
+Space complexity : \mathcal{O}(\log N)O(logN) to keep the recursion stack.
+
+
+Approach 2: Greedy
+Intuition
+
+The problem to find maximum (or minimum) element (or sum) with a single array as the input is a good candidate to be solved by the greedy approach in linear time. One can find the examples of linear time greedy solutions in our articles of
+Super Washing Machines, and Gas Problem.
+
+Pick the locally optimal move at each step, and that will lead to the globally optimal solution.
+
+The algorithm is general and straightforward: iterate over the array and update at each step the standard set for such problems:
+
+current element
+
+current local maximum sum (at this given point)
+
+global maximum sum seen so far.
+
+![](https://leetcode.com/problems/maximum-subarray/Figures/53/greedy.png)
+
+```java
+class Solution {
+  public int maxSubArray(int[] nums) {
+    int n = nums.length;
+    int currSum = nums[0], maxSum = nums[0];
+
+    for(int i = 1; i < n; ++i) {
+      currSum = Math.max(nums[i], currSum + nums[i]);
+      maxSum = Math.max(maxSum, currSum);
+    }
+    return maxSum;
+  }
+}
+```
+Complexity Analysis
+
+Time complexity : \mathcal{O}(N)O(N) since it's one pass along the array.
+
+Space complexity : \mathcal{O}(1)O(1), since it's a constant space solution.
+
+
+Approach 3: Dynamic Programming (Kadane's algorithm)
+Intuition
+
+The problem to find sum or maximum or minimum in an entire array or in a fixed-size sliding window could be solved by the dynamic programming (DP) approach in linear time.
+
+There are two standard DP approaches suitable for arrays:
+
+Constant space one. Move along the array and modify the array itself.
+
+Linear space one. First move in the direction left->right, then in the direction right->left. Combine the results. Here is an example.
+
+Let's use here the first approach since one could modify the array to track the current local maximum sum at this given point.
+
+Next step is to update the global maximum sum, knowing the local one.
+
+![](https://leetcode.com/problems/maximum-subarray/Figures/53/dp.png)
+
+```java
+class Solution {
+  public int maxSubArray(int[] nums) {
+    int n = nums.length, maxSum = nums[0];
+    for(int i = 1; i < n; ++i) {
+      if (nums[i - 1] > 0) nums[i] += nums[i - 1];
+      maxSum = Math.max(nums[i], maxSum);
+    }
+    return maxSum;
+  }
+}
+```
+
+Complexity Analysis
+
+Time complexity : \mathcal{O}(N)O(N) since it's one pass along the array.
+
+Space complexity : \mathcal{O}(1)O(1), since it's a constant space solution.
+

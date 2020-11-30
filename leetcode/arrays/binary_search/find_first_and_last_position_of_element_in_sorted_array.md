@@ -21,7 +21,7 @@ Output: [-1,-1]
 
 #### Solution
 
-Approach 1: Binary Search
+##### Approach 1: Binary Search
 ##### Intuition
 
 Because the array is sorted, we can use binary search to locate the left and rightmost indices.
@@ -39,10 +39,37 @@ The first animation below shows the process for finding the leftmost index, and 
 ##### Find right index:
 ![](./res/range_right.gif)
 
-Complexity analysis:
-- Time complexity: O(log N)
-- Space complexity: O(1)
+##### Complexity Analysis
 
+- Time complexity : \mathcal{O}(\log N)O(logN)
+
+Here we invoke binary search twice. Let's compute time complexity with the help of master theorem T(N) = aT\left(\frac{N}{b}\right) + \Theta(N^d)T(N)=aT( 
+b
+N
+​	
+ )+Θ(N 
+d
+ ). The equation represents dividing the problem up into aa subproblems of size \frac{N}{b} 
+b
+N
+​	
+  in \Theta(N^d)Θ(N 
+d
+ ) time. Here at step there is only one subproblem a = 1, its size is a half of the initial problem b = 2, and all this happens in a constant time d = 0. That means that \log_b{a} = dlog 
+b
+​	
+ a=d and hence we're dealing with case 2 that results in \mathcal{O}(n^{\log_b{a}} \log^{d + 1} N)O(n 
+log 
+b
+​	
+ a
+ log 
+d+1
+ N) = \mathcal{O}(\log N)O(logN) time complexity.
+
+- Space complexity : \mathcal{O}(1)O(1)
+
+All work is done in place, so the overall memory usage is constant.
 ```java
 class Solution {
     // returns leftmost (or rightmost) index at which `target` should be
