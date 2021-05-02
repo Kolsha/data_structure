@@ -1,5 +1,4 @@
-### 15. 3Sum
-https://leetcode.com/problems/3sum/
+### [15. 3Sum](https://leetcode.com/problems/3sum/)
 
 Given an array `nums` of n integers, are there elements a, b, c in `nums` such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
 
@@ -26,14 +25,14 @@ Output: []
 **Constraints:**
 
 - 0 <= nums.length <= 3000
-- -10^5 <= nums[i] <= 10^5
+- $-10^5$ <= nums[i] <= $10^5$
 
-Solution
+### Solution
 
 ##### Intuition
 This problem is a follow-up of Two Sum, and it is a good idea to first take a look at Two Sum and Two Sum II. An interviewer may ask to solve Two Sum first, and then throw 3Sum at you. Pay attention to subtle differences in problem description and try to re-use existing solutions!
 
-[Two Sum](./../two_sum.md), Two Sum II and 3Sum share a similarity that the sum of elements must match the target exactly. A difference is that, instead of exactly one answer, we need to find all unique triplets that sum to zero.
+[Two Sum](./../two_sum.md), [Two Sum II](./../binary_search/two_sum_ii.md) and 3Sum share a similarity that the sum of elements must match the target exactly. A difference is that, instead of exactly one answer, we need to find all unique triplets that sum to zero.
 
 Before jumping in, let's check the existing solutions and determine the best conceivable runtime (BCR) for 3Sum:
 

@@ -1,6 +1,4 @@
-### 1. Two Sum
-
-https://leetcode.com/problems/two-sum/
+### [1. Two Sum](https://leetcode.com/problems/two-sum/)
 
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
@@ -14,16 +12,18 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 ```
 
-Solution
+### Solution
 
-Method 1: One Pass HashMap
+#### Approach 1: One Pass HashMap
 
 It turns out we can do it in one-pass. While we iterate and inserting elements into the table, we also look back to check if current element's complement already exists in the table. If it exists, we have found a solution and return immediately.
 
-```
-Time Complexity: O(n)
-Space Complexity: O(n)
-```
+#### Complexity Analysis
+- Time Complexity: O(n)
+- Space Complexity: O(n)
+
+
+Java
 ```java
 class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -41,4 +41,19 @@ class Solution {
         return res;
     }
 }
+```
+
+Python
+
+```python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        mapping = dict()
+        for i, num in enumerate(nums):
+            key = mapping.get(target - num, -1)
+            if key != -1:
+                return [key, i]
+            else:
+                mapping[num] = i
+        return [-1, -1]
 ```

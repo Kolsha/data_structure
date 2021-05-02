@@ -2,10 +2,10 @@
 2. [Longest Substring Without Repeating Characters](./../arrays/two_pointer/longest_substring_without_repeating_characters.md)
 3. [Longest Palindromic Substring](./../dynamic_programming/palindromic_string/longest_palindromic_substring.md)
 4. [Container With Most Water](./../arrays/two_pointer/container_with_most_water.md)
-5. 3Sum
+5. [3Sum](../arrays/two_pointer/3_sum.md)
 6. [Remove Nth Node From End of List](./../singly_linked_list/remove_nth_node_from_end_of_list.md)
 7. Valid Parentheses
-8. Merge Two Sorted Lists
+8. [Merge Two Sorted Lists](../singly_linked_list/merge_two_sorted_lists.md)
 9. Merge k Sorted Lists
 10. Search in Rotated Sorted Array
 11. Combination Sum
@@ -17,7 +17,7 @@
 17. Merge Intervals
 18. Insert Interval
 19. Unique Paths
-20. Climbing Stairs
+20. [Climbing Stairs](../dynamic_programming/climbing_stairs.md)
 21. Set Matrix Zeroes
 22. Minimum Window Substring
 23. Word Search
