@@ -4,7 +4,7 @@
 4. [Container With Most Water](./../arrays/two_pointer/container_with_most_water.md)
 5. [3Sum](../arrays/two_pointer/3_sum.md)
 6. [Remove Nth Node From End of List](./../singly_linked_list/remove_nth_node_from_end_of_list.md)
-7. Valid Parentheses
+7. [Valid Parentheses](../stack/valid_parentheses.md)
 8. [Merge Two Sorted Lists](../singly_linked_list/merge_two_sorted_lists.md)
 9. Merge k Sorted Lists
 10. Search in Rotated Sorted Array
@@ -23,7 +23,7 @@
 23. Word Search
 24. Decode Ways
 25. Validate Binary Search Tree
-26. Same Tree
+26. [Same Tree](../trees/same_tree.md)
 27. Binary Tree Level Order Traversal
 28. Maximum Depth of Binary Tree
 29. Construct Binary Tree from Preorder and Inorder Traversal
@@ -62,7 +62,7 @@
 62. Find Median from Data Stream
 63. Serialize and Deserialize Binary Tree
 64. Longest Increasing Subsequence
-65. Coin Change
+65. [Coin Change](../dynamic_programming/coin_change.md)
 66. Number of Connected Components in an Undirected Graph
 67. Counting Bits
 68. Top K Frequent Elements

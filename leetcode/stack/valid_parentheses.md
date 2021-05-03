@@ -1,6 +1,4 @@
-### 20. Valid Parentheses
-
-https://leetcode.com/problems/valid-parentheses/
+### [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
 
 Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
@@ -104,11 +102,65 @@ class Solution {
                         return false;
                     }
                     break;
+
                 default:
                     break;
             }
         }
         return stack.isEmpty();
     }
+}
+```
+
+##### Python
+
+```python
+        stack = []
+        dict = {"]":"[", "}":"{", ")":"("}
+        for char in s:
+            if char in dict.values():
+                stack.append(char)
+            elif char in dict.keys():
+                if stack == [] or dict[char] != stack.pop():
+                    return False
+            else:
+                return False
+        return stack == []
+```
+
+
+##### Approach 2: Iterative
+
+##### Complexity analysis:
+- Time complexity:
+- Space complexity:
+
+###### Java
+```java
+public class Solution {
+	public boolean isValid(String s) {
+		char[] stack = new char[s.length()];
+		int head = 0;
+		for(char c : s.toCharArray()) {
+			switch(c) {
+				case '{':
+				case '[':
+				case '(':
+					stack[head++] = c;
+					break;
+				case '}':
+					if(head == 0 || stack[--head] != '{') return false;
+					break;
+				case ')':
+					if(head == 0 || stack[--head] != '(') return false;
+					break;
+				case ']':
+					if(head == 0 || stack[--head] != '[') return false;
+					break;
+			}
+		}
+		return head == 0;
+
+	}
 }
 ```
