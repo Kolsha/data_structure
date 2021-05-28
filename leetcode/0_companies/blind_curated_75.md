@@ -7,7 +7,7 @@
 7. [Valid Parentheses](../stack/valid_parentheses.md)
 8. [Merge Two Sorted Lists](../singly_linked_list/merge_two_sorted_lists.md)
 9. Merge k Sorted Lists
-10. Search in Rotated Sorted Array
+10. [Search in Rotated Sorted Array](../arrays/binary_search/search_in_rotated_sorted_array.md)
 11. Combination Sum
 12. Rotate Image
 13. Group Anagrams
@@ -29,7 +29,7 @@
 29. Construct Binary Tree from Preorder and Inorder Traversal
 30. Best Time to Buy and Sell Stock
 31. Binary Tree Maximum Path Sum
-32. Valid Palindrome
+32. [Valid Palindrome](../arrays/palindrome/valid_palindrome_1.md)
 33. Longest Consecutive Sequence
 34. Clone Graph
 35. Word Break

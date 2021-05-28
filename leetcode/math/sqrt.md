@@ -1,23 +1,4 @@
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {
-inlineMath: [['$','$'], ['\\(','\\)']],
-processEscapes: true},
-jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
-extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
-TeX: {
-extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
-equationNumbers: {
-autoNumber: "AMS"
-}
-}
-});
-</script>
-
-### 69. Sqrt(x)
-https://leetcode.com/problems/sqrtx/
+### [69. Sqrt(x)](https://leetcode.com/problems/sqrtx/)
 
 Implement int sqrt(int x).
 
@@ -67,6 +48,7 @@ class Solution {
   ![](./res/time_complexity.png)
 - Space complexity: O(1)
 
+###### Java
 ```java
 class Solution {
   public int mySqrt(int x) {
@@ -90,6 +72,26 @@ class Solution {
   }
 }
 ```
+###### Python
+```python
+class Solution(object):
+    def mySqrt(self, x):
+        l, r = 0, x
+        while l <= r:
+            mid = l + (r-l)//2
+            if mid * mid <= x < (mid+1)*(mid+1):
+                return mid
+            elif x < mid * mid:
+                r = mid - 1
+            else:
+                l = mid + 1
+```
+
+
+
+
+
+
 
 ##### Approach 3: Recursion + Bit Shifts
 ##### Intuition

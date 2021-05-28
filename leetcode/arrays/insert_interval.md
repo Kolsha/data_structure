@@ -104,17 +104,19 @@ class Solution {
     // init data
     int newStart = newInterval[0], newEnd = newInterval[1];
     int idx = 0, n = intervals.length;
-    LinkedList<int[]> output = new LinkedList<int[]>();
+    LinkedList<int[]> output = new LinkedList<>();
 
     // add all intervals starting before newInterval
-    while (idx < n && newStart > intervals[idx][0])
-      output.add(intervals[idx++]);
+    while (idx < n && intervals[idx][0] < newStart) {
+        output.add(intervals[idx++]);
+    }
 
     // add newInterval
     int[] interval = new int[2];
     // if there is no overlap, just add the interval
-    if (output.isEmpty() || output.getLast()[1] < newStart)
+    if (output.isEmpty() || output.getLast()[1] < newStart) {
       output.add(newInterval);
+    }
     // if there is an overlap, merge with the last interval
     else {
       interval = output.removeLast();
@@ -142,6 +144,34 @@ class Solution {
 
 ##### Complexity Analysis
 
-- Time complexity : \mathcal{O}(N)O(N) since it's one pass along the input array.
+- Time complexity : $O(N)$ since it's one pass along the input array.
 
-- Space complexity : \mathcal{O}(N)O(N) to keep the output.
+- Space complexity : $O(N)$ to keep the output.
+
+
+#### Approach 2: Short and straight-forward Solution
+
+```java
+class Solution {
+    public int[][] insert(int[][] intervals, int[] newInterval) {
+        List<int[]> result = new ArrayList<>();
+        int i = 0;
+        int start = newInterval[0];
+        int end = newInterval[1];
+        while (i < intervals.length && intervals[i][1] < start) {
+            result.add(intervals[i++]);
+        }
+        while (i < intervals.length && intervals[i][0] <= end) {
+            start = Math.min(start, intervals[i][0]);
+            end = Math.max(end, intervals[i][1]);
+            i++;
+        }
+        result.add(new int[]{start,end}); 
+
+        while (i < intervals.length) {
+            result.add(intervals[i++]);
+        }
+        return result.toArray(new int[result.size()][]);
+  }
+}
+```

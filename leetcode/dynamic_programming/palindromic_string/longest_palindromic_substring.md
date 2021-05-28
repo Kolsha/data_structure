@@ -18,9 +18,10 @@ Solution
 
 Method 1: Dynamic Programming
 
-Time complexity: O(n<sup>2</sup>)
+Time complexity: $O(n^2)$
 
-Space complexity: O(n<sup>2</sup>)
+Space complexity: $O(n^2)$
+
 ```java
 class Solution {
     public String longestPalindrome(String s) {
