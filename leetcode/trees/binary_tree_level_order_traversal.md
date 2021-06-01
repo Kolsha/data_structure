@@ -1,10 +1,9 @@
-### 102. Binary Tree Level Order Traversal
-
-https://leetcode.com/problems/binary-tree-level-order-traversal/
+### [102. Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
 
 Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
 
 For example:
+![](https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg)
 ```
 Given binary tree [3,9,20,null,null,15,7],
     3
@@ -22,13 +21,13 @@ return its level order traversal as:
 ]
 ```
 
-Solution
+### Solution
 
-Optimal Method: Recursive approach
+#### Approach 1(Optimal): Recursive approach - DFS
 
-Time complexity: O(n)
-
-Space complexity: O(n)
+##### Complexity Analysis
+- Time complexity: O(n)
+- Space complexity: O(n)
 
 In Java
 ```java
@@ -64,11 +63,11 @@ class Solution {
 }
 ```
 
-Method 1: Iterative approach
+#### Approach 2: Iterative approach - BFS
 
-Time complexity:
+- Time complexity:
 
-Space complexity:
+- Space complexity:
 
 
 ```java

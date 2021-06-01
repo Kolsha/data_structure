@@ -1,4 +1,4 @@
-### 253. Meeting Rooms II
+### [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)
 
 Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
 
@@ -101,6 +101,7 @@ class Solution {
         new PriorityQueue<Integer>(
             intervals.length,
             new Comparator<Integer>() {
+              @Override
               public int compare(Integer a, Integer b) {
                 return a - b;
               }
@@ -110,6 +111,7 @@ class Solution {
     Arrays.sort(
         intervals,
         new Comparator<int[]>() {
+          @Override
           public int compare(final int[] a, final int[] b) {
             return a[0] - b[0];
           }
@@ -238,4 +240,7 @@ class Solution {
   }
 }
 ```
+
+想法：
+和 Merge intervals 很像啊
 #facebook

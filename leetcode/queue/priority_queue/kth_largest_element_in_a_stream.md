@@ -1,6 +1,5 @@
-### 703. Kth Largest Element in a Stream
+### [703. Kth Largest Element in a Stream](https://leetcode.com/problems/kth-largest-element-in-a-stream/)
 
-https://leetcode.com/problems/kth-largest-element-in-a-stream/
 
 Design a class to find the kth largest element in a stream. Note that it is the kth largest element in the sorted order, not the kth distinct element.
 
@@ -32,41 +31,24 @@ After kthLargest.add(9);, all the elements inside this instance is [4, 5, 8, 2, 
 After kthLargest.add(4);, all the elements inside this instance is [4, 5, 8, 2, 3, 5, 10, 9, 4], and it return the kth (which is 3rd) largest element, so it returns 8.
 ```
 ```java
-class KthLargest {
-    private PriorityQueue<Integer> queue = null;
-    private int max;
-
-    public KthLargest(int k, int[] nums) {
-        max = k;
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
         // Comparator<Integer> comp = new Comparator<>() {
         //     @Override
         //     public int compare(Integer a, Integer b) {
         //         return a - b;
         //     }
         // };
-
-        queue = new PriorityQueue<>(max);
+        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> a - b);
         
         for(int num: nums) {
             queue.offer(num);
-            if(queue.size() > max) {
+            if(queue.size() > k) {
                 queue.poll();
             }
         }
-    }
-    
-    public int add(int val) {
-        queue.offer(val);
-        if(queue.size() > max) {
-            queue.poll();
-        }
-        return queue.peek();
+        
+        return queue.poll();
     }
 }
-
-/**
- * Your KthLargest object will be instantiated and called as such:
- * KthLargest obj = new KthLargest(k, nums);
- * int param_1 = obj.add(val);
- */
 ```

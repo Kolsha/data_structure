@@ -1,10 +1,9 @@
-### 103. Binary Tree Zigzag Level Order Traversal
-
-https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal
+### [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal)
 
 Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
 
 For example:
+![](https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg)
 ```
 Given binary tree [3,9,20,null,null,15,7],
     3
@@ -19,13 +18,21 @@ return its zigzag level order traversal as:
   [15,7]
 ]
 ```
+Constraints:
 
-Solution
+- The number of nodes in the tree is in the range [0, 2000].
+- -100 <= Node.val <= 100
+
+
+### Solution
 ![](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/Figures/103/103_BFS.png)
-Approach 1: Recursive DFS approach
-Complexity analysis:
-- Time complexity:
-- Space complexity:
+
+
+#### Approach 1: Recursive DFS approach
+
+##### Complexity analysis:
+- Time complexity: O(n)
+- Space complexity: O(n)
 
 ```java
 public class Solution {
@@ -74,50 +81,40 @@ Approach 2: BFS
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
-  public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-    if (root == null) {
-      return new ArrayList<List<Integer>>();
+public class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if(root == null) {
+            return res;
+        }
+        
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        boolean order = true;
+        
+        while(!q.isEmpty()) {
+            List<Integer> tmp = new ArrayList<>();
+            int size = q.size();
+            for(int i = 0; i < size; ++i) {
+                TreeNode n = q.poll();
+                if(order) {
+                    tmp.add(n.val);
+                } else {
+                    tmp.add(0, n.val);
+                }
+            
+                if(n.left != null) {
+                    q.add(n.left);
+                }
+            
+                if(n.right != null) {
+                    q.add(n.right);
+                }
+            }
+            res.add(tmp);
+            order = !order;
+        }
+        return res;
     }
-
-    List<List<Integer>> results = new ArrayList<List<Integer>>();
-
-    // add the root element with a delimiter to kick off the BFS loop
-    LinkedList<TreeNode> node_queue = new LinkedList<TreeNode>();
-    node_queue.addLast(root);
-    node_queue.addLast(null);
-
-    LinkedList<Integer> level_list = new LinkedList<Integer>();
-    boolean is_order_left = true;
-
-    while (node_queue.size() > 0) {
-      TreeNode curr_node = node_queue.poll();
-      if (curr_node != null) {
-        if (is_order_left) {
-          level_list.addLast(curr_node.val);
-        } else {
-          level_list.addFirst(curr_node.val);
-        }
-
-        if (curr_node.left != null) {
-          node_queue.addLast(curr_node.left);
-        }
-
-        if (curr_node.right != null) {
-          node_queue.addLast(curr_node.right);
-        }
-      } else {
-        // we finish the scan of one level
-        results.add(level_list);
-        level_list = new LinkedList<Integer>();
-        // prepare for the next level
-        if (node_queue.size() > 0) {
-          node_queue.addLast(null);
-        }
-        is_order_left = !is_order_left;
-      }
-    }
-    return results;
-  }
 }
 ```

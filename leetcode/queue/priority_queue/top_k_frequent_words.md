@@ -31,46 +31,32 @@ Follow up:
 ```java
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {
+        ArrayList<String> res = new ArrayList<>();
+        if(words == null || words.length == 0) {
+            return res;
+        }
+
         HashMap<String, Integer> map = new HashMap<>();
-        for (String word : words) {
+        for(String word: words) {
             map.put(word, map.getOrDefault(word, 0) + 1);
         }
-        Comparator<WordInfo> cmp = new Comparator<>() {
-            @Override
-            public int compare(WordInfo w1, WordInfo w2) {
-                if (w2.count != w1.count) {
-                    return w2.count - w1.count;
-                } else {
-                    return w1.word.compareTo(w2.word);
-                }
-            }
-        };
-        PriorityQueue<WordInfo> queue = new PriorityQueue<>(cmp);
-        for (int i = 0; i < words.length; i++) {
-            String word = words[i];
-            if (map.containsKey(word)) {
-                queue.offer(new WordInfo(word, map.get(word)));
-                map.remove(word);
+
+        PriorityQueue<Map.Entry<String, Integer>> queue = new PriorityQueue<>(
+         (a,b) -> a.getValue()==b.getValue() ? b.getKey().compareTo(a.getKey()) : a.getValue()-b.getValue()
+        );
+
+        for(Map.Entry<String, Integer> entry: map.entrySet()) {
+            queue.add(entry);
+            if(queue.size() > k) {
+                queue.poll();
             }
         }
-
-        ArrayList<String> res = new ArrayList<>();
-        while (k > 0) {
-            WordInfo wordInfo = queue.poll();
-            res.add(wordInfo.word);
-            k--;
+        
+        while(!queue.isEmpty()) {
+            String word = queue.poll().getKey();
+            res.add(0, word);
         }
         return res;
-    }
-
-    private static class WordInfo {
-        String word;
-        int count;
-
-        public WordInfo(String iWord, int iCount) {
-            word = iWord;
-            count = iCount;
-        }
     }
 }
 ```
