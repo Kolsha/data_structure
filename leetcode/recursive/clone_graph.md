@@ -1,6 +1,4 @@
-### 133. Clone Graph
-
-https://leetcode.com/problems/clone-graph/
+### [133. Clone Graph](https://leetcode.com/problems/clone-graph/)
 
 Given a reference of a node in a connected undirected graph.
 
@@ -111,6 +109,61 @@ class Solution {
             temp.neighbors.add(clone(neighbor));
         }
         return temp;
+    }
+}
+```
+
+
+#### Approach 2: BFS
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    
+    public Node() {
+        val = 0;
+        neighbors = new ArrayList<Node>();
+    }
+    
+    public Node(int _val) {
+        val = _val;
+        neighbors = new ArrayList<Node>();
+    }
+    
+    public Node(int _val, ArrayList<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+}
+*/
+
+class Solution {
+    public Node cloneGraph(Node node) {
+        if(node == null) {
+            return null;
+        }
+        
+        Node res = new Node(node.val);
+        Queue<Node> q = new LinkedList<>();
+        q.offer(node);
+        HashMap<Integer, Node> map = new HashMap<>();
+        map.put(node.val, res);
+        
+        while(!q.isEmpty()) {
+            Node tmp = q.poll();
+            
+            for(Node neighbor: tmp.neighbors) {
+                if(!map.containsKey(neighbor.val)) {
+                    q.offer(neighbor);
+                    map.put(neighbor.val, new Node(neighbor.val));
+                }
+                map.get(tmp.val).neighbors.add(map.get(neighbor.val));
+            }
+        }
+        return res;
     }
 }
 ```
