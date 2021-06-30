@@ -1,6 +1,5 @@
-### 489. Robot Room Cleaner
+### [489. Robot Room Cleaner](https://leetcode.com/problems/robot-room-cleaner/)
 
-https://leetcode.com/problems/robot-room-cleaner/
 
 Given a robot cleaner in a room modeled as a grid.
 

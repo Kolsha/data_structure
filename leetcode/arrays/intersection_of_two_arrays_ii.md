@@ -1,6 +1,4 @@
-### 350. Intersection of Two Arrays II
-
-https://leetcode.com/problems/intersection-of-two-arrays-ii/
+### [350. Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
 
 Given two arrays, write a function to compute their intersection.
 

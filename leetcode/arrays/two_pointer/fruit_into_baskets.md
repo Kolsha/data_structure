@@ -1,6 +1,5 @@
-### 904. Fruit Into Baskets
+### [904. Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets/)
 
-https://leetcode.com/problems/fruit-into-baskets/
 
 In a row of trees, the `i-th` tree produces fruit with type `tree[i]`.
 

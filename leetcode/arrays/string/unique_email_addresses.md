@@ -1,6 +1,5 @@
-### 929. Unique Email Addresses
+### [929. Unique Email Addresses](https://leetcode.com/problems/unique-email-addresses/)
 
-https://leetcode.com/problems/unique-email-addresses/
 
 Every email consists of a local name and a domain name, separated by the `@` sign.
 
