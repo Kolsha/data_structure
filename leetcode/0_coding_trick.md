@@ -41,3 +41,70 @@ Comparator<int[]> comp = new Comparator<>() {
 
 
 ref: https://leetcode.com/discuss/interview-experience/680549/google-amazon-l3l4-sde2-june-2020-pending-offer
+
+
+13. 檢查字符串內是否有特定子字符串: String.contains()
+```java
+String string = "Java";
+String substring = "va";
+
+System.out.println(string.contains(substring));
+```
+
+output
+```bash
+true
+```
+
+14. 给出第一子字符串的 Index: String.indexOf()
+
+
+```java
+indexOf(int ch)
+indexOf(int ch, int fromIndex)
+indexOf(String str)
+indexOf(String str, int fromIndex)
+```
+
+example
+```java
+String string = "Lorem ipsum dolor sit amet.";
+
+// You can also use unicode for characters
+System.out.println(string.indexOf('i'));
+System.out.println(string.indexOf('i', 8));
+System.out.println(string.indexOf("dolor"));
+System.out.println(string.indexOf("Lorem", 10));
+```
+output
+```bash
+6
+19
+12
+-1
+```
+
+15. 给出最后目标子字符串的 Index : <b>String.lastIndexOf()</b>
+```java
+String string = "Lorem ipsum dolor sit amet.";
+
+// You can also use unicode for characters
+System.out.println(string.lastIndexOf('i'));
+System.out.println(string.lastIndexOf('i', 8));
+System.out.println(string.lastIndexOf("dolor"));
+System.out.println(string.lastIndexOf("Lorem", 10));
+```
+
+output
+```bash
+19
+6
+12
+0
+```
+
+16. how to print all the sub string
+
+
+
+

@@ -10,8 +10,8 @@ Prepping your knowledge in Graphs is essential for Google interviews as you woul
 - [ ] [Binary Tree Maximum Path Sum](./../../trees/binary_tree_maximum_path_sum.md)
 - [ ] [Word Ladder](./../../arrays/bfs/word_ladder.md)
 - [ ] [Number of Islands](./../../recursive/backtrack/grid_traversal/number_of_islands.md)
-- [ ] Course Schedule II
-- [ ] Count Complete Tree Nodes
+- [ ] [Course Schedule II](./../../graph/topological_sort/course_schedule_ii.md)
+- [ ] [Count Complete Tree Nodes](./../../trees/count_complete_tree_nodes.md)
 - [ ] Editor's choice: Frequently asked in Google phone interview.
 - [ ] Longest Increasing Path in a Matrix
 - [ ] Decode String
