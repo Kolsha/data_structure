@@ -1,4 +1,4 @@
-Sorting - Outline
+### Sorting - Outline
 ===
 #### Comparison sorts: Sort input array by comparing elements
 1. <a class="nav-link" href="#insert_sort">Insertion sort</a>

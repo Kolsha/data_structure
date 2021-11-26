@@ -1,5 +1,4 @@
-From:
-https://web.stanford.edu/class/cs97si/02-mathematics.pdf
+@@@ Math
 
 Outline
 ===
