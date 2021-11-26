@@ -47,6 +47,7 @@ class Solution {
                     return false;
                 }
             } else {
+                // 如果在 t 中的 char 已经被映射，且 map中没有 s.charAt(i)
                 if(map.containsValue(t.charAt(i))) {
                     return false;
                 }

@@ -6,9 +6,9 @@
 6. [Remove Nth Node From End of List](./../singly_linked_list/remove_nth_node_from_end_of_list.md)
 7. [Valid Parentheses](../stack/valid_parentheses.md)
 8. [Merge Two Sorted Lists](../singly_linked_list/merge_two_sorted_lists.md)
-9. Merge k Sorted Lists
+9. [Merge k Sorted Lists](../queue/merge_k_sorted_lists.md)
 10. [Search in Rotated Sorted Array](../arrays/binary_search/search_in_rotated_sorted_array.md)
-11. Combination Sum
+11. [Combination Sum](../recursive/backtrack/combination_sum.md)
 12. Rotate Image
 13. Group Anagrams
 14. Maximum Subarray
@@ -47,9 +47,9 @@
 47. Add and Search Word - Data structure design
 48. Word Search II
 49. House Robber II
-50. Contains Duplicate
+50. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
 51. Invert Binary Tree
-52. Kth Smallest Element in a BST
+52. [Kth Smallest Element in a BST](../trees/kth_samllest_element_in_a_bst.md)
 53. Lowest Common Ancestor of a Binary Search Tree
 54. Product of Array Except Self
 55. Valid Anagram
@@ -65,10 +65,10 @@
 65. [Coin Change](../dynamic_programming/coin_change.md)
 66. Number of Connected Components in an Undirected Graph
 67. Counting Bits
-68. Top K Frequent Elements
-69. Sum of Two Integers
+68. [Top K Frequent Elements](../queue/priority_queue/top_k_frequent_words.md)
+69. [Sum of Two Integers](../bit_operation/sum_of_two_integers.md)
 70. Pacific Atlantic Water Flow
 71. Longest Repeating Character Replacement
-72. Non-overlapping Intervals
-73. Subtree of Another Tree
-74. Palindromic Substrings
+72. [Non-overlapping Intervals](../greedy/non_overlapping_intervals.md)
+73. [Subtree of Another Tree](../trees/subtree_of_another_tree.md)
+74. [Palindromic Substrings](../dynamic_programming/palindromic_string/palindromic_substrings.md)

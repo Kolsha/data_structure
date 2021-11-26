@@ -1,6 +1,4 @@
-### 692. Top K Frequent Words
-
-https://leetcode.com/problems/top-k-frequent-words/
+### [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/)
 
 Given a non-empty list of words, return the k most frequent elements.
 
@@ -27,7 +25,8 @@ Note:
 Follow up:
 - Try to solve it in O(n log k) time and O(n) extra space.
 
-
+### Solution
+#### Approach 1: PriorityQueue + HashMap
 ```java
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {

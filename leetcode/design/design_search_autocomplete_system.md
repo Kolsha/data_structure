@@ -1,6 +1,4 @@
-### 642. Design Search Autocomplete System
-
-https://leetcode.com/problems/design-search-autocomplete-system/
+### [642. Design Search Autocomplete System](https://leetcode.com/problems/design-search-autocomplete-system/)
 
 Design a search autocomplete system for a search engine. Users may input a sentence (at least one word and end with a special character '#'). For each character they type except '#', you need to return the top 3 historical hot sentences that have prefix the same as the part of sentence already typed. Here are the specific rules:
 
@@ -20,6 +18,7 @@ List<String> input(char c): The input c is the next character typed by the user.
 
  
 Example:
+```
 Operation: AutocompleteSystem(["i love you", "island","ironman", "i love leetcode"], [5,3,2,2])
 The system have already tracked down the following sentences and their corresponding times:
 "i love you" : 5 times
@@ -47,34 +46,25 @@ Operation: input('#')
 Output: []
 Explanation:
 The user finished the input, the sentence "i a" should be saved as a historical sentence in system. And the following input will be counted as a new search.
-
+```
  
 Note:
 
-The input sentence will always start with a letter and end with '#', and only one blank space will exist between two words.
-The number of complete sentences that to be searched won't exceed 100. The length of each sentence including those in the historical data won't exceed 100.
-Please use double-quote instead of single-quote when you write test cases even for a character input.
-Please remember to RESET your class variables declared in class AutocompleteSystem, as static/class variables are persisted across multiple test cases. Please see here for more details.
+- The input sentence will always start with a letter and end with '#', and only one blank space will exist between two words.
+
+- The number of complete sentences that to be searched won't exceed 100. The length of each sentence including those in the historical data won't exceed 100.
+
+- Please use double-quote instead of single-quote when you write test cases even for a character input.
+
+- Please remember to RESET your class variables declared in class AutocompleteSystem, as static/class variables are persisted across multiple test cases. Please see here for more details.
  
- Solution
-Approach 1: Brute Force
-In this solution, we make use of a HashMap mapmap which stores entries in the form (sentence_i, times_i)(sentence 
-i
-​	
- ,times 
-i
-​	
- ). Here, times_itimes 
-i
-​	
-  refers to the number of times the sentence_isentence 
-i
-​	
-  has been typed earlier.
+### Solution
+#### Approach 1: Brute Force
+In this solution, we make use of a HashMap mapmap which stores entries in the form $(sentence_i, times_i)$. Here, $times_i$ refers to the number of times the $sentence_i$ has been typed earlier.
 
-AutocompleteSystem: We pick up each sentence from sentencessentences and their corresponding times from the timestimes, and make their entries in the mapmap appropriately.
+AutocompleteSystem: We pick up each sentence from $sentences$ and their corresponding times from the timestimes, and make their entries in the $map$ appropriately.
 
-input(c): We make use of a current sentence tracker variable, \text{cur\_sent}cur_sent, which is used to store the sentence entered till now as the input. For cc as the current input, firstly, we append this cc to \text{cur\_sent}cur_sent and then iterate over all the keys of mapmap to check if a key exists whose initial characters match with \text{cur\_sent}cur_sent. We add all such keys to a listlist. Then, we sort this listlist as per our requirements, and obtain the first three values from this listlist.
+input(c): We make use of a current sentence tracker variable, `cur_sent`, which is used to store the sentence entered till now as the input. For `c` as the current input, firstly, we append this `c` to `cur_sent` and then iterate over all the keys of `map` to check if a key exists whose initial characters match with `cur_sent`. We add all such keys to a `list`. Then, we sort this `list` as per our requirements, and obtain the first three values from this `list`.
 
 ```java
 class Node {
@@ -92,17 +82,19 @@ class AutocompleteSystem {
   private String cur_sent = "";
 
   public AutocompleteSystem(String[] sentences, int[] times) {
-    for (int i = 0; i < sentences.length; i++) map.put(sentences[i], times[i]);
+    for (int i = 0; i < sentences.length; i++) {
+      map.put(sentences[i], times[i]);
+    }
   }
 
   public List<String> input(char c) {
     List<String> res = new ArrayList<>();
     if (c == '#') {
       map.put(cur_sent, map.getOrDefault(cur_sent, 0) + 1);
-      cur_sent = "";
+      this.cur_sent = "";
     } else {
       List<Node> list = new ArrayList<>();
-      cur_sent += c;
+      this.cur_sent += c;
       for (String key : map.keySet())
         if (key.indexOf(cur_sent) == 0) {
           list.add(new Node(key, map.get(key)));
@@ -110,7 +102,10 @@ class AutocompleteSystem {
       Collections.sort(
           list,
           (a, b) -> a.times == b.times ? a.sentence.compareTo(b.sentence) : b.times - a.times);
-      for (int i = 0; i < Math.min(3, list.size()); i++) res.add(list.get(i).sentence);
+
+      for (int i = 0; i < Math.min(3, list.size()); i++) {
+        res.add(list.get(i).sentence);
+      }
     }
     return res;
   }
@@ -122,13 +117,15 @@ class AutocompleteSystem {
  * List<String> param_1 = obj.input(c);
  */
  ```
- Performance Analysis
+##### Performance Analysis
+- Time complexity: O(k * l)
 
-AutocompleteSystem() takes O(k*l)O(k∗l) time. This is because, putting an entry in a hashMap takes O(1)O(1) time. But, to create a hash value for a sentence of average length kk, it will be scanned atleast once. We need to put ll such entries in the mapmap.
+AutocompleteSystem() takes O(k*l) time. This is because, putting an entry in a hashMap takes O(1) time. But, to create a hash value for a sentence of average length k, it will be scanned at least once. We need to put l such entries in the map.
 
-input() takes O\big(n+m \log m\big)O(n+mlogm) time. We need to iterate over the list of sentences, in mapmap, entered till now(say with a count nn), taking O(n)O(n) time, to populate the listlist used for finding the hot sentences. Then, we need to sort the listlist of length mm, taking O\big(m \log m\big)O(mlogm) time.
+input() takes O(n+mlogm) time. We need to iterate over the list of sentences, in map, entered till now(say with a count n), taking O(n) time, to populate the list used for finding the hot sentences. Then, we need to sort the list of length m, taking O(mlogm) time.
 
-Approach 2: Using One level Indexing
+
+#### Approach 2: Using One level Indexing
 This method is almost the same as that of the last approach except that instead of making use of simply a HashMap to store the sentences along with their number of occurences, we make use of a Two level HashMap.
 
 Thus, we make use of an array arrarr of HashMapsEach element of this array, arrarr, is used to refer to one of the alphabets possible. Each element is a HashMap itself, which stores the sentences and their number of occurences similar to the last approach. e.g. arr[0]arr[0] is used to refer to a HashMap which stores the sentences starting with an 'a'.
@@ -188,7 +185,7 @@ AutocompleteSystem() takes O(k*l+26)O(k∗l+26) time. Putting an entry in a hash
 
 input() takes O\big(s+m \log m\big)O(s+mlogm) time. We need to iterate only over one hashmap corresponding to the sentences starting with the first character of the current sentence, to populate the listlist for finding the hot sentences. Here, ss refers to the size of this corresponding hashmap. Then, we need to sort the listlist of length mm, taking O\big(m \log m\big)O(mlogm) time.
 
-Approach 3: Using Trie
+#### Approach 3: Using Trie
 A Trie is a special data structure used to store strings that can be visualized like a tree. It consists of nodes and edges. Each node consists of at max 26 children and edges connect each parent node to its children. These 26 pointers are nothing but pointers for each of the 26 letters of the English alphabet A separate edge is maintained for every edge.
 
 Strings are stored in a top to bottom manner on the basis of their prefix in a trie. All prefixes of length 1 are stored at until level 1, all prefixes of length 2 are sorted at until level 2 and so on.
@@ -203,7 +200,7 @@ The following figure shows a trie structure for the words "A","to", "tea", "ted"
 
 ![](https://leetcode.com/problems/design-search-autocomplete-system/Figures/642/642_Trie.PNG)
 
-Similarly, to implement the input(c) function, for every input character cc, we need to add this character to the word being formed currently, i.e. to \text{cur\_sent}cur_sent. Then, we need to traverse in the current trie till all the characters in the current word, \text{cur\_sent}cur_sent, have been exhausted.
+Similarly, to implement the input(c) function, for every input character `c`, we need to add this character to the word being formed currently, i.e. to `cur_sent`. Then, we need to traverse in the current trie till all the characters in the current word, `cur_sent`, have been exhausted.
 
 From this point onwards, we traverse all the branches possible in the Trie, put the sentences/words formed by these branches to a listlist along with their corresponding number of occurences, and find the best 3 out of them similar to the last approach. The following animation shows a typical illustration.
 
@@ -220,7 +217,7 @@ class Node {
 
 class Trie {
   int times;
-  Trie[] branches = new Trie[27];
+  Trie[] branches = new Trie[27]; // a~z + space
 }
 
 class AutocompleteSystem {
@@ -261,12 +258,16 @@ class AutocompleteSystem {
   }
 
   private void traverse(String s, Trie t, List<Node> list) {
-    if (t.times > 0) list.add(new Node(s, t.times));
+    if (t.times > 0) {
+      list.add(new Node(s, t.times));
+    }
+
     for (char i = 'a'; i <= 'z'; i++) {
       if (t.branches[i - 'a'] != null) {
         traverse(s + i, t.branches[i - 'a'], list);
       }
     }
+
     if (t.branches[26] != null) {
       traverse(s + ' ', t.branches[26], list);
     }

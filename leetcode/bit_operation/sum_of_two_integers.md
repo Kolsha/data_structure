@@ -62,7 +62,12 @@ class Solution {
 
 ##### Interview Tip for Bit Manipulation Problems: Use XOR
 
-How to start? There is an interview tip for bit manipulation problems: if you don't know how to start, start from computing XOR for your input data. Strangely, that helps out for quite a lot of problems, [Single Number II](https://leetcode.com/articles/single-number-ii/), [Single Number III](https://leetcode.com/articles/single-number-iii/), [Maximum XOR of Two Numbers in an Array](https://leetcode.com/articles/maximum-xor-of-two-numbers-in-an-array/), [Repeated DNA Sequences](https://leetcode.com/articles/repeated-dna-sequences/), [Maximum Product of Word Lengths](https://leetcode.com/articles/maximum-product-of-word-lengths/), etc.
+How to start? There is an interview tip for bit manipulation problems: if you don't know how to start, start from computing XOR for your input data. Strangely, that helps out for quite a lot of problems:
+[Single Number II](https://leetcode.com/articles/single-number-ii/)
+[Single Number III](https://leetcode.com/articles/single-number-iii/)
+[Maximum XOR of Two Numbers in an Array](https://leetcode.com/articles/maximum-xor-of-two-numbers-in-an-array/)
+[Repeated DNA Sequences](https://leetcode.com/articles/repeated-dna-sequences/)
+[Maximum Product of Word Lengths](https://leetcode.com/articles/maximum-product-of-word-lengths/), etc.
 
 ~~~
 What is XOR?

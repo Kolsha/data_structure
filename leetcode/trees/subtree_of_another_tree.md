@@ -46,7 +46,7 @@ class Solution {
     public boolean isSubtree(TreeNode s, TreeNode t) {
         if (s == null && t == null) {
             return true;
-        } else if (s == null && t != null) {
+        } else if (s == null || t == null) {
             return false;
         }
 

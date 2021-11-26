@@ -64,6 +64,29 @@ class Solution {
 }
 ```
 
+#### Recursive approach
+```java
+class Solution {
+    private static HashMap<Integer, Integer> map = new HashMap<>();
+    static {
+        map.put(1, 1);
+        map.put(2, 2);
+    }
+    public int climbStairs(int n) {
+        if(n < 3) {
+            return map.get(n);
+        }
+        
+        if(map.containsKey(n)) {
+            return map.get(n);
+        }
+
+        int res = climbStairs(n - 1) + climbStairs(n - 2);
+        map.put(n, res);
+        return res;
+    }
+}
+```
 
 #### Other approaches:
 ```python

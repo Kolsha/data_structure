@@ -18,7 +18,10 @@ Method 1: Dynamic Programming
 
 1. Find Subproblem
 Assume <b>dp<sub>i</sub></b> which is the subarray ending with the index `i` has the greatest value:
-<b>dp<sub>i</sub> = max {dp<sub>i-1</sub> + nums[i], nums[i]}</b>
+    
+    $DP_i$ = max { $DP_{i - 1} + nums[i], nums[i]$ } 
+
+    （因为是到 i 的最大和，所以有两种： Num[i] 或是 MaxSum[i - 1] +  Num[i]）
 
 2. Base cases
    dp<sub>0</sub> = nums[0]

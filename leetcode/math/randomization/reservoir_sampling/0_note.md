@@ -1,8 +1,7 @@
-### What is reservoir sampling?
+### [What is reservoir sampling?](https://www.educative.io/edpresso/what-is-reservoir-sampling)
 
-https://www.educative.io/edpresso/what-is-reservoir-sampling
 
-**Reservoir sampling** is a randomized algorithm that is used to select kk out of nn samples; nn is usually very large or unknown. For example, reservoir sampling can be used to obtain a sample of size kk from a population of people with brown hair. This algorithm takes O(n)O(n) to select kk elements with uniform probability.
+**Reservoir sampling** is a randomized algorithm that is used to select k out of n samples; n is usually very large or unknown. For example, reservoir sampling can be used to obtain a sample of size k from a population of people with brown hair. This algorithm takes O(n) to select k elements with uniform probability.
 
 ![](./res/sample.png)
 

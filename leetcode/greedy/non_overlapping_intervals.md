@@ -1,6 +1,4 @@
-### 435. Non-overlapping Intervals
-
-https://leetcode.com/problems/non-overlapping-intervals/
+### [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
 
 Given a collection of intervals, find the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
 
@@ -31,11 +29,11 @@ Note:
 - You may assume the interval's end point is always bigger than its start point.
 - Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap each other.
 
-Solution
+### Solution
 
-Approach 1: [Greedy](https://en.wikipedia.org/wiki/Interval_scheduling#Interval_Scheduling_Maximization)
+#### Approach 1: [Greedy](https://en.wikipedia.org/wiki/Interval_scheduling#Interval_Scheduling_Maximization)
 
-Complexity analysis:
+##### Complexity analysis:
 - Time complexity: O(nlogn)
 - Space complexity: O(1)
 

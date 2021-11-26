@@ -3,6 +3,9 @@ Useful info:<br/>https://www.geeksforgeeks.org/dynamic-programming/<br/>
 
 https://www.educative.io/courses/grokking-dynamic-programming-patterns-for-coding-interviews/m2G1pAq0OO0
 
+https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns
+
+
 Dynamic Programming
 ===
 1. <a class="nav-link" href="#dp">Dynamic Programming</a>

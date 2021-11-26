@@ -1,6 +1,5 @@
-### 39. Combination Sum
+### [39. Combination Sum](https://leetcode.com/problems/combination-sum/)
 
-https://leetcode.com/problems/combination-sum/
 
 Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
 
@@ -10,6 +9,7 @@ Note:
 
 - All numbers (including target) will be positive integers.
 - The solution set must not contain duplicate combinations.
+
 Example 1:
 ```
 Input: candidates = [2,3,6,7], target = 7,
@@ -30,7 +30,7 @@ A solution set is:
 ]
 ```
 
-Solution
+### Solution
 
 [Method 1: Backtracking questions general approaches](https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning))
 

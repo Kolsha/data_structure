@@ -1,6 +1,4 @@
-### 647. Palindromic Substrings
-
-https://leetcode.com/problems/palindromic-substrings/
+### [647. Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)
 
 Given a string, your task is to count how many palindromic substrings in this string.
 
@@ -24,7 +22,8 @@ Note:
 
 The input string length won't exceed 1000.
 
-Solution
+### Solution
+#### Approach 1: Dynamic Programming
 ```java
 class Solution {
     public int countSubstrings(String s) {
@@ -46,3 +45,5 @@ class Solution {
     }
 }
 ```
+
+#### [Approach 2: todo](https://leetcode.com/problems/palindromic-substrings/discuss/105688/Very-Simple-Java-Solution-with-Detail-Explanation)
