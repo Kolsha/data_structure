@@ -41,7 +41,7 @@ Follow up:
 - Could you devise a constant space solution?
 
 
-Solution
+### Solution
 
 ##### Approach 1:
 

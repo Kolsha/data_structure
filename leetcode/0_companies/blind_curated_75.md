@@ -9,66 +9,66 @@
 9. [Merge k Sorted Lists](../queue/merge_k_sorted_lists.md)
 10. [Search in Rotated Sorted Array](../arrays/binary_search/search_in_rotated_sorted_array.md)
 11. [Combination Sum](../recursive/backtrack/combination_sum.md)
-12. Rotate Image
-13. Group Anagrams
-14. Maximum Subarray
+12. [Rotate Image](leetcode/arrays/two_dimentional_array/rotate_image.md)
+13. [Group Anagrams](leetcode/hashmap/group_anagrams.md)
+14. [Maximum Subarray](leetcode/dynamic_programming/maximum_subarray.md)
 15. Spiral Matrix
-16. Jump Game
-17. Merge Intervals
-18. Insert Interval
-19. Unique Paths
+16. [Jump Game](leetcode/greedy/jump_game.md)
+17. [Merge Intervals](leetcode/greedy/merge_intervals.md)
+18. [Insert Interval](leetcode/arrays/insert_interval.md)
+19. [Unique Paths](leetcode/dynamic_programming/unique_path.md)
 20. [Climbing Stairs](../dynamic_programming/climbing_stairs.md)
-21. Set Matrix Zeroes
-22. Minimum Window Substring
-23. Word Search
-24. Decode Ways
-25. Validate Binary Search Tree
+21. [Set Matrix Zeroes](leetcode/arrays/two_dimentional_array/set_matrix_zeroes.md)
+22. [Minimum Window Substring](leetcode/arrays/string/sliding_window/minimum_window_substring.md)
+23. [Word Search](leetcode/recursive/backtracking/grid_traversal/word_search.md)
+24. [Decode Ways](leetcode/dynamic_programming/decode_ways.md)
+25. [Validate Binary Search Tree](leetcode/trees/validate_binary_search_tree.md)
 26. [Same Tree](../trees/same_tree.md)
-27. Binary Tree Level Order Traversal
-28. Maximum Depth of Binary Tree
-29. Construct Binary Tree from Preorder and Inorder Traversal
-30. Best Time to Buy and Sell Stock
-31. Binary Tree Maximum Path Sum
+27. [Binary Tree Level Order Traversal](leetcode/trees/binary_tree_level_order_traversal.md)
+28. [Maximum Depth of Binary Tree](leetcode/trees/maximum_depth_nary_tree.md)
+29. [Construct Binary Tree from Preorder and Inorder Traversal](leetcode/recursive/tree/construct_binary_tree_from_preorder_and_inorder_traversal.md)
+30. [Best Time to Buy and Sell Stock](leetcode/dynamic_programming/buy_and_sell/best_time_to_buy_and_sell_stock.md)
+31. [Binary Tree Maximum Path Sum](leetcode/trees/binary_tree_maximum_path_sum.md)
 32. [Valid Palindrome](../arrays/palindrome/valid_palindrome_1.md)
 33. Longest Consecutive Sequence
-34. Clone Graph
-35. Word Break
-36. Linked List Cycle
-37. Reorder List
-38. Maximum Product Subarray
+34. [Clone Graph](leetcode/recursive/clone_graph.md)
+35. [Word Break](leetcode/dynamic_programming/word_break.md)
+36. [Linked List Cycle](leetcode/singly_linked_list/linked_list_cycle.md)
+37. [Reorder List](leetcode/singly_linked_list/reorder_list.md)
+38. [Maximum Product Subarray](leetcode/arrays/maximum_product_subarray.md)
 39. Find Minimum in Rotated Sorted Array
-40. Reverse Bits
-41. Number of 1 Bits
-42. House Robber
-43. Number of Islands
-44. Reverse Linked List
-45. Course Schedule
+40. [Reverse Bits](leetcode/bit_operation/reverse_bits.md)
+41. [Number of 1 Bits](leetcode/bit_operation/number_of_1_bits.md)
+42. [House Robber](leetcode/dynamic_programming/house_robber.md)
+43. [Number of Islands](leetcode/recursive/backtracking/grid_traversal/number_of_islands.md)
+44. [Reverse Linked List](leetcode/singly_linked_list/reverse_linked_list.md)
+45. [Course Schedule](leetcode/graph/topological_sort/course_schedule.md)
 46. Implement Trie (Prefix Tree)
-47. Add and Search Word - Data structure design
-48. Word Search II
+47. [Add and Search Word - Data structure design](leetcode/trees/trie/add_and_search_word.md)
+48. [Word Search II](leetcode/recursive/backtracking/grid_traversal/word_search_ii.md)
 49. House Robber II
 50. [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
 51. Invert Binary Tree
 52. [Kth Smallest Element in a BST](../trees/kth_samllest_element_in_a_bst.md)
-53. Lowest Common Ancestor of a Binary Search Tree
-54. Product of Array Except Self
-55. Valid Anagram
-56. Meeting Rooms
-57. Meeting Rooms II
-58. Graph Valid Tree
-59. Missing Number
-60. Alien Dictionary
+53. [Lowest Common Ancestor of a Binary Search Tree](leetcode/trees/lowest_common_ancestor_of_a_binary_tree.md)
+54. [Product of Array Except Self](leetcode/math/product_of_array_except_self.md)
+55. [Valid Anagram](leetcode/arrays/string/valid_anagram.md)
+56. [Meeting Rooms](leetcode/sorting/meeting_rooms.md)
+57. [Meeting Rooms II](leetcode/queue/priority_queue/meeting_rooms_ii.md)
+58. [Graph Valid Tree](leetcode/graph/graph_valid_tree.md)
+59. [Missing Number](leetcode/bit_operation/missing_number.md)
+60. [Alien Dictionary](leetcode/graph/topological_sort/alien_dictionary.md)
 61. Encode and Decode Strings
 62. Find Median from Data Stream
-63. Serialize and Deserialize Binary Tree
-64. Longest Increasing Subsequence
+63. [Serialize and Deserialize Binary Tree](leetcode/recursive/tree/serialize_and_deserialize_binary_tree.md)
+64. [Longest Increasing Subsequence](leetcode/dynamic_programming/longest_increasing_subsequence.md)
 65. [Coin Change](../dynamic_programming/coin_change.md)
 66. Number of Connected Components in an Undirected Graph
-67. Counting Bits
+67. [Counting Bits](leetcode/dynamic_programming/counting_bits.md)
 68. [Top K Frequent Elements](../queue/priority_queue/top_k_frequent_words.md)
 69. [Sum of Two Integers](../bit_operation/sum_of_two_integers.md)
 70. Pacific Atlantic Water Flow
-71. Longest Repeating Character Replacement
+71. [Longest Repeating Character Replacement](leetcode/arrays/two_pointer/longest_repeating_character_replacement.md)
 72. [Non-overlapping Intervals](../greedy/non_overlapping_intervals.md)
 73. [Subtree of Another Tree](../trees/subtree_of_another_tree.md)
 74. [Palindromic Substrings](../dynamic_programming/palindromic_string/palindromic_substrings.md)

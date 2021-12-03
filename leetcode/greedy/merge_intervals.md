@@ -16,7 +16,7 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 NOTE: input types have been changed on April 15, 2019. Please reset to default code definition to get new method signature.
 ```
 
-Solution
+### Solution
 #### [Approach 1](https://leetcode.com/problems/merge-intervals/discuss/21222/A-simple-Java-solution)
 The idea is to sort the intervals by their starting points. Then, we take the first interval and compare its end with the next intervals starts. As long as they overlap, we update the end to be the max end of the overlapping intervals. Once we find a non overlapping interval, we can add the previous "extended" interval and start over.
 
@@ -99,8 +99,6 @@ $O(n^2) + O(n^2) + O(n) = O(n^2)$
 
 - Space complexity : $O(n^2)$
 As previously mentioned, in the worst case, all intervals are mutually overlapping, so there will be an edge for every pair of intervals. Therefore, the memory footprint is quadratic in the input size.
-
-
 
 
 ```java

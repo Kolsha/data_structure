@@ -1,6 +1,5 @@
-### 141. Linked List Cycle
+### [141. Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
 
-https://leetcode.com/problems/linked-list-cycle/
 
 Given a linked list, determine if it has a cycle in it.
 

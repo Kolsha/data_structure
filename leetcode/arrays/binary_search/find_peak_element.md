@@ -25,9 +25,9 @@ Explanation: Your function can return either index number 1 where the peak eleme
 
 **Follow up:** Your solution should be in logarithmic complexity.
 
-Solution
+### Solution
 
-Approach 1: Linear Scan
+#### Approach 1: Linear Scan
 case 1:
 ![](https://leetcode.com/problems/find-peak-element/Figures/162/Find_Peak_Case1.PNG)
 

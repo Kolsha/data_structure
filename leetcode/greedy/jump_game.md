@@ -1,6 +1,5 @@
-### 55. Jump Game
+### [55. Jump Game](https://leetcode.com/problems/jump-game/)
 
-https://leetcode.com/problems/jump-game/
 
 Given an array of non-negative integers, you are initially positioned at the first index of the array.
 
@@ -22,11 +21,12 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum
              jump length is 0, which makes it impossible to reach the last index.
 ```
 
-Solution
-Approach 1: Dynamic Programming Bottom-up
+### Solution
+#### Approach 1: Dynamic Programming Bottom-up
 Top-down to bottom-up conversion is done by eliminating recursion. In practice, this achieves better performance as we no longer have the method stack overhead and might even benefit from some caching. More importantly, this step opens up possibilities for future optimization. The recursion is usually eliminated by trying to reverse the order of the steps from the top-down approach.
 
 The observation to make here is that we only ever jump to the right. This means that if we start from the right of the array, every time we will query a position to our right, that position has already be determined as being GOOD or BAD. This means we don't need to recurse anymore, as we will always hit the memo table.
+
 ```java
 enum Index {
     GOOD, BAD, UNKNOWN
@@ -55,7 +55,7 @@ public class Solution {
 }
 ```
 
-Approach 2: Greedy
+#### Approach 2: Greedy
 
 Once we have our code in the bottom-up state, we can make one final, important observation. From a given position, when we try to see if we can jump to a GOOD position, we only ever use one - the first one (see the break statement). In other words, the left-most one. If we keep track of this left-most GOOD position as a separate variable, we can avoid searching for it in the array. Not only that, but we can stop using the array altogether.
 
