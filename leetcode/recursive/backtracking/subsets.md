@@ -1,6 +1,4 @@
-### 78. Subsets
-
-https://leetcode.com/problems/subsets/
+### [78. Subsets](https://leetcode.com/problems/subsets/)
 
 Given a set of **distinct** integers, nums, return all possible subsets (the power set).
 
