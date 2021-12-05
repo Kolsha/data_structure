@@ -18,61 +18,43 @@ Output: 12
 Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
              Total amount you can rob = 2 + 9 + 1 = 12.
 ```
-Solution:
+##### Solution
 
-Approach 1: Dynamic programming
+##### Approach 1: Dynamic programming without optimization
 
-1. Define subproblems<br/>
-   Suppose DP<sub>n</sub> will have the maximum money robbed from `n` houses. Since we need to avoid robbing adjacent houses, we will have 2 conditions:
-   firstly, if robbed house contains the last house:<br/>
-   Money(Condition 1) = DP<sub>n-2</sub> + Money(lastHouse)
+Define subproblems
+`DP[i]` 为到位置为 `i` 的抢匪可抢最大值
+`DP[i] = Math.max(目前这家的钱 + DP[i-2], DP[i-1])`
 
-   otherwise, robbed house doesn't contain the last house:<br/>
-   Money(Condition 2) = DP<sub>n-1</sub>
-   
-   Get the maximum of condition 1 and condition 2.
-2. Write down the recurrence that relates subproblems:<br/>
-   DP<sub>n</sub> = $\max$( DP<sub>n-2</sub> + Money(lastHouse), DP<sub>n-1</sub>), n >= 3
-   Base cases:
-   DP[1] = The first house = nums[0]
-   DP[2] = $\max$ (nums[0], nums[1])
-
-   
-Complexity analysis:
+##### Complexity analysis
 - Time complexity: O(n)
 - Space complexity: O(n)
 
 ```java
 class Solution {
     public int rob(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        } else if (nums.length == 1) {
+        int n = nums.length;
+        int dp[] = new int[n];
+        dp[0] = nums[0];
+        if(n == 1) {
             return nums[0];
-        } else if (nums.length == 2) {
-            return Math.max(nums[0], nums[1]);
         }
-
-        int[] dp = new int[nums.length + 1];
-        dp[1] = nums[0];
-        dp[2] = Math.max(nums[0], nums[1]);
-
-        for (int i = 3; i < nums.length + 1; i++) {
-            // last one is selected
-            int lastOneSelected = nums[i - 1] + dp[i - 2];
-            // last one is NOT selected
-            int lastOneNotSelected = dp[i - 1];
-            dp[i] = Math.max(lastOneSelected, lastOneNotSelected);
+        
+        dp[1] = Math.max(nums[0], nums[1]);
+        
+        for(int i = 2; i < n; i++) {
+            dp[i] = Math.max(nums[i] + dp[i-2], dp[i-1]);
         }
-        return dp[nums.length];
+        
+        return dp[n-1];
     }
 }
 ```
-After Optimization
 
-Since we only need to track the maximum value, we can optimize it to O(1) space complexity:
+##### Approach 2: Dynamic programming after optimization
+Since we only need to track the maximum value, we can optimize it to O(1) space complexity.
 
-Complexity analysis:
+##### Complexity analysis
 - Time complexity: O(n)
 - Space complexity: O(1)
 
