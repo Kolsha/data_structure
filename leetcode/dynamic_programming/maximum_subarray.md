@@ -11,10 +11,10 @@ Follow up:
 
 If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 ```
-Solution
 
+##### Solution
 
-Method 1: Dynamic Programming
+##### Approach 1: Dynamic Programming
 
 1. Find Subproblem
 Assume <b>dp<sub>i</sub></b> which is the subarray ending with the index `i` has the greatest value:
@@ -47,6 +47,21 @@ class Solution {
         }
         
         return max;
+    }
+}
+```
+Optimized DP
+
+```java
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxSum = nums[0];
+        int localSum = nums[0];
+        for(int i = 1; i < nums.length; i++) {
+            localSum = Math.max(nums[i], nums[i] + localSum);
+            maxSum = Math.max(maxSum, localSum);
+        }
+        return maxSum;
     }
 }
 ```

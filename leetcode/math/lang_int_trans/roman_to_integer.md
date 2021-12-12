@@ -1,6 +1,5 @@
-### 13. Roman to Integer
+### [13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/)
 
-https://leetcode.com/problems/roman-to-integer/
 
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 ```
@@ -51,7 +50,7 @@ Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
 ```
 
-Solution
+##### Solution
 
 **Is there only one valid representation for each number?**
 
@@ -90,18 +89,18 @@ The second two symbols are XC. This is C - X = 100 - 10 = 90.
 The final two symbols are IV. This is V - I = 5 - 1 = 4.
 Like we did above, we add these together. (M - C) + (C - X) + (V - I) = 900 + 90 + 4 = 994.
 
-Approach 1:
+##### Approach 1: HashMap
 
 Complexity analysis:
 - Time complexity : O(1)
 As there is a finite set of roman numerals, the maximum number possible number can be 3999, which in roman numerals is MMMCMXCIX. As such the time complexity is O(constant).
+
 - Space complexity: O(1)
 Because only a constant number of single-value variables are used, the space complexity is O(1).
 
 ```java
 class Solution {
     public int romanToInt(String s) {
-        int res = 0;
         HashMap<Character, Integer> map = new HashMap<>();
         map.put('I', 1);
         map.put('V', 5);
@@ -111,10 +110,11 @@ class Solution {
         map.put('D', 500);
         map.put('M', 1000);
         map.put('Z', Integer.MIN_VALUE); // for null value
-        int i = 0;
+
+        int res = 0, i = 0;
         while(i < s.length()) {
             char curChar = s.charAt(i);
-            char nextChar = i+1 < s.length()? s.charAt(i+1): 'Z';
+            char nextChar = i + 1 < s.length()? s.charAt(i+1): 'Z';
             if(map.get(curChar) < map.get(nextChar)) {
                 res += map.get(nextChar) - map.get(curChar);
                 i = i + 2;

@@ -1,6 +1,5 @@
-### 88. Merge Sorted Array
+### [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/)
 
-https://leetcode.com/problems/merge-sorted-array/
 
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
 
@@ -24,16 +23,11 @@ Constraints:
 - nums1.length == m + n
 - nums2.length == n
 
-Solution
+##### Approach 1
 
-Approach 1: Two Pointers
-
-Complexity Analysis
-
-<ul>
-<li>Time complexity : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(n + m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>.</li>
-<li>Space complexity : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">O</span></span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>.</li>
-</ul>
+##### Complexity analysis
+- Time complexity : $\mathcal{O}(n + m)$
+- Space complexity : $\mathcal{O}(1)$
 
 ```java
 class Solution {
@@ -48,6 +42,11 @@ class Solution {
                 nums1[zeroPtr--] = nums2[nums2Ptr--];
             }
         }
+
+        // Because if nums1 is bigger and nums 2 is shorter, 
+        // when nums2 reaches the end, nothing needs to be done for nums1 
+        // (we insert nums2 into nums1). Nums1 remains the same in that way.
+
         while(nums2Ptr >= 0) {
             nums1[zeroPtr--] = nums2[nums2Ptr--];
         }

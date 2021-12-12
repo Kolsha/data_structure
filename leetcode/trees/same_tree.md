@@ -86,7 +86,7 @@ public boolean isSameTree(TreeNode p, TreeNode q) {
             TreeNode s = queue.poll();
             if(f == null && s == null){
                 continue;
-            }else if(f == null || s == null || f.val != s.val){
+            } else if(f == null || s == null || f.val != s.val){
                 return false;
             }
             queue.add(f.left);

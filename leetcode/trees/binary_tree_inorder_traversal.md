@@ -1,6 +1,5 @@
-### 94. Binary Tree Inorder Traversal
+### [94. Binary Tree Inorder Traversal](https://leetcode.com/problems/binary-tree-inorder-traversal/)
 
-https://leetcode.com/problems/binary-tree-inorder-traversal/
 
 Given a binary tree, return the inorder traversal of its nodes' values.
 
@@ -17,10 +16,13 @@ Output: [1,3,2]
 ```
 Follow up: Recursive solution is trivial, could you do it iteratively?
 
-Solution
+##### Solution
 
-Method 1: Recursive approach
+##### Approach 1: Recursive approach
 
+##### Complexity analysis
+- Time complexity:
+- Space complexity:
 
 ```java
 /**
@@ -52,7 +54,12 @@ class Solution {
 }
 ```
 
-Method 2: Iterative approach
+##### Approach 2: Iterative approach
+
+##### Complexity analysis
+- Time complexity:
+- Space complexity:
+
 ```java
 /**
  * Definition for a binary tree node.
@@ -68,7 +75,7 @@ class Solution {
         ArrayList<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
-        while(cur!=null || !stack.isEmpty()) {
+        while(cur != null || !stack.isEmpty()) {
             while(cur != null) {
                 stack.add(cur);
                 cur = cur.left;

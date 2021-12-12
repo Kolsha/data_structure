@@ -1,4 +1,4 @@
-### 9. Palindrome Number
+### [9. Palindrome Number](https://leetcode.com/problems/palindrome-number/)
 
 Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
 
@@ -23,9 +23,13 @@ Follow up:
 
 Coud you solve it without converting the integer to a string?
 
-Solution
+##### Solution
 
-Method 1: String
+##### Approach 1: String
+
+##### Complexity analysis
+- Time complexity:
+- Space complexity:
 
 ```java
 class Solution {
@@ -51,7 +55,13 @@ class Solution {
 }
 ```
 
-Method 2: Follow up - div & mod approach
+
+##### Approach 2: Follow up - div & mod approach
+
+##### Complexity analysis
+- Time complexity:
+- Space complexity:
+
 ```java
 class Solution {
     public boolean isPalindrome(int x) {
@@ -71,4 +81,3 @@ class Solution {
     }
 }
 ```
-
