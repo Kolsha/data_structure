@@ -1,5 +1,4 @@
-### Factorial Trailing Zeroes
-https://leetcode.com/problems/factorial-trailing-zeroes/
+### [Factorial Trailing Zeroes](https://leetcode.com/problems/factorial-trailing-zeroes/)
 
 Given an integer n, return the number of trailing zeroes in n!.
 
@@ -118,7 +117,6 @@ public int trailingZeroes(int n) {
 ```java
 public int trailingZeroes(int n) {
     int zeroCount = 0;
-    long currentMultiple = 5;
     while (n > 0) {
         n /= 5;
         zeroCount += n;
