@@ -1,4 +1,6 @@
 ## [Sorting](https://leetcode.com/problems/sort-an-array/)
+![image](https://user-images.githubusercontent.com/5952279/146661274-0b39a773-8428-4e34-99d0-fbdaf349d83e.png)
+
 ---
 
 #### Comparison sorts: Sort input array by comparing elements
