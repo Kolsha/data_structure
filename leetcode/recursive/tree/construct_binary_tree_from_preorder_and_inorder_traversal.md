@@ -19,8 +19,7 @@ Return the following binary tree:
     /  \
    15   7
 ```
-
-Solution
+##### Solution
 
 There are two general strategies to traverse a tree:
 
@@ -35,9 +34,9 @@ There are two general strategies to traverse a tree:
 On the following figure the nodes are numerated in the order you visit them, please follow 1-2-3-4-5 to compare different strategies.
 ![](./res/145_transverse.png)
 
-Approach 1: HashMap caching + Recursion
+##### Approach 1: HashMap caching + Recursion
 
-Complexity analysis:
+##### Complexity analysis
 - Time complexity: O(n)
 - Space complexity: O(n)
 
@@ -70,5 +69,46 @@ class Solution {
         return root;
     }
 
+}
+```
+
+
+##### Approach 2: Iterative
+Keep pushing the nodes from the preorder into a stack (and keep making the tree by adding nodes to the left of the previous node) until the top of the stack matches the inorder.
+
+At this point, pop the top of the stack until the top does not equal inorder (keep a flag to note that you have made a pop).
+
+Repeat 1 and 2 until preorder is empty. The key point is that whenever the flag is set, insert a node to the right and reset the flag.
+
+##### Complexity analysis
+- Time complexity:
+- Space complexity:
+
+```java
+/**
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode
+ * left; TreeNode right; TreeNode(int x) { val = x; } }
+ */
+class Solution {
+
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        Stack<TreeNode> s = new Stack<>();
+        TreeNode root = new TreeNode(preorder[0]), cur = root;
+        for (int i = 1, j = 0; i < preorder.length; i++) {
+            if (cur.val != inorder[j]) {
+                cur.left = new TreeNode(preorder[i]);
+                s.push(cur);
+                cur = cur.left;
+            } else {
+                j++;
+                while (!s.empty() && s.peek().val == inorder[j]) {
+                    cur = s.pop();
+                    j++;
+                }
+                cur = cur.right = new TreeNode(preorder[i]);
+            }
+        }
+        return root;
+    }    
 }
 ```

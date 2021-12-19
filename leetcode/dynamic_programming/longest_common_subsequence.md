@@ -1,5 +1,4 @@
-### 1143. Longest Common Subsequence
-https://leetcode.com/problems/longest-common-subsequence/
+### [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
 
 Given two strings `text1` and `text2`, return the length of their longest common subsequence.
 
@@ -38,7 +37,7 @@ The input strings consist of lowercase English characters only.
 ```
 
 **Solution:**<br/>
-[This is a problem from Dynamic Programming Notes](./0_note.md)
+[This is a problem from Dynamic Programming Notes](./0_notes.md)
 ```java
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
