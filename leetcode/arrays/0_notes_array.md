@@ -1,7 +1,8 @@
 ### Array
 
 Outline
-===
+---
+
 #### Substring search possible approach:
 1. <a class="nav-link" href="#slide_window">Sliding window</a>
 2. <a class="nav-link" href="#find_dup">Find duplicate</a>
