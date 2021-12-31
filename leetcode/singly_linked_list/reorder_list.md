@@ -15,13 +15,13 @@ Example 2:
 Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
 ```
 
-Solution
+##### Solution
 
-Method 1: Using Stack
+##### Approach 1: Using Stack
 
-Time complexity:O(n)
-
-Space complexity: O(n)
+##### Complexity analysis
+- Time complexity: O(n)
+- Space complexity: O(n)
 
 ```java
 /**
@@ -82,14 +82,13 @@ class Solution {
     }
 }
 ```
+:star:
+##### Approach 2: One pass, find the middle node, reverse the second half of the list and merge.
 
-Solution
+##### Complexity analysis
+- Time complexity:  O(n)
+- Space complexity: O(1)
 
-Method 2: One pass, find the middle node, reverse the second half of the list and merge.
-
-Time complexity: O(n)
-
-Space complexity: O(1)
 ```java
 /**
  * Definition for singly-linked list. public class ListNode { int val; ListNode
@@ -116,14 +115,14 @@ class Solution {
         // connect them together
         ListNode head1 = head;
         while (head1 != null && head2 != null) {
-            ListNode tmp1 = head1.next;
-            ListNode tmp2 = head2.next;
+            ListNode next1 = head1.next;
+            ListNode next2 = head2.next;
 
             head2.next = head1.next;
             head1.next = head2;
 
-            head1 = tmp1;
-            head2 = tmp2;
+            head1 = next1;
+            head2 = next2;
         }
 
     }
@@ -132,10 +131,10 @@ class Solution {
         ListNode prev = null;
         ListNode cur = n;
         while (cur != null) {
-            ListNode tmp = cur.next;
+            ListNode next = cur.next;
             cur.next = prev;
             prev = cur;
-            cur = tmp;
+            cur = next;
         }
         return prev;
     }

@@ -1,6 +1,5 @@
-### 36. Valid Sudoku
+### [36. Valid Sudoku](https://leetcode.com/problems/valid-sudoku/)
 
-https://leetcode.com/problems/valid-sudoku/
 
 Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
 

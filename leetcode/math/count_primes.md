@@ -1,6 +1,5 @@
-### 204. Count Primes
+### [204. Count Primes](https://leetcode.com/problems/count-primes/)
 
-https://leetcode.com/problems/count-primes/
 
 Count the number of prime numbers less than a non-negative number, n.
 
@@ -11,15 +10,37 @@ Output: 4
 Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
 ```
 
-Solution
+##### Solution
 
-Approach: 1-D Array Memorization
+##### [Approach 1: ](https://leetcode.com/problems/count-primes/discuss/57588/My-simple-Java-solution)
 
-Complexity analysis:
-- Time complexity: O(log(logN))
+![](https://leetcode.com/static/images/solutions/Sieve_of_Eratosthenes_animation.gif)
+
+##### Complexity analysis
+https://leetcode.com/problems/count-primes/discuss/473021/Time-Complexity-O(log(log(n)
+
+- Time complexity: O(nlog(log(n)))
 - Space complexity: O(N)
 
-https://leetcode.com/problems/count-primes/discuss/473021/Time-Complexity-O(log(log(n)
+
+```java
+public class Solution {
+    public int countPrimes(int n) {
+        boolean[] notPrime = new boolean[n];
+        int count = 0;
+        for (int i = 2; i < n; i++) {
+            if (notPrime[i] == false) {
+                count++;
+                for (int j = 2; i*j < n; j++) {
+                    notPrime[i*j] = true;
+                }
+            }
+        }
+        
+        return count;
+    }
+}
+```
 
 ```java
 class Solution {

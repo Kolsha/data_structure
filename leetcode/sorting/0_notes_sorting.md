@@ -116,7 +116,7 @@ class Solution {
             }
         }
         swap(arr, i + 1, end);
-        return i+1;
+        return i + 1;
     }
     
     private void swap(int[] array, int i, int j) {
