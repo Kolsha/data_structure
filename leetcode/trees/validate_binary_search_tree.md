@@ -31,15 +31,13 @@ Output: false
 Explanation: The root node's value is 5 but its right child's value is 4.
 ```
 
-Solution
+##### Solution
 
-Approach 1: Recursive one
+##### Approach 1: Recursive I
 
-Complexity analysis
-<ul>
-<li>Time complexity : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> since we visit each node exactly once.</li>
-<li>Space complexity : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> since we keep up to the entire tree.</li>
-</ul>
+##### Complexity analysis
+- Time complexity : $\mathcal{O}(N)$ since we visit each node exactly once.
+- Space complexity : $\mathcal{O}(N)$ since we keep up to the entire tree.
 
 ```java
 /**
@@ -81,22 +79,16 @@ class Solution {
     }
 }
 ```
+##### Approach 2: Iterative
 
-Approach 2: Iterative
-
-Complexity Analysis
-<ul>
-<li>Time complexity : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> since we visit each node exactly once.</li>
-<li>Space complexity : <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal{O}(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">O</span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> since we keep up to the entire tree.
-<br>
-<br></li>
-</ul>
+##### Complexity analysis
+- Time complexity: O(N) since we visit each node exactly once.
+- Space complexity: O(N) since we keep up to the entire tree.
 
 ```java
 class Solution {
   LinkedList<TreeNode> stack = new LinkedList();
-  LinkedList<Integer> uppers = new LinkedList(),
-          lowers = new LinkedList();
+  LinkedList<Integer> uppers = new LinkedList(), lowers = new LinkedList();
 
   public void update(TreeNode root, Integer lower, Integer upper) {
     stack.add(root);
@@ -113,10 +105,20 @@ class Solution {
       lower = lowers.poll();
       upper = uppers.poll();
 
-      if (root == null) continue;
+      if (root == null) {
+        continue;
+      }
+
       val = root.val;
-      if (lower != null && val <= lower) return false;
-      if (upper != null && val >= upper) return false;
+
+      if (lower != null && val <= lower) {
+        return false;
+      }
+
+      if (upper != null && val >= upper) {
+        return false;
+      }
+
       update(root.right, val, upper);
       update(root.left, lower, val);
     }

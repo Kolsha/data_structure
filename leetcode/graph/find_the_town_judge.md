@@ -1,17 +1,18 @@
-### 997. Find the Town Judge
+### [997. Find the Town Judge](https://leetcode.com/problems/find-the-town-judge/)
 
-https://leetcode.com/problems/find-the-town-judge/
 
-In a town, there are N people labelled from 1 to N.  There is a rumor that one of these people is secretly the town judge.
+
+In a town, there are `N` people labelled from `1` to `N`.  There is a rumor that one of these people is secretly the town judge.
 
 If the town judge exists, then:
 
 1. The town judge trusts nobody.
 2. Everybody (except for the town judge) trusts the town judge.
 3. There is exactly one person that satisfies properties 1 and 2.
-You are given trust, an array of pairs trust[i] = [a, b] representing that the person labelled a trusts the person labelled b.
 
-If the town judge exists and can be identified, return the label of the town judge.  Otherwise, return -1.
+You are given `trust`, an array of pairs `trust[i] = [a, b]` representing that the person labelled `a` trusts the person labelled `b`.
+
+If the town judge exists and can be identified, return the label of the town judge.  Otherwise, return `-1`.
 
  
 
@@ -49,12 +50,16 @@ Note:
 - trust[i][0] != trust[i][1]
 - 1 <= trust[i][0], trust[i][1] <= N
 
-Solution
+##### Solution
 
-[Method 1: Directed Graph](https://leetcode.com/problems/find-the-town-judge/discuss/242938/JavaC%2B%2BPython-Directed-Graph)
+##### [Approach 1: Directed Graph](https://leetcode.com/problems/find-the-town-judge/discuss/242938/JavaC%2B%2BPython-Directed-Graph)
 
 Consider trust as a graph, all pairs are directed edge.
 The point with `in-degree - out-degree = N - 1` become the judge.
+
+##### Complexity analysis
+- Time complexity: O(N)
+- Space complexity: O(N)
 
 ```java
 class Solution {
