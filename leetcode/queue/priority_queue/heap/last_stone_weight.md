@@ -1,6 +1,4 @@
-### 1046. Last Stone Weight
-
-https://leetcode.com/problems/last-stone-weight/
+### [1046. Last Stone Weight](https://leetcode.com/problems/last-stone-weight/)
 
 We have a collection of stones, each stone has a positive integer weight.
 
@@ -28,14 +26,14 @@ Note:
 - 1 <= stones.length <= 30
 - 1 <= stones[i] <= 1000
 
+##### Solution
 
-Solution
+##### Approach 1: Priority Queue
 
-Method 1: PriorityQueue
+##### Complexity analysis
+- Time complexity: O(nlogn)
+- Space complexity: O(n)
 
-Time complexity: O(nlogn)
-
-Space complexity: O(n)
 
 In Java
 ```java
@@ -62,5 +60,21 @@ class Solution {
         }
         return (queue.isEmpty())? 0 : queue.poll();
     }
+}
+```
+
+```java
+class Solution {
+    public int lastStoneWeight(int[] A) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b)-> b - a);
+        for (int a : A) {
+            pq.offer(a);
+        }
+        while (pq.size() > 1) {
+            pq.offer(pq.poll() - pq.poll());
+        }
+        return pq.poll();
+    }
+
 }
 ```

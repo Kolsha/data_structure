@@ -31,24 +31,30 @@ After kthLargest.add(9);, all the elements inside this instance is [4, 5, 8, 2, 
 After kthLargest.add(4);, all the elements inside this instance is [4, 5, 8, 2, 3, 5, 10, 9, 4], and it return the kth (which is 3rd) largest element, so it returns 8.
 ```
 ```java
-class Solution {
-    public int findKthLargest(int[] nums, int k) {
-        // Comparator<Integer> comp = new Comparator<>() {
-        //     @Override
-        //     public int compare(Integer a, Integer b) {
-        //         return a - b;
-        //     }
-        // };
-        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> a - b);
-        
-        for(int num: nums) {
-            queue.offer(num);
-            if(queue.size() > k) {
-                queue.poll();
-            }
+class KthLargest {    
+    final PriorityQueue<Integer> q;
+    final int k;
+    
+    public KthLargest(int k, int[] a) {
+        this.k = k;
+        q = new PriorityQueue<>(k);
+        for (int n : a) {
+                add(n);
         }
         
-        return queue.poll();
+    }
+
+        
+    public int add(int n) {
+            
+        if (q.size() < k) {    
+            q.offer(n);
+        } else if (q.peek() < n) {
+            q.poll();
+            q.offer(n);    
+        }    
+        return q.peek();    
     }
 }
+
 ```
