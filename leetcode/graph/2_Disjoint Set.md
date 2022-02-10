@@ -1176,3 +1176,17 @@ def connected(self, x, y):
 The code for the disjoint set is highly modularized. You might want to become familiar with the implementation. I would highly recommend that you understand and memorize the implementation of “disjoint set with path compression and union by rank”.
 
 Finally, we strongly encourage you to solve the exercise problems using the abovementioned implementation of the “disjoint set” data structure. Some of these problems can be solved using other data structures and algorithms, but we highly recommend that you practice solving them using the “disjoint set” data structure.
+
+Example questions:
+1. [Number of provinces](leetcode/graph/union_find/number_of_provinces.md)
+
+2. [Graph Valid Tree](leetcode/graph/graph_valid_tree.md)
+
+3. [Number of Connected Components]()
+
+4. [The earliest Moment When]()
+
+5. [Smallest String With Swaps]()
+6. [Evaluate Division]()
+
+7. [Optimize Water Distribution in a Village]()
