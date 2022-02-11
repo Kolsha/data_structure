@@ -89,7 +89,200 @@ VV represents the number of vertices, and EE represents the number of edges.
 
 - Space Complexity: O(V)O(V). We need to store VV vertices in our data structure.
 
+Examples:
+1. Min Cost to Connect all Points
 
+```c++
+class Edge {
+public:
+    int point1;
+    int point2;
+    int cost;
+    Edge(int point1, int point2, int cost)
+        : point1(point1), point2(point2), cost(cost) {}
+};
+// Overload the < operator.
+bool operator<(const Edge& edge1, const Edge& edge2) {
+    return edge1.cost > edge2.cost;
+}
+
+class Solution {
+public:
+    // Prim's algorithm
+    int minCostConnectPoints(vector<vector<int>>& points) {
+        if (points.size() == 0) {
+            return 0;
+        }
+        int sz = points.size();
+        priority_queue<Edge> pq;
+        vector<bool> visited(sz);
+        int result = 0;
+        int count = sz - 1;
+        // Add all edges from points[0] vertex
+        vector<int>& coordinate1 = points[0];
+        for (int j = 1; j < sz; j++) {
+            // Calculate the distance between two coordinates
+            vector<int>& coordinate2 = points[j];
+            int cost = abs(coordinate1[0] - coordinate2[0]) +
+                       abs(coordinate1[1] - coordinate2[1]);
+            Edge edge(0, j, cost);
+            pq.push(edge);
+        }
+        visited[0] = true;
+
+        while (!pq.empty() && count > 0) {
+            Edge edge = pq.top();
+            pq.pop();
+            int point1 = edge.point1;
+            int point2 = edge.point2;
+            int cost = edge.cost;
+            if (!visited[point2]) {
+                result += cost;
+                visited[point2] = true;
+                for (int j = 0; j < sz; j++) {
+                    if (!visited[j]) {
+                        int distance = abs(points[point2][0] - points[j][0]) +
+                                       abs(points[point2][1] - points[j][1]);
+                        pq.push(Edge(point2, j, distance));
+                    }
+                }
+                count--;
+            }
+        }
+        return result;
+    }
+};
+
+int main() {
+    vector<vector<int>> points = {{0, 0}, {2, 2}, {3, 10}, {5, 2}, {7, 0}};
+    Solution solution;
+    cout << "Minimum Cost to Connect Points = " << solution.minCostConnectPoints(points) << endl;
+    return 0;
+}
+```
+
+```java
+class Solution {
+    // Prim Algorithm
+    public int minCostConnectPoints(int[][] points) {
+        if (points == null || points.length == 0) {
+            return 0;
+        }
+        int size = points.length;
+        PriorityQueue<Edge> pq = new PriorityQueue<>((x, y) -> x.cost - y.cost);
+        boolean[] visited = new boolean[size];
+        int result = 0;
+        int count = size - 1;
+        // Add all edges from points[0] vertexs
+        int[] coordinate1 = points[0];
+        for (int j = 1; j < size; j++) {
+            // Calculate the distance between two coordinates.
+            int[] coordinate2 = points[j];
+            int cost = Math.abs(coordinate1[0] - coordinate2[0]) + 
+                       Math.abs(coordinate1[1] - coordinate2[1]);
+            Edge edge = new Edge(0, j, cost);
+            pq.add(edge);
+        }
+        visited[0] = true;
+
+        while (!pq.isEmpty() && count > 0) {
+            Edge edge = pq.poll();
+            int point1 = edge.point1;
+            int point2 = edge.point2;
+            int cost = edge.cost;
+            if (!visited[point2]) {
+                result += cost;
+                visited[point2] = true;
+                for (int j = 0; j < size; j++) {
+                    if (!visited[j]) {
+                        int distance = Math.abs(points[point2][0] - points[j][0]) + 
+                                       Math.abs(points[point2][1] - points[j][1]);
+                        pq.add(new Edge(point2, j, distance));
+                    }
+                }
+                count--;
+            }
+        }
+        return result;
+    }
+
+    class Edge {
+        int point1;
+        int point2;
+        int cost;
+
+        Edge(int point1, int point2, int cost) {
+            this.point1 = point1;
+            this.point2 = point2;
+            this.cost = cost;
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] points = {{0, 0}, {2, 2}, {3, 10}, {5, 2}, {7, 0}};
+        Solution solution = new Solution();
+        System.out.print("Minimum Cost to Connect Points = "); 
+        System.out.println(solution.minCostConnectPoints(points)); 
+    }
+}
+```
+
+```python
+class Solution:
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        if not points or len(points) == 0:
+            return 0
+        size = len(points)
+        pq = []
+        visited = [False] * size
+        result = 0
+        count = size - 1
+        # Add all edges from points[0] vertexs
+        x1, y1 = points[0]
+        for j in range(1, size):
+            # Calculate the distance between two coordinates.
+            x2, y2 = points[j]
+            cost = abs(x1 - x2) + abs(y1 - y2)
+            edge = Edge(0, j, cost)
+            pq.append(edge)
+        
+        # Convert pq to a heap.
+        heapq.heapify(pq)
+
+        visited[0] = True
+        while pq and count > 0:
+            edge = heapq.heappop(pq)
+            point1 = edge.point1
+            point2 = edge.point2
+            cost = edge.cost
+            if not visited[point2]:
+                result += cost
+                visited[point2] = True
+                for j in range(size):
+                    if not visited[j]:
+                        distance = abs(points[point2][0] - points[j][0]) + \
+                                   abs(points[point2][1] - points[j][1])
+                        heapq.heappush(pq, Edge(point2, j, distance))
+                count -= 1
+        return result
+
+class Edge:
+    def __init__(self, point1, point2, cost):
+        self.point1 = point1
+        self.point2 = point2
+        self.cost = cost
+
+    def __lt__(self, other):
+        return self.cost < other.cost
+    
+if __name__ == "__main__":
+    points = [[0,0],[2,2],[3,10],[5,2],[7,0]]
+    solution = Solution()
+    print(f"points = {points}")
+    print(f"Minimum Cost to Connect Points = {solution.minCostConnectPoints(points)}")
+```
 
 
 
