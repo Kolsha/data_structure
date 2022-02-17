@@ -1,7 +1,4 @@
-### 212. Word Search II
-
-https://leetcode.com/problems/word-search-ii/
-
+### [212. Word Search II](https://leetcode.com/problems/word-search-ii/)
 
 Given a 2D board and a list of words from the dictionary, find all words in the board.
 
